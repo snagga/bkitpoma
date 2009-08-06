@@ -1,6 +1,7 @@
 package com.poma.bkitpoma.server;
 
 import java.sql.*;
+import com.twmacinta.util.*;
 
 import java.util.*;
 
@@ -233,8 +234,9 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 	/*
 	 * @return: 0 - Success 1 - Duplicate key 2 - Other error
 	 */
-	public int insertTracker(Tracker tracker) {
+	public Integer insertTracker(Tracker tracker) {
 		// TODO Auto-generated method stub
+		System.out.println("Insert Tracker server");
 		String query = "SELECT * FROM TRACKER WHERE USERNAME = \'"
 				+ tracker.getUsername() + "\';";
 		try {
@@ -246,11 +248,20 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 				return 1;
 			// insert
 
+			String hashPass = MD5.asHex(tracker.getPassword().getBytes());
+			System.out.println("md5 = " + hashPass);
+			
+			//en-MD5
+//		    MD5 md5 = new MD5();
+//		    md5.Update(myString, null);
+//		    String hash = md5.asHex();
+
+			System.out.println("tracker.getTypeCus() " + tracker.getTypeCus());;
 			query = "INSERT INTO TRACKER  ( USERNAME , PASSWORD , NAME , BIRTHDAY , TEL , ADDR , EMAIL , TYPECUS , STATETRACKER , GMT , LANG , COUNTRY ) VALUES  "
 					+ "( '"
 					+ tracker.getUsername()
 					+ "' , '"
-					+ tracker.getPassword()
+					+ hashPass
 					+ "' , '"
 					+ tracker.getName()
 					+ "' , '"
@@ -262,15 +273,16 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 					+ "' , '"
 					+ tracker.getEmail()
 					+ "' , "
-					+ tracker.getTypeCus()
+					+ Integer.parseInt(tracker.getTypeCus())
 					+ " , "
-					+ tracker.getState()
+					+ Integer.parseInt(tracker.getState())
 					+ " , "
 					+ tracker.getGMT()
 					+ " , '"
 					+ tracker.getLang()
 					+ "' , '"
 					+ tracker.getCountry() + "' )";
+			System.out.println(query);
 			stm.execute(query);
 
 			return 0;
@@ -285,7 +297,7 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 	/*
 	 * @return: 0 - Success 1 - Duplicate key 2 - Other error
 	 */
-	public int insertTracked(Tracked tracked) {
+	public Integer insertTracked(Tracked tracked) {
 		// TODO Auto-generated method stub
 		String query = "SELECT * FROM TRACKED WHERE USERNAME = \'"
 				+ tracked.getUsername() + "\';";
@@ -347,7 +359,7 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 	@Override
 	public boolean verifyTracker(String us) {
 		// TODO Auto-generated method stub
-		String query = "SELECT * FROM TRACKED WHERE USERNAME = \'" + us + "\';";
+		String query = "SELECT * FROM TRACKER WHERE USERNAME = \'" + us + "\';";
 		boolean result = false;
 		try {
 			Statement stm = DatabaseServiceImpl.getConnection()
@@ -368,7 +380,7 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 	/*
 	 * 0 - Success -1 - Key not exist 2 - Other errors
 	 */
-	public int setEmbedded(String trackedUN, boolean b) {
+	public Integer setEmbedded(String trackedUN, boolean b) {
 		// TODO Auto-generated method stub
 		String query = "SELECT * FROM TRACKED WHERE USERNAME = \'" + trackedUN
 				+ "\';";
@@ -393,7 +405,7 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 	}
 
 	@Override
-	public int setShowInMap(String trackedUN, boolean b) {
+	public Integer setShowInMap(String trackedUN, boolean b) {
 		// TODO Auto-generated method stub
 		String query = "SELECT * FROM TRACKED WHERE USERNAME = \'" + trackedUN
 				+ "\';";
@@ -415,5 +427,23 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 			e.printStackTrace();
 			return 2;
 		}
+	}
+
+	@Override
+	public Integer removeTracked(String trackerUN, String trackedUN) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Integer updateInfoTracked(Tracked tracked) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Integer updateInfoTracker(Tracker tracker) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
