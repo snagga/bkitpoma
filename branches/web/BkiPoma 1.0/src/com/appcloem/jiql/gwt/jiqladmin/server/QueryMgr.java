@@ -84,7 +84,6 @@ public class QueryMgr {
 			props.put("date.format", config.getString("date.format"));
 
 		String url = (String) config.get("url");
-		System.out.println("URL : " +url);
 		if (url == null)
 			url = "jdbc:jiql://local";
 		Connection con = driver.connect(url, props);

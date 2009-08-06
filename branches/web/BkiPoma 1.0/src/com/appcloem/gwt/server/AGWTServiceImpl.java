@@ -48,7 +48,6 @@ import com.google.gwt.gen2.table.client.TableModelHelper.Request;
 import com.google.gwt.gen2.table.client.TableModelHelper.SerializableResponse;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
-import com.appcloem.jiqladmin.QueryMgr;
 
 import java.util.List;
 import java.util.Vector;

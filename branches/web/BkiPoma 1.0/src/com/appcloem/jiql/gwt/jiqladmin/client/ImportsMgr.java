@@ -38,7 +38,6 @@ import org.gwt.mosaic.ui.client.layout.BoxLayoutData.FillStyle;
 import org.gwt.mosaic.forms.client.layout.CellConstraints;
 import org.gwt.mosaic.forms.client.layout.FormLayout;
 import org.gwt.mosaic.ui.client.WidgetWrapper;
-import org.gwt.mosaic.ui.client.HTML;
 import org.gwt.mosaic.ui.client.ToolButton;
 import org.gwt.mosaic.ui.client.ToolBar;
 import com.google.gwt.user.client.ui.ListBox;
@@ -165,7 +164,7 @@ StatusMgr.appendln(Jiqladmin.getLanguageProperties().loading());
         FillStyle.HORIZONTAL, true));*/
  toolBar.add(b);
  toolBar.add(b2);
-  mainP.add(new HTML("<br/>"));
+  mainP.add(new com.google.gwt.user.client.ui.HTML("<br/>"));
    mainP.add(toolBar);
     //mainP.add(new WidgetWrapper(toolBar), new BoxLayoutData(
      //   FillStyle.HORIZONTAL, true));

@@ -40,7 +40,6 @@ import org.gwt.mosaic.ui.client.layout.BoxLayoutData.FillStyle;
 import org.gwt.mosaic.forms.client.layout.CellConstraints;
 import org.gwt.mosaic.forms.client.layout.FormLayout;
 import org.gwt.mosaic.ui.client.WidgetWrapper;
-import org.gwt.mosaic.ui.client.HTML;
 import org.gwt.mosaic.ui.client.ToolButton;
 import org.gwt.mosaic.ui.client.ToolBar;
 
@@ -54,7 +53,6 @@ import org.gwt.mosaic.ui.client.layout.LayoutPanel;
 import org.gwt.mosaic.ui.client.layout.BorderLayout.Region;
 import org.gwt.mosaic.ui.client.CaptionLayoutPanel;
 import org.gwt.mosaic.ui.client.ImageButton;
-import org.gwt.mosaic.ui.client.Label;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 
@@ -114,7 +112,7 @@ if (modal == null){
     mainP.setWidgetSpacing(10);
 
 
-    mainP.add(new HTML("<br/>"));
+    mainP.add(new com.google.gwt.user.client.ui.HTML("<br/>"));
 
 
      sp = new ScrollPanel();
@@ -131,7 +129,7 @@ if (modal == null){
 //    Button b = new Button(Jiqladmin.getLanguageProperties().submit());
 
   //LayoutPanel grpl = new LayoutPanel(new BorderLayout());
-  mainP.add(new HTML("<br/><br/>"));
+  mainP.add(new com.google.gwt.user.client.ui.HTML("<br/><br/>"));
  //   mainP.add(new WidgetWrapper(b), new BoxLayoutData(
    //     FillStyle.HORIZONTAL, true));
 
@@ -146,8 +144,8 @@ CaptionLayoutPanel	    grd = new CaptionLayoutPanel(Jiqladmin.getLanguagePropert
 
     Grid grid = new Grid(2, 2);
 
-        grid.setWidget(0, 0, new Label(Jiqladmin.getLanguageProperties().name()));
-         grid.setWidget(1, 0, new Label(Jiqladmin.getLanguageProperties().numberOfFields()));
+        grid.setWidget(0, 0, new com.google.gwt.user.client.ui.HTML(Jiqladmin.getLanguageProperties().name()));
+         grid.setWidget(1, 0, new com.google.gwt.user.client.ui.HTML(Jiqladmin.getLanguageProperties().numberOfFields()));
 tb = new TextBox();
 grid.setWidget(0, 1, tb);
  lb = new ListBox();
@@ -201,8 +199,8 @@ CaptionLayoutPanel	    grd = new CaptionLayoutPanel(Jiqladmin.getLanguagePropert
 
     Grid grid = new Grid(2, 2);
 
-        grid.setWidget(0, 0, new Label(Jiqladmin.getLanguageProperties().name()));
-         grid.setWidget(1, 0, new Label(Jiqladmin.getLanguageProperties().numberOfFields()));
+        grid.setWidget(0, 0, new com.google.gwt.user.client.ui.HTML(Jiqladmin.getLanguageProperties().name()));
+         grid.setWidget(1, 0, new com.google.gwt.user.client.ui.HTML(Jiqladmin.getLanguageProperties().numberOfFields()));
         grid.setWidget(0, 1, new TextBox());
 
   table = tb.getText();
@@ -212,11 +210,11 @@ CaptionLayoutPanel	    grd = new CaptionLayoutPanel(Jiqladmin.getLanguagePropert
 
   	return;
   }
-        grid.setWidget(0, 1, new Label(table));
+        grid.setWidget(0, 1, new com.google.gwt.user.client.ui.HTML(table));
 int ctf = lb.getSelectedIndex();
 String fieldno = lb.getValue(ctf);
 
-         grid.setWidget(1, 1,  new Label(fieldno));
+         grid.setWidget(1, 1,  new com.google.gwt.user.client.ui.HTML(fieldno));
 
 VerticalPanel vp = new VerticalPanel();
 grd.add(vp);

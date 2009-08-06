@@ -55,7 +55,6 @@ import org.gwt.mosaic.ui.client.layout.LayoutPanel;
 import org.gwt.mosaic.ui.client.layout.BoxLayout.Orientation;
 import org.gwt.mosaic.ui.client.layout.BoxLayoutData.FillStyle;
 import org.gwt.mosaic.ui.client.layout.GridLayoutData;
-import org.gwt.mosaic.ui.client.Label;
 import com.google.gwt.i18n.client.ConstantsWithLookup;
 
 import com.appcloem.gwt.client.QMap;

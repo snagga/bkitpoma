@@ -25,4 +25,5 @@
 	<inherits name="com.google.gwt.i18n.I18N" />
 	<inherits name='org.gwt.mosaic.actions.Actions' />
 	<inherits name='org.gwt.mosaic.forms.Forms' />
+	<entry-point class="com.appcloem.gwt.client.AppcloemEntryPoint"/>
 </module>

@@ -84,7 +84,6 @@ import com.google.gwt.gen2.table.client.CachedTableModel;
 import org.gwt.mosaic.ui.client.table.PagingScrollTable2;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.HTML;
-import org.gwt.mosaic.ui.client.Label;
 import com.google.gwt.i18n.client.ConstantsWithLookup;
 import com.google.gwt.i18n.client.Constants;
 import com.appcloem.gwt.client.AppcloemEntryPoint;
@@ -97,9 +96,9 @@ import com.appcloem.gwt.client.QMap;
 public class Jiqladmin extends AppcloemEntryPoint {
 
 	static LanguageConstantsWithLookup langP;
-	static Label statusL;
+	static com.google.gwt.user.client.ui.HTML statusL;
 
-	public static Label getStatusLabel() {
+	public static com.google.gwt.user.client.ui.HTML getStatusLabel() {
 		return statusL;
 	}
 
@@ -265,7 +264,7 @@ public class Jiqladmin extends AppcloemEntryPoint {
 		scrollTable.reloadPage();
 		scrollTable.gotoFirstPage();
 
-		statusL = new Label(" ");
+		statusL = new com.google.gwt.user.client.ui.HTML(" ");
 		// statusL.setVisible(false);
 		content1.add(statusL);
 		// ,new BorderLayoutData(BorderLayout.Region.CENTER)

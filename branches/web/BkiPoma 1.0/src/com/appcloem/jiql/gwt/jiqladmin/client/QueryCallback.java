@@ -55,7 +55,6 @@ import org.gwt.mosaic.ui.client.layout.LayoutPanel;
 import org.gwt.mosaic.ui.client.layout.BoxLayout.Orientation;
 import org.gwt.mosaic.ui.client.layout.BoxLayoutData.FillStyle;
 import org.gwt.mosaic.ui.client.layout.GridLayoutData;
-import org.gwt.mosaic.ui.client.Label;
 import com.google.gwt.i18n.client.ConstantsWithLookup;
 
 import com.appcloem.gwt.client.QMap;
@@ -88,12 +87,12 @@ public class QueryCallback implements AsyncCallback {
 		// MessageBox.alert(Window.getTitle(), " QUERY: ");
 		if (qr.hasResult()) {
 			// if (true){
-			redirect("../Jiqladmin.html");
+			redirect("../jiqladmin.html");
 			return;
 			// }
 
 		} else {
-			Label sl = jadmin.getStatusLabel();
+			com.google.gwt.user.client.ui.HTML sl = jadmin.getStatusLabel();
 			// " SQL COMPLETED SUCESSFULLY"
 			try {
 

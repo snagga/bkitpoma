@@ -114,7 +114,7 @@ public class JiqlAdminServiceImpl extends AGWTServiceImpl implements
 					.getQueryResult(q, getThreadLocalRequest());
 			// (q + " getQuery 2 : " + qr.hasResult());
 			// if (true)
-			// getThreadLocalResponse().sendRedirect("/Jiqladmin.html");
+			// getThreadLocalResponse().sendRedirect("/jiqladmin.html");
 			return qr;
 			// return null;
 		} catch (Exception e) {
@@ -193,7 +193,7 @@ public class JiqlAdminServiceImpl extends AGWTServiceImpl implements
 			QueryResult qr = QueryMgr.getQueryResult(getThreadLocalRequest());
 			// (" getQuery 2b : " + qr.hasResult());
 			// if (true)
-			// getThreadLocalResponse().sendRedirect("/Jiqladmin.html");
+			// getThreadLocalResponse().sendRedirect("jiqladmin.html");
 			return qr;
 			// return null;
 		} catch (Exception e) {

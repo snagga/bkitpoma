@@ -40,7 +40,6 @@ import com.google.gwt.user.client.ui.AbstractImagePrototype;
 import com.google.gwt.core.client.GWT;
 import org.gwt.mosaic.ui.client.WindowPanel;
 import org.gwt.mosaic.ui.client.WidgetWrapper;
-import org.gwt.mosaic.ui.client.HTML;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.ScrollPanel;
 
@@ -93,7 +92,7 @@ if (modal == null){
       }
     }));
 
-	  panel.add(new HTML("<br/><br/>"));
+	  panel.add(new com.google.gwt.user.client.ui.HTML("<br/><br/>"));
 
     // Add an event handler to the form.
     form.addSubmitHandler(new FormPanel.SubmitHandler() {

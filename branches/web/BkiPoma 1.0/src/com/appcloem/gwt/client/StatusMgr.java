@@ -41,7 +41,6 @@ import com.google.gwt.user.client.ui.AbstractImagePrototype;
 import com.google.gwt.core.client.GWT;
 import org.gwt.mosaic.ui.client.WindowPanel;
 import org.gwt.mosaic.ui.client.WidgetWrapper;
-import org.gwt.mosaic.ui.client.HTML;
 import com.google.gwt.user.client.ui.Image;
 import java.util.List;
 import com.google.gwt.user.client.ui.ScrollPanel;
@@ -73,7 +72,7 @@ public static void appendln(String t,String c){
 		clear();
 	}
 	//<br/>
-	spl.add(new HTML("<br/><font color=\"" + c + "\">" + t + "</font>"));
+	spl.add(new com.google.gwt.user.client.ui.HTML("<br/><font color=\"" + c + "\">" + t + "</font>"));
 	ln = ln + 1;
 	//ta.setCursorPos(ln);
 }
@@ -107,7 +106,7 @@ if (modal == null){
   mainP.add(new WidgetWrapper(new Image(GlobalObjects.getPropertiesConstants().moduleName() + "/images/progress.gif")), new BoxLayoutData(
         FillStyle.HORIZONTAL, true));
 
-    mainP.add(new HTML("<br/>"));
+    mainP.add(new com.google.gwt.user.client.ui.HTML("<br/>"));
 
 
        ta = new TextArea();
@@ -131,7 +130,7 @@ if (modal == null){
 //    Button b = new Button(Jiqladmin.getLanguageProperties().submit());
 
   //LayoutPanel grpl = new LayoutPanel(new BorderLayout());
-  mainP.add(new HTML("<br/><br/>"));
+  mainP.add(new com.google.gwt.user.client.ui.HTML("<br/><br/>"));
  //   mainP.add(new WidgetWrapper(b), new BoxLayoutData(
    //     FillStyle.HORIZONTAL, true));
 

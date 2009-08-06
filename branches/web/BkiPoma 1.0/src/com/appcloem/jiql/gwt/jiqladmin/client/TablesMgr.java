@@ -38,7 +38,6 @@ import org.gwt.mosaic.ui.client.layout.BoxLayoutData.FillStyle;
 import org.gwt.mosaic.forms.client.layout.CellConstraints;
 import org.gwt.mosaic.forms.client.layout.FormLayout;
 import org.gwt.mosaic.ui.client.WidgetWrapper;
-import org.gwt.mosaic.ui.client.HTML;
 import org.gwt.mosaic.ui.client.ToolButton;
 import org.gwt.mosaic.ui.client.ToolBar;
 
@@ -52,7 +51,6 @@ import org.gwt.mosaic.ui.client.layout.LayoutPanel;
 import org.gwt.mosaic.ui.client.layout.BorderLayout.Region;
 import org.gwt.mosaic.ui.client.CaptionLayoutPanel;
 import org.gwt.mosaic.ui.client.ImageButton;
-import org.gwt.mosaic.ui.client.Label;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 
@@ -151,7 +149,7 @@ StatusMgr.appendln(Jiqladmin.getLanguageProperties().loading());
 
     centerPanel = new CaptionLayoutPanel(Jiqladmin.getLanguageProperties().details());
     //centerPanel.getHeader().add(Showcase.IMAGES.gwtLogoThumb().createImage());
-    centerPanel.add(new WidgetWrapper(new HTML(Jiqladmin.getLanguageProperties().pleaseCreateTable())));
+    centerPanel.add(new WidgetWrapper(new com.google.gwt.user.client.ui.HTML(Jiqladmin.getLanguageProperties().pleaseCreateTable())));
 
   //  lp.add(centerPanel, new BorderLayoutData( true));
     lp.add(centerPanel, new BorderLayoutData(Region.EAST,
@@ -301,7 +299,7 @@ public static void showTables(List<String> l,String selT){
 
 	westPanel.clear();
 	if (l.size() < 1)
-	    westPanel.add(new Label(Jiqladmin.getLanguageProperties().noTablesFound()));
+	    westPanel.add(new com.google.gwt.user.client.ui.HTML(Jiqladmin.getLanguageProperties().noTablesFound()));
 
     else{
 

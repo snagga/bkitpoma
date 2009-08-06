@@ -6,16 +6,14 @@ import java.util.*;
 public class Tracked implements IsSerializable {
 	/**
 	 * HashMap that will always contain strings for both keys and values
-	 * 
-	 * @gwt.typeArgs <java.lang.String, java.lang.String>
 	 */
-	private HashMap trackedInfo = null;
+	private HashMap<String, String> trackedInfo = null;
 
 	/**
 	 * Default Constructor
 	 */
 	public Tracked() {
-		trackedInfo = new HashMap();
+		trackedInfo = new HashMap<String, String>();
 		
 		trackedInfo.put("username", "");
 		trackedInfo.put("apikey", "");

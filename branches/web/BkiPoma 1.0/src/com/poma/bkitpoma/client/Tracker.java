@@ -6,28 +6,54 @@ import java.util.*;
 public class Tracker implements IsSerializable {
 	/**
 	 * HashMap that will always contain strings for both keys and values
-	 * 
-	 * @gwt.typeArgs <java.lang.String, java.lang.String>
 	 */
-	private HashMap trackerInfo;
+	private HashMap<String, String> trackerInfo;
 
 	/**
 	 * Default Constructor
 	 */
 	public Tracker() {
-		trackerInfo = new HashMap();
-		trackerInfo.put("username", "");
-		trackerInfo.put("password", "");
-		trackerInfo.put("name", "");
-		trackerInfo.put("birthday", "");
-		trackerInfo.put("tel", "");
-		trackerInfo.put("addr", "");
-		trackerInfo.put("email", "");
+		constructure("", "", "", "", "", "", "", "", "", "");
+
+		// new Tracker(
+		// txtUsername
+		// .getText(),
+		// txtPassword
+		// .getText(),
+		// txtName.getText(),
+		// strDate,
+		// txtMobilePhone
+		// .getText(),
+		// taAddress.getText(),
+		// txtEmail.getText(),
+		// getTimeZone()[selectedIndexTimeZone][1],
+		// "VI",
+		// getCountryNames()[selectedIndexCountry]),
+	}
+
+	public Tracker(String username, String password, String name, String date,
+			String phone, String address, String email, String timezone,
+			String lang, String country) {
+		constructure(username, password, name, date, phone, address, email,
+				timezone, lang, country);
+	}
+
+	public void constructure(String username, String password, String name,
+			String date, String phone, String address, String email,
+			String timezone, String lang, String country) {
+		trackerInfo = new HashMap<String, String>();
+		trackerInfo.put("username", username);
+		trackerInfo.put("password", password);
+		trackerInfo.put("name", name);
+		trackerInfo.put("birthday", date);
+		trackerInfo.put("tel", phone);
+		trackerInfo.put("addr", address);
+		trackerInfo.put("email", email);
 		trackerInfo.put("typeCus", "");
 		trackerInfo.put("state", "");
-		trackerInfo.put("gmt", "");
-		trackerInfo.put("lang", "");
-		trackerInfo.put("country","");
+		trackerInfo.put("gmt", timezone);
+		trackerInfo.put("lang", lang);
+		trackerInfo.put("country", country);
 	}
 
 	/**
@@ -43,11 +69,11 @@ public class Tracker implements IsSerializable {
 	public void setPassword(String name) {
 		trackerInfo.put("password", name);
 	}
-	
+
 	public void setName(String name) {
 		trackerInfo.put("name", name);
 	}
-	
+
 	public void setBirthday(String name) {
 		trackerInfo.put("birthday", name);
 	}
@@ -59,7 +85,7 @@ public class Tracker implements IsSerializable {
 	public void setAddr(String name) {
 		trackerInfo.put("addr", name);
 	}
-	
+
 	public void setEmail(String name) {
 		trackerInfo.put("email", name);
 	}
@@ -71,19 +97,19 @@ public class Tracker implements IsSerializable {
 	public void setState(String name) {
 		trackerInfo.put("state", name);
 	}
-	
-	public void setGMT(String gmt){
+
+	public void setGMT(String gmt) {
 		trackerInfo.put("gmt", gmt);
 	}
-	
-	public void setLang(String lang){
-		trackerInfo.put("lang",lang);
+
+	public void setLang(String lang) {
+		trackerInfo.put("lang", lang);
 	}
-	
-	public void setCountry(String country){
+
+	public void setCountry(String country) {
 		trackerInfo.put("country", country);
 	}
-	
+
 	public String getUsername() {
 		return (String) trackerInfo.get("username");
 	}
@@ -91,11 +117,11 @@ public class Tracker implements IsSerializable {
 	public String getPassword() {
 		return (String) trackerInfo.get("password");
 	}
-	
+
 	public String getName() {
 		return (String) trackerInfo.get("name");
 	}
-	
+
 	public String getBirthday() {
 		return (String) trackerInfo.get("birthday");
 	}
@@ -107,7 +133,7 @@ public class Tracker implements IsSerializable {
 	public String getAddr() {
 		return (String) trackerInfo.get("address");
 	}
-	
+
 	public String getEmail() {
 		return (String) trackerInfo.get("email");
 	}
@@ -119,17 +145,17 @@ public class Tracker implements IsSerializable {
 	public String getState() {
 		return (String) trackerInfo.get("state");
 	}
-	
-	public String getGMT(){
-		return (String)trackerInfo.get("gmt");
+
+	public String getGMT() {
+		return (String) trackerInfo.get("gmt");
 	}
-	
-	public String getLang(){
-		return (String)trackerInfo.get("lang");
+
+	public String getLang() {
+		return (String) trackerInfo.get("lang");
 	}
-	
-	public String getCountry(){
-		return (String)trackerInfo.get("country");
+
+	public String getCountry() {
+		return (String) trackerInfo.get("country");
 	}
 
 }// end class Contact
