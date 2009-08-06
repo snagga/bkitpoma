@@ -20,11 +20,11 @@ public class MenuPanel extends Panel {
 	}
 
 	public MenuPanel(String title) {
-		constructor(title, 180);
+		constructor(title, 400);
 	}
 
 	public MenuPanel() {
-		constructor("", 180);
+		constructor("", 400);
 	}
 
 	private final AccordionLayout accordion = new AccordionLayout(true);
@@ -38,7 +38,16 @@ public class MenuPanel extends Panel {
 		setTitle(title);
 		setLayout(accordion);
 		setCollapsible(true);
-		setWidth(width);
+		//setWidth(width);
+		setMonitorResize(true);
+
+		Panel trackedPanel = new Panel();
+		trackedPanel.setTitle("Tracked menu");
+		trackedPanel.setBorder(false);
+		trackedPanel.setIconCls("forlder-icon");
+		trackedPanel.add(new TrackedPanel());
+		add(trackedPanel);
+		
 
 		Panel settingsPanel = new Panel();
 		settingsPanel.setHtml("<p>Some settings in here.</p>");

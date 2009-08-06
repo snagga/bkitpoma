@@ -21,15 +21,21 @@ public interface DatabaseService extends RemoteService {
 
 	Tracker getTrackerDetail(String trackerUN);
 
-	int insertTracker(Tracker tracker);
+	Integer insertTracker(Tracker tracker);
 
-	int insertTracked(Tracked tracked);
+	Integer insertTracked(Tracked tracked);
 
 	boolean verifyTracker(String us);
 
-	int setShowInMap(String trackedUN, boolean b);
+	Integer setShowInMap(String trackedUN, boolean b);
 
-	int setEmbedded(String trackedUN, boolean b);
+	Integer setEmbedded(String trackedUN, boolean b);
+	
+	Integer updateInfoTracker(Tracker tracker);
+	
+	Integer updateInfoTracked(Tracked tracked);
+	
+	Integer removeTracked(String trackerUN,String trackedUN);
 
 	public static class Util {
 

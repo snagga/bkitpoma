@@ -31,4 +31,12 @@ public interface DatabaseServiceAsync {
 	void setEmbedded(String trackedUN, boolean b,
 			AsyncCallback<Integer> callback);
 
+	void updateInfoTracker(Tracker tracker, AsyncCallback<Integer> callback);
+
+	void updateInfoTracked(Tracked tracked, AsyncCallback<Integer> callback);
+
+	void removeTracked(String trackerUN, String trackedUN,
+			AsyncCallback<Integer> callback);
+	
+
 }

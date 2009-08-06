@@ -4,7 +4,6 @@ public class Recaptcha {
 	public static final String IMAGE = "image";
 	public static final String AUDIO = "audio";
 
-	// TODO options
 	public static native void create(String key, String div) /*-{
 		$wnd.Recaptcha.create(key, "recaptcha_div", {});
 	}-*/;
