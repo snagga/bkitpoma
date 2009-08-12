@@ -12,6 +12,7 @@ import com.bkitmobile.poma.client.database.DatabaseService;
 import com.bkitmobile.poma.client.database.Tracked;
 import com.bkitmobile.poma.client.database.Tracker;
 import com.bkitmobile.poma.client.database.WayPoint;
+import com.google.appengine.repackaged.com.google.common.base.Tracer.Stat;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 @SuppressWarnings("serial")
@@ -167,7 +168,8 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 			Statement stm = DatabaseServiceImpl.getConnection()
 					.createStatement();
 			ResultSet rs = stm.executeQuery(query);
-			if (rs.getRow() > 1) {
+			ResultSet rs2;
+			if (rs.getRow() >= 1) {
 				tracked = new Tracked();
 				tracked.setUsername(rs.getString("USERNAME"));
 				tracked.setAPIKey(rs.getString("APIKEY"));
@@ -187,6 +189,12 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 				tracked.setSchedule(String.valueOf(rs.getObject("SCHEDULE")));
 				tracked.setIntervalGPS(String.valueOf(rs
 						.getObject("INTERVALGPS")));
+
+				query = "SELECT * FROM STAFF WHERE TRACKEDUN = \'"
+						+ rs.getString("USERNAME") + "\'";
+				rs2 = stm.executeQuery(query);
+				rs2.next();
+				tracked.setOwnerUN(String.valueOf(rs2.getObject("TRACKERUN")));
 			}
 
 		} catch (Exception e) {
@@ -262,7 +270,7 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 		tracker.setTel(preventSQLInj(tracker.getTel()));
 		tracker.setTypeCus(preventSQLInj(tracker.getTypeCus()));
 		tracker.setUsername(preventSQLInj(tracker.getUsername()));
-		
+
 		// TODO Auto-generated method stub
 		System.out.println("Insert Tracker server");
 		String query = "SELECT * FROM TRACKER WHERE USERNAME = \'"
@@ -326,10 +334,10 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 	/*
 	 * @return: 0 - Success 1 - Duplicate key 2 - Other error
 	 */
-	public Integer insertTracked(String trackerUN, Tracked tracked) {
+	public String insertTracked(String trackerUN, Tracked tracked) {
 		// TODO Auto-generated method stub
 		trackerUN = preventSQLInj(trackerUN);
-		
+
 		tracked.setBirthday(preventSQLInj(tracked.getBirthday()));
 		tracked.setCountry(preventSQLInj(tracked.getCountry()));
 		tracked.setEmail(preventSQLInj(tracked.getEmail()));
@@ -340,16 +348,19 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 		tracked.setTel(preventSQLInj(tracked.getTel()));
 		tracked.setUsername(preventSQLInj(tracked.getUsername()));
 		tracked.setIconPath(preventSQLInj(tracked.getIconPath()));
-		
-		String query = "SELECT * FROM TRACKED WHERE USERNAME = \'"
-				+ tracked.getUsername() + "\';";
+		tracked.setOwnerUN(preventSQLInj(tracked.getOwnerUN()));
+
+		// String query = "SELECT * FROM TRACKED WHERE USERNAME = \'"
+		// + tracked.getUsername() + "\';";
+		String query = "";
 		try {
 			Statement stm = DatabaseServiceImpl.getConnection()
 					.createStatement();
-			ResultSet rs = stm.executeQuery(query);
-			rs.last();
-			if (rs.getRow() >= 1)
-				return 1;
+			int length = getLength(stm, "TRACKED");
+			// ResultSet rs = stm.executeQuery(query);
+			// rs.last();
+			// if (rs.getRow() >= 1)
+			// return "";
 			// insert
 
 			// INSERT INTO TRACKED ( USERNAME , APIKEY , NAME , BIRTHDAY , TEL ,
@@ -358,9 +369,9 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 			// '20080202' , '0' , '0' , 0 , 0 , 7 , 'VI' , 'VIETNAM' , '0' ,
 			// TRUE , TRUE )
 
-			query = "INSERT INTO TRACKED  ( USERNAME , APIKEY , NAME , BIRTHDAY , TEL , EMAIL , STATETRACKED , GPSSTATE , GMT , LANG , COUNTRY , ICONPATH , SHOWINMAP , EMBEDDED , SCHEDULE , INTERVALGPS ) VALUES  "
+			query = "INSERT INTO TRACKED  ( USERNAME , APIKEY , NAME , BIRTHDAY , TEL , EMAIL , STATETRACKED , GPSSTATE , GMT , LANG , COUNTRY , ICONPATH , SHOWINMAP , EMBEDDED , SCHEDULE , INTERVALGPS , OWNERUN ) VALUES  "
 					+ "( '"
-					+ tracked.getUsername()
+					+ (length + 1)
 					+ "' , '"
 					+ tracked.getAPIKey()
 					+ "' , '"
@@ -391,7 +402,9 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 					+ tracked.getSchedule()
 					+ " , "
 					+ tracked.getIntervalGPS()
-					+ " )";
+					+ ", \'"
+					+ tracked.getOwnerUN()
+					+ "\'" + " )";
 
 			System.out.println(query);
 			stm.execute(query);
@@ -403,10 +416,10 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 
 			// Insert into staff
 
-			return 0;
+			return String.valueOf(length + 1);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return 2;
+			return "";
 		}
 	}
 
@@ -492,7 +505,7 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 		trackerUN = preventSQLInj(trackerUN);
 		trackedUN = preventSQLInj(trackedUN);
 		try {
-			String sql = "DELETE FROM MANAGE WHERE TRACKEDID = \'" + trackedUN
+			String sql = "DELETE FROM MANAGE WHERE TRACKEDUN = \'" + trackedUN
 					+ "\'";
 			Statement statement = DatabaseServiceImpl.getConnection()
 					.createStatement();
@@ -501,7 +514,7 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 			sql = "SELECT * FROM TRACK WHERE USERNAME = \'" + trackedUN + "\'";
 			ResultSet rs = statement.executeQuery(sql);
 			while (rs.next()) {
-				String trackID = rs.getString("TRACKID");
+				String trackID = rs.getString("TRACKUN");
 				sql = "DELETE FROM WAYPOINT WHERE TRACKID = \'" + trackID
 						+ "\'";
 				statement.execute(sql);
@@ -524,7 +537,7 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 		tracked.setTel(preventSQLInj(tracked.getTel()));
 		tracked.setUsername(preventSQLInj(tracked.getUsername()));
 		tracked.setIconPath(preventSQLInj(tracked.getIconPath()));
-		
+
 		String query = "SELECT * FROM TRACKED WHERE USERNAME = \'"
 				+ tracked.getUsername() + "\';";
 		try {
@@ -554,7 +567,7 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 			return 2;
 		}
 	}
-	
+
 	@Override
 	public Integer updateInfoTracker(Tracker tracker) {
 		tracker.setAddr(preventSQLInj(tracker.getAddr()));
@@ -569,7 +582,7 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 		tracker.setTel(preventSQLInj(tracker.getTel()));
 		tracker.setTypeCus(preventSQLInj(tracker.getTypeCus()));
 		tracker.setUsername(preventSQLInj(tracker.getUsername()));
-		
+
 		String query = "SELECT * FROM TRACKED WHERE USERNAME = \'"
 				+ tracker.getUsername() + "\';";
 		try {
@@ -602,7 +615,7 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 	@Override
 	public String[] getTracks(String trackedUN) {
 		trackedUN = preventSQLInj(trackedUN);
-		
+
 		ArrayList<String> arrTrackID = new ArrayList<String>();
 		try {
 			String sql = "SELECT * FROM TRACK WHERE USERNAME = \'" + trackedUN
@@ -792,4 +805,123 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 		}
 		return cr.getCleanHTML(); // some custom function
 	}
+
+	@Override
+	public boolean loginTracked(String username, String password) {
+		username = preventSQLInj(username);
+		password = preventSQLInj(password);
+		String query = "SELECT * FROM TRACKED WHERE USERNAME = \'" + username
+				+ "\';";
+		try {
+			Statement stm = DatabaseServiceImpl.getConnection()
+					.createStatement();
+			ResultSet rs = stm.executeQuery(query);
+			rs.last();
+			if (rs.getRow() >= 1)
+				return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean loginTracker(String username, String password) {
+		username = preventSQLInj(username);
+		password = preventSQLInj(password);
+		String query = "SELECT * FROM TRACKER WHERE USERNAME = \'" + username
+				+ "\';";
+		try {
+			Statement stm = DatabaseServiceImpl.getConnection()
+					.createStatement();
+			ResultSet rs = stm.executeQuery(query);
+			rs.last();
+			if (rs.getRow() >= 1)
+				return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public Integer insertManage(String trackerUN, String trackedUN) {
+		// TODO Auto-generated method stub
+		trackerUN = preventSQLInj(trackerUN);
+		trackedUN = preventSQLInj(trackedUN);
+		String sql = "INSERT INTO MANAGE ( TRACKERUN , TRACKEDUN ) VALUES ( \'"
+				+ trackerUN + "\' , '" + trackedUN + "\' ) ";
+		Statement stm = null;
+		try {
+			stm = this.getConnection().createStatement();
+			stm.execute(sql);
+			return 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 2;
+	}
+
+	@Override
+	public Integer insertWayPoint(WayPoint wayPoint) {
+		// TODO Auto-generated method stub
+		wayPoint.setLattitude(preventSQLInj(wayPoint.getLattitude()));
+		wayPoint.setLongtitude(preventSQLInj(wayPoint.getLongtitude()));
+		wayPoint.setSpeed(preventSQLInj(wayPoint.getSpeed()));
+		wayPoint.setTime(preventSQLInj(wayPoint.getTime()));
+		wayPoint.setTrackID(preventSQLInj(wayPoint.getTrackID()));
+		String sql = "INSERT INTO WAYPOINT ( TIMESERVER , TRACKID , LAT , LNG , SPEED ) VALUES ( "
+				+ wayPoint.getTime()
+				+ " , "
+				+ wayPoint.getTrackID()
+				+ " , "
+				+ wayPoint.getLattitude()
+				+ " , "
+				+ wayPoint.getLongtitude()
+				+ " , " + wayPoint.getSpeed() + " ) ";
+		System.out.println(sql);
+		Statement stm = null;
+		try {
+			stm = this.getConnection().createStatement();
+			return 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 2;
+	}
+
+	@Override
+	public String insertTrack(String trackedUN) {
+		int length = 0;
+		try {
+			
+			Statement stm = this.getConnection().createStatement();
+			length = getLength(stm, "TRACK");
+			String sql = "INSERT INTO TRACK (TRACKID , TRACKEDUN ) VALUES ( \'" + (length+1) + "\' , \'" + trackedUN + "\' ) ";
+			stm.execute(sql);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return String.valueOf(length+1);
+	}
+
+	private int getLength(Statement stm, String table) throws SQLException {
+		String sql = "SELECT * FROM " + table;
+		ResultSet rs = stm.executeQuery(sql);
+		rs.last();
+		return rs.getRow();
+	}
+
+	@Override
+	public String getNewTrackedUN() {
+		// TODO Auto-generated method stub
+		try{
+			Statement stm = this.getConnection().createStatement();
+			return String.valueOf(getLength(stm, "TRACKED"));
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
+
 }

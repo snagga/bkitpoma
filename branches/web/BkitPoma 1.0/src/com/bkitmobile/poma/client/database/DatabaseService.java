@@ -23,7 +23,7 @@ public interface DatabaseService extends RemoteService {
 
 	Integer insertTracker(Tracker tracker);
 
-	Integer insertTracked(String trackerUN,Tracked tracked);
+	String insertTracked(String trackerUN,Tracked tracked);
 
 	boolean verifyTracker(String us);
 	
@@ -45,11 +45,21 @@ public interface DatabaseService extends RemoteService {
 	
 	Integer updateTrackedShowInMap(String trackedUN, int type);
 	
-//	Integer updateManage(String trackerUN, String trackedUN,String schedule,int interval);
+	Integer insertManage(String trackerUN, String trackedUN);
+	
+	Integer insertWayPoint(WayPoint wayPoint);
 	
 	String[] getTracks(String trackedUN);
 	
 	ArrayList<WayPoint> getWayPoint(String trackID);
+	
+	boolean loginTracker(String username,String password);
+	
+	boolean loginTracked(String username,String password);
+	
+	String insertTrack(String trackedUN);
+	
+	String getNewTrackedUN();
 
 	public static class Util {
 
@@ -58,4 +68,5 @@ public interface DatabaseService extends RemoteService {
 			return GWT.create(DatabaseService.class);
 		}
 	}
+
 }

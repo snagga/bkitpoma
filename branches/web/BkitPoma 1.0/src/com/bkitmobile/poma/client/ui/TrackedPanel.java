@@ -12,7 +12,10 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.DeferredCommand;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.DockPanel;
+import com.google.gwt.user.client.ui.DockPanel.DockLayoutConstant;
 import com.gwtext.client.core.EventObject;
+import com.gwtext.client.core.RegionPosition;
 import com.gwtext.client.widgets.Button;
 import com.gwtext.client.widgets.DatePicker;
 import com.gwtext.client.widgets.MessageBox;
@@ -30,6 +33,9 @@ import com.gwtext.client.widgets.form.Validator;
 import com.gwtext.client.widgets.form.event.FieldListenerAdapter;
 import com.gwtext.client.widgets.form.event.TextFieldListener;
 import com.gwtext.client.widgets.form.event.TextFieldListenerAdapter;
+import com.gwtext.client.widgets.layout.BorderLayout;
+import com.gwtext.client.widgets.layout.BorderLayoutData;
+import com.gwtext.client.widgets.layout.CardLayout;
 import com.gwtext.client.widgets.layout.HorizontalLayout;
 import com.gwtext.client.widgets.layout.VerticalLayout;
 
@@ -95,10 +101,13 @@ public class TrackedPanel extends Panel {
 		/*
 		 *  Filter of tracked name
 		 */
+		// TODO center layout for filter panel
 		filterPanel = new LoadingPanel();
 		filterPanel.setPaddings(5);
 		filterPanel.setBorder(false);
 		filterPanel.setLayout(new HorizontalLayout(10));
+		
+		// filter text field
 		filterField = new TextField();
 		filterField.addListener(new TextFieldListenerAdapter() {
 			
@@ -110,7 +119,8 @@ public class TrackedPanel extends Panel {
 		});
 		ToolTip filterTip = new ToolTip(constants.toolTipText());
 		filterTip.applyTo(filterField);
-		filterPanel.add(filterField);
+		
+		//  filter button
 		filterButton = new Button();
 		filterButton.addListener(new ButtonListenerAdapter() {
 			@Override
@@ -119,9 +129,13 @@ public class TrackedPanel extends Panel {
 			}
 		});
 		filterButton.setIcon("/images/TrackedMenu/search.gif");
-		filterPanel.add(filterButton);
 		ToolTip filterTip2 = new ToolTip(constants.toolTipText2());
 		filterTip2.applyTo(filterButton);
+		
+		// create filter panel
+		filterPanel.add(filterField);
+		filterPanel.add(filterButton);
+		
 		
 		/*
 		 * List of tracked
@@ -135,6 +149,7 @@ public class TrackedPanel extends Panel {
 		trackedListPanel.addRecord(new String[] {"xyz"});
 		for (int i = 0; i < 10; ++i)
 			trackedListPanel.addRecord(new String[] {"sdflds" });
+		trackedListPanel.setHeight(130);
 		
 		
 		/*
@@ -201,6 +216,8 @@ public class TrackedPanel extends Panel {
 		// TODO sample track data
 		for (int i = 0; i < 10; ++i)
 			trackListPanel.addRecord(new String[] {"track" + i});
+		trackListPanel.setHeight(130);
+		
 		
 		/*
 		 *  Add component to main panel

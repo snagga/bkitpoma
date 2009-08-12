@@ -1,6 +1,6 @@
 package com.bkitmobile.poma.client.localization;
 
-public interface LRegisterForm extends com.google.gwt.i18n.client.Constants {
+public interface LRegisterFormWindow extends com.google.gwt.i18n.client.Constants {
     String lbl_username();
     String lbl_time_zone();
     String lbl_optional_information();

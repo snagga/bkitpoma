@@ -1,78 +1,108 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-   <head>
-<!--      <meta name="verify-v1" content="4EPCx5yy22va7pC2b/Y/1ekaTyEv32sHd6q3DpSPb2A=" />-->
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-      <meta http-equiv="Content-Author" content="HieuRocker" />
-<!--      <meta name="gwt:property" content="locale=vi" />-->
-      
-      <title>POMA - Position Manager</title>
-      <script type="text/javascript">
-		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-	  </script>
-	  <script type="text/javascript">
-		try {
-			var pageTracker = _gat._getTracker("UA-9953276-1");
-			pageTracker._trackPageview();
-		} catch(err) {}
-	  </script>
-	  <style type="text/css">
-        #loading {
-            position: absolute;
-            left: 45%;
-            top: 40%;
-            padding: 2px;
-            z-index: 20001;
-            height: auto;
-            border: 1px solid #ccc;
-        }
-        #loading a {
-            color: #225588;
-        }
+<head>
+<meta name="verify-v1" content="4EPCx5yy22va7pC2b/Y/1ekaTyEv32sHd6q3DpSPb2A=" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Author" content="HieuRocker" />
+<meta name="gwt:property" content="locale=vi" />
 
-        #loading .loading-indicator {
-            background: white;
-            color: #444;
-            font: bold 13px tahoma, arial, helvetica;
-            padding: 10px;
-            margin: 0;
-            height: auto;
-        }
+<title>POMA - Position Manager</title>
+<script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl."
+			: "http://www.");
+	document
+			.write(unescape("%3Cscript src='"
+					+ gaJsHost
+					+ "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+	try {
+		var pageTracker = _gat._getTracker("UA-9953276-1");
+		pageTracker._trackPageview();
+	} catch (err) {
+	}
+</script>
+<style type="text/css">
+.gwt-Image {
+	float: left;
+	padding: 4px
+}
 
-        #loading-msg {
-            font: normal 10px arial, tahoma, sans-serif;
-        }
-    </style>
-    <link rel="shortcut icon" href="favicon.ico" />
-   </head>
-   <body>
-   <iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1' style="position:absolute;width:0;height:0;border:0"></iframe>
-   <div id="loading">
-    <div class="loading-indicator">
-        <img src="js/ext/resources/images/default/shared/large-loading.gif" width="32" height="32"
-             style="margin-right:8px;float:left;vertical-align:top;"/>Hello ^_^<br/>
-        <span id="loading-msg">Loading styles and images...</span>
-    </div>
-   </div>
-	  <!--include the Ext CSS, and use the gray theme-->
-	  <link rel="stylesheet" type="text/css" href="js/ext/resources/css/ext-all.css"/>
-	  <link id="theme" rel="stylesheet" type="text/css" href="js/ext/resources/css/xtheme-gray.css"/>
-	  <script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Loading Core API...';</script>
+.gwt-Image:hover {
+	background-color: #FD6
+}
 
-	  <!--include the Ext Core API-->
-	  <script type="text/javascript" src="js/ext/adapter/ext/ext-base.js"></script>
+#loading {
+	position: absolute;
+	left: 45%;
+	top: 40%;
+	padding: 2px;
+	z-index: 20001;
+	height: auto;
+	border: 1px solid #ccc;
+}
 
-	  <!--include Ext -->
-	  <script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Loading UI Components...';</script>
-	  <script type="text/javascript" src="js/ext/ext-all.js"></script>
+#loading a {
+	color: #225588;
+}
 
-	  <!--include the application JS-->
-	  <script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Initializing POMA...';</script>
-      
-      <!-- The GWT js file generated at run time -->
-      <script type="text/javascript" src='bkitpoma/bkitpoma.nocache.js'></script>
-      
-      <script type="text/javascript">Ext.get('loading').fadeOut({remove: true, duration:.25});</script>
-   </body>
+#loading .loading-indicator {
+	background: white;
+	color: #444;
+	font: bold 13px tahoma, arial, helvetica;
+	padding: 10px;
+	margin: 0;
+	height: auto;
+}
+
+#loading-msg {
+	font: normal 10px arial, tahoma, sans-serif;
+}
+</style>
+<link rel="shortcut icon" href="favicon.ico" />
+</head>
+<body>
+<iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1'
+	style="position: absolute; width: 0; height: 0; border: 0"></iframe>
+<div id="loading">
+<div class="loading-indicator"><img
+	src="js/ext/resources/images/default/shared/large-loading.gif"
+	width="32" height="32"
+	style="margin-right: 8px; float: left; vertical-align: top;" />Hello
+^_^<br />
+<span id="loading-msg">Loading styles and images...</span></div>
+</div>
+<!--include the Ext CSS, and use the gray theme-->
+<link rel="stylesheet" type="text/css"
+	href="js/ext/resources/css/ext-all.css" />
+<link id="theme" rel="stylesheet" type="text/css"
+	href="js/ext/resources/css/xtheme-gray.css" />
+<script type="text/javascript">
+	document.getElementById('loading-msg').innerHTML = 'Loading Core API...';
+</script>
+
+<!--include the Ext Core API-->
+<script type="text/javascript" src="js/ext/adapter/ext/ext-base.js"></script>
+
+<!--include Ext -->
+<script type="text/javascript">
+	document.getElementById('loading-msg').innerHTML = 'Loading UI Components...';
+</script>
+<script type="text/javascript" src="js/ext/ext-all.js"></script>
+
+<!--include the application JS-->
+<script type="text/javascript">
+	document.getElementById('loading-msg').innerHTML = 'Initializing POMA...';
+</script>
+
+<!-- The GWT js file generated at run time -->
+<script type="text/javascript" src='bkitpoma/bkitpoma.nocache.js'></script>
+
+<script type="text/javascript">
+	Ext.get('loading').fadeOut( {
+		remove :true,
+		duration :.25
+	});
+</script>
+</body>
 </html>

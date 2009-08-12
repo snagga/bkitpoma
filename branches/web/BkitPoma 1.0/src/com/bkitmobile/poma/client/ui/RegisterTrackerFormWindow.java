@@ -9,7 +9,7 @@ import com.bkitmobile.poma.client.captcha.RecaptchaService.Util;
 import com.bkitmobile.poma.client.database.DatabaseService;
 import com.bkitmobile.poma.client.database.DatabaseServiceAsync;
 import com.bkitmobile.poma.client.database.Tracker;
-import com.bkitmobile.poma.client.localization.LRegisterForm;
+import com.bkitmobile.poma.client.localization.LRegisterFormWindow;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.gwtext.client.core.EventObject;
@@ -46,7 +46,7 @@ public class RegisterTrackerFormWindow extends Window {
 	private RecaptchaWidget rw;
 	private ComboBox cbCountry;
 	private ComboBox cbTimeZone;
-	private LRegisterForm local;
+	private LRegisterFormWindow local;
 	boolean ok = true;
 	int selectedIndexTimeZone;
 	int selectedIndexCountry;
@@ -58,7 +58,7 @@ public class RegisterTrackerFormWindow extends Window {
 	private DatabaseServiceAsync dbService;
 
 	public RegisterTrackerFormWindow() {
-		local = GWT.create(LRegisterForm.class);
+		local = GWT.create(LRegisterFormWindow.class);
 		dbService = DatabaseService.Util.getInstance();
 		formPanel = new FormPanel();
 

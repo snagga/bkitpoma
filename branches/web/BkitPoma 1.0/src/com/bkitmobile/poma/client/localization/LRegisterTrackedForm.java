@@ -22,6 +22,10 @@ public interface LRegisterTrackedForm extends com.google.gwt.i18n.client.Constan
     String dateBirth_lbl();
     String btnGenerateKey_lbl();
     String prgBarInterval_lbl();
-    String xtEmailConfirm_not_match();
+    String txtEmailConfirm_not_match();
     String btnSubmit_lbl();
+    String msgbox_alert_insert();
+    String msgbox_alert_title();
+    String msgbox_alert_invalid();
+    String window_title();
 }

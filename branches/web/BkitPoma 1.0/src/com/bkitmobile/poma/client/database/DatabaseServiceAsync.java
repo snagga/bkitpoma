@@ -21,7 +21,7 @@ public interface DatabaseServiceAsync {
 
 	void insertTracker(Tracker tracker, AsyncCallback<Integer> callback);
 	
-	void insertTracked(String trackerUN,Tracked tracked, AsyncCallback<Integer> callback);
+	void insertTracked(String trackerUN,Tracked tracked, AsyncCallback<String> callback);
 
 	void verifyTracker(String us, AsyncCallback<Boolean> callback);
 
@@ -55,5 +55,20 @@ public interface DatabaseServiceAsync {
 			AsyncCallback<Integer> callback);
 
 	void verifyTracked(String us, AsyncCallback<Boolean> callback);
+
+	void loginTracker(String username, String password,
+			AsyncCallback<Boolean> callback);
+
+	void loginTracked(String username, String password,
+			AsyncCallback<Boolean> callback);
+
+	void insertManage(String trackerUN, String trackedUN,
+			AsyncCallback<Integer> callback);
+
+	void insertWayPoint(WayPoint wayPoint, AsyncCallback<Integer> callback);
+
+	void insertTrack(String trackedUN, AsyncCallback<String> callback);
+
+	void getNewTrackedUN(AsyncCallback<String> callback);
 
 }

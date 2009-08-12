@@ -33,9 +33,10 @@ public class Tracked implements IsSerializable {
 		trackedInfo.put("embedded", "");
 		trackedInfo.put("schedule","");
 		trackedInfo.put("intervalgps" , "");
+		trackedInfo.put("ownerun", "");
 	}
 	
-	public Tracked(String username,String apikey,String name,String birthday,String tel,String email,String state,String gpsState,String iconPath,String showInMap,String eb,String schedule,String intervalgps){
+	public Tracked(String username,String apikey,String name,String birthday,String tel,String email,String state,String gpsState,String iconPath,String showInMap,String eb,String schedule,String intervalgps,String owner){
 		trackedInfo.put("username", username);
 		trackedInfo.put("apikey", apikey);
 		trackedInfo.put("name", name);
@@ -49,6 +50,7 @@ public class Tracked implements IsSerializable {
 		trackedInfo.put("embedded", eb);
 		trackedInfo.put("schedule",schedule);
 		trackedInfo.put("intervalgps" , intervalgps);
+		trackedInfo.put("ownerun", owner);
 	}
 
 	/**
@@ -119,6 +121,14 @@ public class Tracked implements IsSerializable {
 	
 	public void setIntervalGPS(String inter){
 		trackedInfo.put("intervalGPS", inter);
+	}
+	
+	public void setOwnerUN(String ownerUN){
+		trackedInfo.put("ownerun", ownerUN);
+	}
+	
+	public String getOwnerUN(){
+		return String.valueOf(trackedInfo.get("ownerun"));
 	}
 	
 	public String getIntervalGPS(){

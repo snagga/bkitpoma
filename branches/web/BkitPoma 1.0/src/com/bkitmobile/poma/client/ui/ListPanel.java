@@ -7,7 +7,6 @@ import com.google.gwt.core.client.GWT;
 import com.gwtext.client.core.EventObject;
 import com.gwtext.client.data.*;
 import com.gwtext.client.widgets.*;
-import com.gwtext.client.widgets.event.PanelListener;
 import com.gwtext.client.widgets.event.PanelListenerAdapter;
 import com.gwtext.client.widgets.grid.*;
 import com.gwtext.client.widgets.grid.event.GridRowListener;
@@ -17,7 +16,7 @@ public class ListPanel extends LoadingPanel {
 	public enum ColumnWidthModeEnum {
 		AUTO_WIDTH, NONAUTO_WIDTH, BASED_CONTENT
 	}
-
+	
 	public static int test = 0;
 
 	public static final int FIELD_DATE = 0;
@@ -42,7 +41,7 @@ public class ListPanel extends LoadingPanel {
 	private ColumnModel columnModel;
 	private ColumnWidthModeEnum columnWidthMode = ColumnWidthModeEnum.AUTO_WIDTH;
 	int[] maxLength;
-	private ListPanel thisPanel;
+
 
 	private ListPanelConstants listPanelConstants = GWT
 			.create(ListPanelConstants.class);
@@ -56,7 +55,7 @@ public class ListPanel extends LoadingPanel {
 	 *            - an String array that will be display in columns' headers
 	 */
 	public ListPanel(int columnFieldType[], String columnHeader[]) {
-		super("List Point");
+		// super("");
 
 		constructor(columnFieldType, columnHeader);
 	}
@@ -73,7 +72,7 @@ public class ListPanel extends LoadingPanel {
 	 */
 	public ListPanel(int[] columnFieldType, String[] columnHeader,
 			String[][] data) {
-		super("List Point");
+		// super("");
 
 		constructor(columnFieldType, columnHeader);
 		for (int i = 0; i < data.length; i++) {
@@ -97,7 +96,6 @@ public class ListPanel extends LoadingPanel {
 	 *            - an String array that will be display in columns' headers
 	 */
 	private void constructor(int[] columnFieldType, String columnHeader[]) {
-		thisPanel = this;
 		gridPanel = new GridPanel();
 		recordDef = new RecordDef(getRecordDef(columnFieldType));
 		reader = new ArrayReader(recordDef);
@@ -112,8 +110,8 @@ public class ListPanel extends LoadingPanel {
 		add(gridPanel);
 
 		setHeight(150);
-		setWidth("100%");
 		setGridHeight(130);
+		setWidth("100%");
 		setGridWidth("100%");
 
 		setCollapsible(true);
@@ -130,12 +128,12 @@ public class ListPanel extends LoadingPanel {
 					int adjHeight, int rawWidth, int rawHeight) {
 				// TODO Auto-generated method stub
 				gridPanel.setWidth(getWidth());
-				
+
 				if (columnWidthMode == ColumnWidthModeEnum.AUTO_WIDTH) {
 					setColumnWidthFitToPanel();
 				}
 			}
-			
+
 			@Override
 			public void onRender(Component component) {
 				// TODO Auto-generated method stub
@@ -145,6 +143,7 @@ public class ListPanel extends LoadingPanel {
 					setColumnWidthFitToPanel();
 				}
 			}
+
 		});
 
 		maxLength = new int[columnConfigs.length];
@@ -460,11 +459,13 @@ public class ListPanel extends LoadingPanel {
 		columnWidthMode = ColumnWidthModeEnum.AUTO_WIDTH;
 
 		int columnWidth = getWidth() / columnConfigs.length;
+		// gridPanel.fireEvent("resize");
 		gridPanel.setWidth(getWidth());
 		for (int i = 0; i < columnConfigs.length; i++) {
 			columnModel.setColumnWidth(i + "", columnWidth);
 			columnConfigs[i].setResizable(false);
 		}
+
 	}
 
 	/**

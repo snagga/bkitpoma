@@ -11,15 +11,22 @@ import com.bkitmobile.poma.client.database.DatabaseService;
 import com.bkitmobile.poma.client.database.DatabaseServiceAsync;
 import com.bkitmobile.poma.client.database.Tracked;
 import com.bkitmobile.poma.client.localization.LRegisterTrackedForm;
+import com.bkitmobile.poma.server.DatabaseServiceImpl;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.FileUpload;
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.Image;
 import com.gwtext.client.core.EventObject;
 import com.gwtext.client.util.Format;
 import com.gwtext.client.widgets.*;
 import com.gwtext.client.widgets.event.ButtonListenerAdapter;
+import com.gwtext.client.widgets.event.WindowListenerAdapter;
 import com.gwtext.client.widgets.form.*;
 import com.gwtext.client.widgets.form.event.TextFieldListenerAdapter;
+import com.gwtext.client.widgets.layout.FitLayout;
 
 public class RegisterTrackedFormWindow extends Window {
 
@@ -34,8 +41,8 @@ public class RegisterTrackedFormWindow extends Window {
 	private TextField txtAPIKey;
 
 	private ProgressBar prgBarInterval;
-	private Button btnPrgBarIncr = null;
-	private Button btnPrgBarDecr = null;
+	private Image imgPrgBarIncr = null;
+	private Image imgPrgBarDecr = null;
 	private int valuePrgbar = 5;
 
 	private Button btnGenerateKey;
@@ -56,23 +63,26 @@ public class RegisterTrackedFormWindow extends Window {
 	private DatabaseServiceAsync dbService;
 	private String trackerUN;
 
-	// private LRegisterTrackedForm local;
+	private LRegisterTrackedForm local;
 
 	public RegisterTrackedFormWindow(String trackerUN) {
+		local = GWT.create(LRegisterTrackedForm.class);
+
 		this.trackerUN = trackerUN;
-		this.setSize(500, 600);
 
 		// local = GWT.create(LRegisterTrackedForm.class);
 		dbService = DatabaseService.Util.getInstance();
 		mainPanel = new FormPanel();
 		mainPanel.setPaddings(5, 5, 5, 0);
-		mainPanel.setSize(500, 600);
+		this.setTitle(local.window_title());
 		mainPanel.setAutoScroll(true);
+		// mainPanel.setLayout(new FitLayout());
+		this.setSize(470, 464);
 
 		/**
 		 * Username
 		 */
-		txtTrackedUN = new TextField("tracked", "username");
+		txtTrackedUN = new TextField(local.txtTrackedUN_lbl(), "username");
 		txtTrackedUN.setRegex("^[a-zA-Z0-9_]{3,32}$");
 		txtTrackedUN.setAllowBlank(false);
 		// txtUsername.setInvalidText(local.lbl_invalid_username());
@@ -99,21 +109,33 @@ public class RegisterTrackedFormWindow extends Window {
 								// TODO Auto-generated method stub
 								if (result) {
 								} else {
-									txtTrackedUN.markInvalid("Dup");
+									txtTrackedUN.markInvalid(local
+											.txtTrackedUN_dup());
 								}
 							}
 						});
 			}
 		});
+		txtTrackedUN.setDisabled(true);
+		dbService.getNewTrackedUN(new AsyncCallback<String>() {
+			@Override
+			public void onFailure(Throwable arg0) {
+				arg0.printStackTrace();
+			}
+
+			public void onSuccess(String arg0) {
+				txtTrackedUN.setValue(arg0);
+			};
+		});
 
 		/**
 		 * API Key
 		 */
-		txtAPIKey = new TextField("API Key: ");
+		txtAPIKey = new TextField(local.txtAPIKey());
 		txtAPIKey.setValue(Utils.getAlphaNumeric(6));
 		txtAPIKey.setDisabled(true);
 
-		btnGenerateKey = new Button("Press here to generate Key for Tracked");
+		btnGenerateKey = new Button(local.btnGenerateKey_lbl());
 		btnGenerateKey.addListener(new ButtonListenerAdapter() {
 			@Override
 			public void onClick(Button button, EventObject e) {
@@ -123,66 +145,76 @@ public class RegisterTrackedFormWindow extends Window {
 			}
 		});
 
-		txtEmail = new TextField("Email", "email");
+		txtEmail = new TextField(local.txtEmail_lbl(), "email");
 		txtEmail.setVtype(VType.EMAIL);
-		mainPanel.add(txtEmail);
+		// mainPanel.add(txtEmail);
 
-		txtEmailConfirm = new TextField("Conf email", "email_confirm");
+		txtEmailConfirm = new TextField(local.txtEmailConfirm_lbl(),
+				"email_confirm");
 		txtEmailConfirm.setVtype(VType.EMAIL);
 
-		txtName = new TextField("Display name", "name");
+		txtName = new TextField(local.txtName_lbl(), "name");
 		txtName.setAllowBlank(false);
 
-		dateBirthday = new DateField("Birth", "d-M-Y");
+		dateBirthday = new DateField(local.dateBirth_lbl(), "d-M-Y");
 		dateBirthday.setReadOnly(true);
 		dateBirthday.setValue(new Date());
 
-		txtMobilePhone = new TextField("tel", "phone");
+		txtMobilePhone = new TextField(local.txtMobilePhone_lbl(), "phone");
 		txtMobilePhone.setRegex("^[0-9]{8,11}$");
-		ToolTip mobileTip = new ToolTip("tel valid");
+		ToolTip mobileTip = new ToolTip(local.txtMobilePhone_invalid());
 		mobileTip.applyTo(txtMobilePhone);
 
-		dateBirthday = new DateField();
-
-		lblFileUpload = new Label("File up");
+		lblFileUpload = new Label(local.lblFileUpload_lbl());
 		fileUploadIconPath = new FileUpload();
 		fileUploadIconPath.setName("fileUpload");
 
 		prgBarInterval = new ProgressBar();
+		prgBarInterval.setTitle(local.prgBarInterval_lbl());
+		prgBarInterval.setText(Format.format(local.prgBarInterval_content(),
+				(valuePrgbar) + ""));
 		prgBarInterval.setWidth(300);
-		prgBarInterval.setValue((((float) (valuePrgbar - 1) * 10) / 14) * level);
+		prgBarInterval
+				.setValue((((float) (valuePrgbar - 2) * 10) / 14) * level);
 
 		/**
 		 * Interval GPS
 		 */
-		btnPrgBarIncr = new Button("Incr", new ButtonListenerAdapter() {
+		imgPrgBarIncr = new Image("images/RegisterTracked/next.png");
+		imgPrgBarIncr.addClickHandler(new ClickHandler() {
 			@Override
-			public void onClick(Button button, EventObject e) {
-				// TODO Auto-generated method stub
-				super.onClick(button, e);
-				btnPrgBarDecr.setDisabled(false);
+			public void onClick(ClickEvent arg0) {
+				if (valuePrgbar == 15)
+					return;
+				imgPrgBarDecr.setUrl("images/RegisterTracked/back.png");
+				// imgPrgBarDecr.setDisabled(false);
 				valuePrgbar++;
-				prgBarInterval.setText(Format.format(
-						"Loading item {0} of 15...", (valuePrgbar) + ""));
+				prgBarInterval.setText(Format.format(local
+						.prgBarInterval_content(), (valuePrgbar) + ""));
 				prgBarInterval.setValue((float) (valuePrgbar - 1) * 10 / 14
 						* level);
 				if (valuePrgbar == 15)
-					btnPrgBarIncr.setDisabled(true);
+					// imgPrgBarIncr.setDisabled(true);
+					imgPrgBarIncr.setUrl("images/RegisterTracked/next_dis.png");
 			}
 		});
-		btnPrgBarDecr = new Button("Decr", new ButtonListenerAdapter() {
+
+		imgPrgBarDecr = new Image("images/RegisterTracked/back.png");
+		imgPrgBarDecr.addClickHandler(new ClickHandler() {
 			@Override
-			public void onClick(Button button, EventObject e) {
-				// TODO Auto-generated method stub
-				super.onClick(button, e);
-				btnPrgBarIncr.setDisabled(false);
+			public void onClick(ClickEvent arg0) {
+				if (valuePrgbar == 1)
+					return;
+				// imgPrgBarIncr.setDisabled(false);
+				imgPrgBarIncr.setUrl("images/RegisterTracked/next.png");
 				valuePrgbar--;
-				prgBarInterval.setText(Format.format(
-						"Loading item {0} of 15...", (valuePrgbar) + ""));
+				prgBarInterval.setText(Format.format(local
+						.prgBarInterval_content(), (valuePrgbar) + ""));
 				prgBarInterval.setValue((float) (valuePrgbar - 1) * 10 / 14
 						* level);
 				if (valuePrgbar == 1) {
-					btnPrgBarDecr.setDisabled(true);
+					// imgPrgBarDecr.setDisabled(true);
+					imgPrgBarDecr.setUrl("images/RegisterTracked/back_dis.png");
 				}
 			}
 		});
@@ -190,131 +222,152 @@ public class RegisterTrackedFormWindow extends Window {
 		/**
 		 * Schedule
 		 */
-		btnSchedule = new Button("Schedule", new ButtonListenerAdapter() {
-			@Override
-			public void onClick(Button button, EventObject e) {
-				// TODO Auto-generated method stub
-				super.onClick(button, e);
-				if (sWindow == null) {
-					sWindow = new SchedulePopUpWindow();
-				}
-				sWindow.setAnimateTarget(button.getId());
-				sWindow.show();
-			}
-		});
+		btnSchedule = new Button(local.btnSchedule(),
+				new ButtonListenerAdapter() {
+					@Override
+					public void onClick(Button button, EventObject e) {
+						// TODO Auto-generated method stub
+						super.onClick(button, e);
+						if (sWindow == null) {
+							sWindow = new SchedulePopUpWindow();
+						}
+						sWindow.setAnimateTarget(button.getId());
+						sWindow.show();
+					}
+				});
 
 		reCaptchaWidget = new RecaptchaWidget(
 				"6LdakQcAAAAAALX2JUFtsjbPTV0TcAkMhQY8iMkS");
 
-		btnSubmit = new Button("Submit", new ButtonListenerAdapter() {
-			@Override
-			public void onClick(Button button, EventObject e) {
-				ok = isValidForm();
+		btnSubmit = new Button(local.btnSubmit_lbl(),
+				new ButtonListenerAdapter() {
+					@Override
+					public void onClick(Button button, EventObject e) {
+						ok = isValidForm();
 
-				if (!ok) {
-					MessageBox.alert("Invalid Message...");
-					return;
-				}
+						if (!ok) {
+							MessageBox.alert(local.msgbox_alert_title(), local
+									.msgbox_alert_invalid());
+							return;
+						}
 
-				/*
-				 * Check captcha match or not
-				 */
-				RecaptchaServiceAsync rrsa = RecaptchaService.Util
-						.getInstance();
-				rrsa.verifyChallenge(reCaptchaWidget.getChallenge(),
-						reCaptchaWidget.getResponse(),
-						new AsyncCallback<Boolean>() {
+						/*
+						 * Check captcha match or not
+						 */
+						RecaptchaServiceAsync rrsa = RecaptchaService.Util
+								.getInstance();
+						rrsa.verifyChallenge(reCaptchaWidget.getChallenge(),
+								reCaptchaWidget.getResponse(),
+								new AsyncCallback<Boolean>() {
 
-							public void onFailure(Throwable caught) {
-								caught.printStackTrace();
-								MessageBox.alert("Wrong captcha message...");
-							}
+									public void onFailure(Throwable caught) {
+										caught.printStackTrace();
+										MessageBox.alert(local
+												.reCaptchaWidget_invalid());
+									}
 
-							public void onSuccess(Boolean result) {
-								if (result) {
-									Date date = dateBirthday.getValue();
-									String strDate = String.valueOf(date
-											.getYear())
-											+ date.getMonth() + date.getDay();
-									dbService
-											.insertTracked(RegisterTrackedFormWindow.this.trackerUN,
-													new Tracked(
-															txtTrackedUN
-																	.getText(),
-															txtAPIKey.getText(),
-															txtName.getText(),
-															strDate,
-															txtMobilePhone
-																	.getText(),
-															txtEmail.getText(),
-															"0",
-															"0",
-															"/"
-																	+ RegisterTrackedFormWindow.this.trackerUN
-																	+ "/"
-																	+ fileUploadIconPath
-																			.getName(),
-															"TRUE",
-															"TRUE",
-															sWindow
-																	.getStringBinarySchedule(),
-															String
-																	.valueOf(valuePrgbar)),
-													new AsyncCallback<Integer>() {
+									public void onSuccess(Boolean result) {
+										if (result) {
+											Date date = dateBirthday.getValue();
+											String strDate = String
+													.valueOf(date.getYear())
+													+ date.getMonth()
+													+ date.getDay();
+											dbService
+													.insertTracked(
+															RegisterTrackedFormWindow.this.trackerUN,
+															new Tracked(
+																	txtTrackedUN
+																			.getText(),
+																	txtAPIKey
+																			.getText(),
+																	txtName
+																			.getText(),
+																	strDate,
+																	txtMobilePhone
+																			.getText(),
+																	txtEmail
+																			.getText(),
+																	"0",
+																	"0",
+																	"/"
+																			+ RegisterTrackedFormWindow.this.trackerUN
+																			+ "/"
+																			+ fileUploadIconPath
+																					.getName(),
+																	"TRUE",
+																	"TRUE",
+																	sWindow
+																			.getStringBinarySchedule(),
+																	String
+																			.valueOf(valuePrgbar),
+																	RegisterTrackedFormWindow.this.trackerUN),
+															new AsyncCallback<String>() {
 
-														@Override
-														public void onFailure(
-																Throwable caught) {
-															caught
-																	.printStackTrace();
-															MessageBox
-																	.alert("Kh\u00F4ng th\u1EC3 th\u00EAm th\u00F4ng c\u1EE7a \u0111\u1ED1i t\u01B0\u1EE3ng qu\u1EA3n l\u00FD v\u00E0o CSDL. Xin vui l\u00F2ng th\u1EED l\u1EA1i sau...");
-														}
+																@Override
+																public void onFailure(
+																		Throwable caught) {
+																	caught
+																			.printStackTrace();
+																	MessageBox
+																			.alert("Kh\u00F4ng th\u1EC3 th\u00EAm th\u00F4ng c\u1EE7a \u0111\u1ED1i t\u01B0\u1EE3ng qu\u1EA3n l\u00FD v\u00E0o CSDL. Xin vui l\u00F2ng th\u1EED l\u1EA1i sau...");
+																}
 
-														@Override
-														public void onSuccess(
-																Integer result) {
-															// TODO Forward to
-															// other page
-															MessageBox
-																	.alert("onSuccess");
-														}
+																@Override
+																public void onSuccess(
+																		String result) {
+																	// TODO
+																	// Forward
+																	// to
+																	// other
+																	// page
+																	MessageBox
+																			.alert("onSuccess");
+																}
 
-													});
-								} else {
-									MessageBox.alert("fail error" + result);
-								}
-							}
+															});
+										} else {
+											MessageBox
+													.alert(
+															local
+																	.msgbox_alert_title(),
+															local
+																	.msgbox_alert_insert());
+										}
+									}
 
-						});
-			}
-		});
+								});
+					}
+				});
 
 		mainPanel.add(txtTrackedUN);
-		mainPanel.add(new HTML("</br>"));
 		mainPanel.add(txtAPIKey);
 		mainPanel.add(btnGenerateKey);
-		mainPanel.add(new HTML("</br>"));
-		mainPanel.add(lblFileUpload);
-		mainPanel.add(fileUploadIconPath);
-		mainPanel.add(new HTML("</br>"));
-		mainPanel.add(prgBarInterval);
-		mainPanel.add(btnPrgBarDecr);
-		mainPanel.add(btnPrgBarIncr);
-		mainPanel.add(new HTML("</br>"));
-		mainPanel.add(btnSchedule);
-		mainPanel.add(new HTML("</br>"));
 		mainPanel.add(txtEmail);
 		mainPanel.add(txtEmailConfirm);
 		mainPanel.add(txtName);
 		mainPanel.add(dateBirthday);
 		mainPanel.add(txtMobilePhone);
+		mainPanel.add(lblFileUpload);
+		mainPanel.add(fileUploadIconPath);
+		mainPanel.add(prgBarInterval);
+		mainPanel.add(imgPrgBarDecr);
+		mainPanel.add(imgPrgBarIncr);
+		mainPanel.add(new HTML("</ br>"));
+		mainPanel.add(new HTML("</ br>"));
+		mainPanel.add(btnSchedule);
+		mainPanel.add(new HTML("</ br>"));
 		mainPanel.add(reCaptchaWidget);
 		mainPanel.add(btnSubmit);
 
-		mainPanel.setAutoScroll(true);
-		mainPanel.setAutoWidth(true);
-		mainPanel.setAutoHeight(true);
+		// this.addListener(new WindowListenerAdapter() {
+		// @Override
+		// public void onResize(Window source, int width, int height) {
+		// // TODO Auto-generated method stub
+		// super.onResize(source, width, height);
+		// System.out.println(width + " " + height);
+		// }
+		// });
 
 		this.add(mainPanel);
 		// this.add(btnSubmit);
@@ -354,9 +407,10 @@ public class RegisterTrackedFormWindow extends Window {
 		return true;
 	}
 
-	private void test() {
-		txtTrackedUN.setValue("test");
-		txtEmail.setValue("abc@gmail.com");
-		txtEmailConfirm.setValue("abc@gmail.com");
-	}
+	// private void test() {
+	// txtTrackedUN.setValue("test");
+	// txtEmail.setValue("abc@gmail.com");
+	// txtEmailConfirm.setValue("abc@gmail.com");
+	// }
+
 }
