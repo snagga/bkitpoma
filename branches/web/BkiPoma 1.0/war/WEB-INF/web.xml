@@ -21,7 +21,7 @@
 		-->
 		<init-param>
 			<param-name>logLevel</param-name>
-			<param-value>TRACE</param-value>
+			<param-value>WARN</param-value>
 		</init-param>
 		<!--
 			you can disable status page if desired can be: true, false (default
@@ -60,7 +60,7 @@
   <!-- DB Servlets -->
 	<servlet>
 		<servlet-name>dbServlet</servlet-name>
-		<servlet-class>com.poma.bkitpoma.server.DatabaseServiceImpl</servlet-class>
+		<servlet-class>com.bkitmobile.poma.server.DatabaseServiceImpl</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>dbServlet</servlet-name>
@@ -70,7 +70,7 @@
   <!-- ReCaptcha Servlets -->
 	<servlet>
 		<servlet-name>recaptchaServlet</servlet-name>
-		<servlet-class>com.poma.bkitpoma.server.RecaptchaServiceImpl</servlet-class>
+		<servlet-class>com.bkitmobile.poma.server.RecaptchaServiceImpl</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>recaptchaServlet</servlet-name>
@@ -80,7 +80,7 @@
   <!-- Tracked Servlets -->
 	<servlet>
 		<servlet-name>trackedservlet</servlet-name>
-		<servlet-class>com.poma.trackedremote.server.TrackedServlet</servlet-class>
+		<servlet-class>com.bkitmobile.poma.server.TrackedServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>trackedservlet</servlet-name>
@@ -112,7 +112,42 @@
 		<servlet-name>fileupload</servlet-name>
 		<url-pattern>/uploadServlet</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>remoteLoggingService</servlet-name>
+		<servlet-class>com.google.gwt.gen2.logging.server.RemoteLoggingService</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>remoteLoggingService</servlet-name>
+		<url-pattern>/appcloemgwt/logging</url-pattern>
+		<url-pattern>/jiqladmin/logging</url-pattern>
+	</servlet-mapping>
+	
+	<!--  JOID  -->
+	<filter>
+		<filter-name>OpenIdFilter</filter-name>
+		<filter-class>org.verisign.joid.consumer.OpenIdFilter</filter-class>
+		<init-param>
+			<description>Optional. Will store the identity url in a
+				cookie under "openid.identity" if set to true.</description>
+			<param-name>saveInCookie</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<!--
+			<init-param> <param-name>cookieDomain</param-name>
+			<param-value>www.mydomain.com</param-value> <description>Optional.
+			Domain to store cookie based on RFC 2109. Defaults to current
+			context.</description> </init-param>
+		-->
+	</filter>
+	<filter-mapping>
+		<filter-name>OpenIdFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!--  JOID -->
 	<welcome-file-list>
 		<welcome-file>home.html</welcome-file>
+		<welcome-file>home.jsp</welcome-file>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 </web-app>
