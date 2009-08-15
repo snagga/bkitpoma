@@ -4,28 +4,44 @@ import com.google.gwt.maps.client.geom.Point;
 import com.google.gwt.maps.client.geom.Size;
 
 public class Icon {
-	private static final Size SIZE_ICON_MEDIUM = Size.newInstance(32, 32);
-	private static final Size SIZE_SHADOW_MEDIUM = Size.newInstance(64, 32);
-	private static final Size SIZE_ICON_SMALL = Size.newInstance(20, 20);
-	private static final Size SIZE_SHADOW_SMALL = Size.newInstance(40, 20);
+	
+	public enum IconSize{
+		SMALL, MEDIUM
+	} 
+
+	private static final Size SIZE_ICON_MEDIUM = Size.newInstance(39, 39);
+	private static final Size SIZE_SHADOW_MEDIUM = Size.newInstance(78, 39);
+	private static final Size SIZE_ICON_SMALL = Size.newInstance(26, 26);
+	private static final Size SIZE_SHADOW_SMALL = Size.newInstance(52, 26);
 
 	private static void setInfoWindowAnchorToDefault(
 			com.google.gwt.maps.client.overlay.Icon icon) {
-		icon.setInfoWindowAnchor(Point.newInstance(
-				icon.getIconSize().getWidth() >> 1, 0));
+		icon.setInfoWindowAnchor(Point.newInstance(icon.getIconSize()
+				.getWidth() >> 1, 0));
 	}
 
-	public static void setIconAttributeToDefault(
-			com.google.gwt.maps.client.overlay.Icon icon) {
-		icon.setIconSize(SIZE_ICON_SMALL);
-		if (icon.getShadowURL() != null) {
-			icon.setShadowSize(SIZE_SHADOW_SMALL);
+	public static void setIconAttribute(
+			com.google.gwt.maps.client.overlay.Icon icon, IconSize size) {
+		Size iconSize = null;
+		Size shadowSize = null;
+		switch (size) {
+		case SMALL:
+			iconSize = SIZE_ICON_SMALL;
+			shadowSize = SIZE_SHADOW_SMALL;
+			break;
+		case MEDIUM:
+			iconSize = SIZE_ICON_MEDIUM;
+			shadowSize = SIZE_SHADOW_MEDIUM;
+			break;
 		}
-		Size iconSize = icon.getIconSize();
+		
+		icon.setIconSize(iconSize);
+		if (icon.getShadowURL() != null) {
+			icon.setShadowSize(shadowSize);
+		}
 
 		icon.setIconAnchor(Point.newInstance(iconSize.getWidth() >> 1, iconSize
 				.getHeight()));
 		setInfoWindowAnchorToDefault(icon);
 	}
-
 }

@@ -17,13 +17,14 @@ import com.google.gwt.maps.client.overlay.Polyline;
 public class TrackPointOverlay extends Polyline {
 
 	private Vector<WayPointOverlay> wayPoints = new Vector<WayPointOverlay>();
-	private boolean isChoose = false;
+	private boolean isChoosen = false;
 	private static PolyStyleOptions TRACKPOINT_STYLE_NORMAL = PolyStyleOptions
 			.newInstance("GREEN");
-	private static PolyStyleOptions TRACKPOINT_STYLE_CHOOSE = PolyStyleOptions
+	private static PolyStyleOptions TRACKPOINT_STYLE_CHOOSEN = PolyStyleOptions
 			.newInstance("RED");
 	private static PolyStyleOptions TRACKPOINT_STYLE_HOVER = PolyStyleOptions
 			.newInstance("YELLOW");
+
 	WayPointClickListener clickListener = new WayPointClickListener();
 	WayPointMouseOverListener mouseOverListener = new WayPointMouseOverListener();
 	WayPointMouseOutListener mouseOutListener = new WayPointMouseOutListener();
@@ -65,11 +66,20 @@ public class TrackPointOverlay extends Polyline {
 
 		setListener();
 		setStrokeStyle(TRACKPOINT_STYLE_NORMAL);
+
 	}
 
 	public TrackPointOverlay(WayPoint[] wayPoints) {
 		// TODO Auto-generated constructor stub
 		super(getLatLngArray(wayPoints));
+
+		for (int i = 0; i < wayPoints.length; i++) {
+			WayPointOverlay overlay = new WayPointOverlay(wayPoints[i]);
+			overlay.addMarkerClickHandler(clickListener);
+			overlay.addMarkerMouseOverHandler(mouseOverListener);
+			overlay.addMarkerMouseOutHandler(mouseOutListener);
+			this.wayPoints.add(overlay);
+		}
 
 		setListener();
 		setStrokeStyle(TRACKPOINT_STYLE_NORMAL);
@@ -84,8 +94,8 @@ public class TrackPointOverlay extends Polyline {
 	}
 
 	private void setTrackpointState() {
-		if (isChoose) {
-			setStrokeStyle(TRACKPOINT_STYLE_CHOOSE);
+		if (isChoosen) {
+			setStrokeStyle(TRACKPOINT_STYLE_CHOOSEN);
 		} else {
 			setStrokeStyle(TRACKPOINT_STYLE_NORMAL);
 		}
@@ -96,7 +106,7 @@ public class TrackPointOverlay extends Polyline {
 			@Override
 			public void onClick(PolylineClickEvent event) {
 				// TODO Auto-generated method stub
-				isChoose = !isChoose;
+				isChoosen = !isChoosen;
 				setTrackpointState();
 			}
 		});
@@ -124,13 +134,13 @@ public class TrackPointOverlay extends Polyline {
 
 	public void addWayPoint(WayPoint point, String foregroundURL,
 			String backgroundURL, MapWidget mapWidget) {
-//		WayPointOverlay overlay = new WayPointOverlay(point, foregroundURL,
-//				backgroundURL);
-//		wayPoints.add(overlay);
-//		insertVertex(wayPoints.size(), point.getLatLng());
-//		mapWidget.addOverlay(overlay);
-		addWayPoint(point, foregroundURL,
-				backgroundURL,wayPoints.size(), mapWidget);
+		// WayPointOverlay overlay = new WayPointOverlay(point, foregroundURL,
+		// backgroundURL);
+		// wayPoints.add(overlay);
+		// insertVertex(wayPoints.size(), point.getLatLng());
+		// mapWidget.addOverlay(overlay);
+		addWayPoint(point, foregroundURL, backgroundURL, wayPoints.size(),
+				mapWidget);
 	}
 
 	public void addWayPoint(WayPoint point, String foregroundURL,
@@ -139,18 +149,57 @@ public class TrackPointOverlay extends Polyline {
 				backgroundURL);
 		wayPoints.add(overlay);
 		wayPoints.add(index, overlay);
+
+		overlay.addMarkerClickHandler(clickListener);
+		overlay.addMarkerMouseOverHandler(mouseOverListener);
+		overlay.addMarkerMouseOutHandler(mouseOutListener);
+
 		insertVertex(index, point.getLatLng());
 		mapWidget.addOverlay(overlay);
 	}
-	
-	
+
+	public void setTrackPointNormalStyleColor(String color) {
+		TRACKPOINT_STYLE_NORMAL.setColor(color);
+	}
+
+	public void setTrackPointHoverStyleColor(String color) {
+		TRACKPOINT_STYLE_HOVER.setColor(color);
+	}
+
+	public void setTrackPointChoosenStyleColor(String color) {
+		TRACKPOINT_STYLE_CHOOSEN.setColor(color);
+	}
+
+	public void setTrackPointNormalStyleWeight(int weight) {
+		TRACKPOINT_STYLE_NORMAL.setWeight(weight);
+	}
+
+	public void setTrackPointHoverStyleWeight(int weight) {
+		TRACKPOINT_STYLE_HOVER.setWeight(weight);
+	}
+
+	public void setTrackPointChoosenStyleWeight(int weight) {
+		TRACKPOINT_STYLE_CHOOSEN.setWeight(weight);
+	}
+
+	public void setTrackPointNormalStyleOpacity(int opacity) {
+		TRACKPOINT_STYLE_NORMAL.setOpacity(opacity);
+	}
+
+	public void setTrackPointHoverStyleOpacity(int opacity) {
+		TRACKPOINT_STYLE_HOVER.setOpacity(opacity);
+	}
+
+	public void setTrackPointChoosenStyleOpacity(int opacity) {
+		TRACKPOINT_STYLE_CHOOSEN.setOpacity(opacity);
+	}
 
 	class WayPointClickListener implements MarkerClickHandler {
 
 		@Override
 		public void onClick(MarkerClickEvent event) {
 			// TODO Auto-generated method stub
-			isChoose = !isChoose;
+			isChoosen = !isChoosen;
 			setTrackpointState();
 		}
 	}
@@ -172,5 +221,4 @@ public class TrackPointOverlay extends Polyline {
 			setTrackpointState();
 		}
 	}
-
 }

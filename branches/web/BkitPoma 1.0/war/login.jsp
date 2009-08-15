@@ -12,10 +12,10 @@ This page is a sample for consumers to use, but also serves as a testing page fo
 <p align="center"><span
 	style="font-size: 20px; background-color: black; color: white; padding: 5px;">You
 are logged in as: <%=OpenIdFilter.getCurrentUser(session)%></span></p>
-<p align="center"><a href="javascript:window.close();">Close
+<p align="center"><a href="#" onclick="close();">Close
 this window...</a></p>
 <script>
-	setTimeout("close", delaytime);
+	setTimeout("close", 3000);
 	function close() {
 		window.close();
 	}
