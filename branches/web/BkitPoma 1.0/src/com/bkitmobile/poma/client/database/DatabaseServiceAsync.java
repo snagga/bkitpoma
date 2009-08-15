@@ -71,4 +71,11 @@ public interface DatabaseServiceAsync {
 
 	void getNewTrackedUN(AsyncCallback<String> callback);
 
+	void getTrackers(AsyncCallback<ArrayList<Tracker>> callback);
+
+	void insertWayPoint(String lat, String lng, String speed, String trackID,
+			AsyncCallback<Integer> callback);
+
+	void getTrackeds(AsyncCallback<ArrayList<Tracked>> callback);
+
 }

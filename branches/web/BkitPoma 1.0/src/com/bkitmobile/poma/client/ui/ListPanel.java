@@ -127,7 +127,7 @@ public class ListPanel extends LoadingPanel {
 			public void onResize(BoxComponent component, int adjWidth,
 					int adjHeight, int rawWidth, int rawHeight) {
 				// TODO Auto-generated method stub
-				gridPanel.setWidth(getWidth());
+				gridPanel.setWidth(adjWidth);
 
 				if (columnWidthMode == ColumnWidthModeEnum.AUTO_WIDTH) {
 					setColumnWidthFitToPanel();
@@ -459,8 +459,6 @@ public class ListPanel extends LoadingPanel {
 		columnWidthMode = ColumnWidthModeEnum.AUTO_WIDTH;
 
 		int columnWidth = getWidth() / columnConfigs.length;
-		// gridPanel.fireEvent("resize");
-		gridPanel.setWidth(getWidth());
 		for (int i = 0; i < columnConfigs.length; i++) {
 			columnModel.setColumnWidth(i + "", columnWidth);
 			columnConfigs[i].setResizable(false);

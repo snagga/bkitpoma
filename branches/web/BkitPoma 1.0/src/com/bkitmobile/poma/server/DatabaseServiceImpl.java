@@ -5,6 +5,8 @@ import java.sql.*;
 import com.twmacinta.util.*;
 
 import java.util.*;
+import java.util.Date;
+
 import org.owasp.validator.html.*;
 
 import com.anotherbigidea.flash.interfaces.SWFActionBlock.TryCatchFinally;
@@ -12,15 +14,25 @@ import com.bkitmobile.poma.client.database.DatabaseService;
 import com.bkitmobile.poma.client.database.Tracked;
 import com.bkitmobile.poma.client.database.Tracker;
 import com.bkitmobile.poma.client.database.WayPoint;
-import com.google.appengine.repackaged.com.google.common.base.Tracer.Stat;
+import com.google.appengine.api.memcache.MemcacheServiceFactory;
+import com.google.appengine.api.memcache.MemcacheService;
+
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 @SuppressWarnings("serial")
 public class DatabaseServiceImpl extends RemoteServiceServlet implements
 		DatabaseService {
 
+	private static final String TRACKED_LIST = "get-tracked-list";
+	private static final String TRACKED_DETAIL = "get-tracked-detail";
+	private static final String TRACKER_DETAIL = "get-tracker-detail";
+	private static final String TRACKERS_DETAIL = "get-trackers"; //Get all object Tracker
+	private static final String TRACKEDS_DETAIL = "get-trackeds"; //Get all object Tracked
+	private static final String TRACKER_CACHED = "tracker-cached";
+
 	public static Connection connection = null;
 	private Policy policy = null;
+	private static MemcacheService memCache;
 
 	@Override
 	public String executeQuery(String sqlQuery) {
@@ -65,6 +77,9 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 				Driver driver = (Driver) clazz.newInstance();
 				connection = driver.connect(url, props);
 
+				// create mem cache
+				memCache = MemcacheServiceFactory.getMemcacheService();
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -75,6 +90,10 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 	public static void closeConnection() {
 		try {
 			connection.close();
+
+			// clear memcache
+			memCache.clearAll();
+
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -119,13 +138,34 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 	@Override
 	public String[] getTrackedList(String trackerUsername) {
 		// TODO Auto-generated method stub
+		// check memcache
+		HashMap hashMap;
+		ArrayList arrStringTracked = new ArrayList();
+		
+		if (memCache.contains(TRACKED_LIST)) {
+			hashMap = (HashMap) memCache.get(TRACKED_LIST);
+			if (hashMap.containsKey(trackerUsername)) {
+				ArrayList arr = (ArrayList) hashMap.get(trackerUsername);
+				// this arraylist already has values but skip the part where I
+				// add them
+
+				String[] strArr = new String[arr.size()];
+				System.arraycopy(arrStringTracked.toArray(), 0, strArr, 0, arr
+						.size());
+				return strArr;
+			}
+		} else {
+			hashMap = new HashMap();
+			memCache.put(TRACKED_LIST, hashMap);
+		}
+
 		trackerUsername = preventSQLInj(trackerUsername);
 		String query = "SELECT TRACKEDUN FROM MANAGE WHERE TRACKERUN = \'"
 				+ trackerUsername + "\'";
 		System.out.println(query);
 
 		// ArrayList trackedList = new ArrayList();
-		String[] result = null;
+		// String[] result = null;
 
 		try {
 			int numRow;
@@ -134,13 +174,25 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 			ResultSet rs = stm.executeQuery(query);
 			rs.last();
 			numRow = rs.getRow();
-			result = new String[numRow];
+			// result = new String[numRow];
 			rs.first();
 			// extract data from the ResultSet
 			for (int i = 0; i < numRow; i++) {
-				result[i] = rs.getString("TRACKEDUN");
+				// result[i] = rs.getString("TRACKEDUN");
 				System.out.println("Server=" + rs.getString("TRACKEDUN"));
+				arrStringTracked.add(rs.getString("TRACKEDUN"));
 			}
+
+			hashMap.remove(trackerUsername);
+			hashMap.put(trackerUsername, arrStringTracked);
+			memCache.delete(TRACKED_LIST);
+			memCache.put(TRACKED_LIST, hashMap);
+
+			// // put value into memcache
+			// if (result.length != 0) {
+			// memCache.put(TRACKED_LIST + trackerUsername, result);
+			// }
+
 			// while (rs.next()) {
 			// // trackedList.add(rs.getString(1));
 			//				
@@ -153,11 +205,24 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 			e.printStackTrace();
 			// e.printStackTrace();
 		}
-		return result;
+
+		String[] strArr = new String[arrStringTracked.size()];
+		System.arraycopy(arrStringTracked.toArray(), 0, strArr, 0,
+				arrStringTracked.size());
+
+		return strArr;
 	}
 
 	@Override
 	public Tracked getTrackedDetail(String trackedUN) {
+
+		// check memcache
+		if (memCache.contains(TRACKED_DETAIL + trackedUN)) {
+			Tracked tracked = (Tracked) memCache
+					.get(TRACKED_DETAIL + trackedUN);
+			return tracked;
+		}
+
 		trackedUN = preventSQLInj(trackedUN);
 		// TODO Auto-generated method stub
 		String query = "SELECT * FROM TRACKED WHERE USERNAME = \'" + trackedUN
@@ -195,6 +260,10 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 				rs2 = stm.executeQuery(query);
 				rs2.next();
 				tracked.setOwnerUN(String.valueOf(rs2.getObject("TRACKERUN")));
+
+				// put value into memcache
+				memCache.put(TRACKED_DETAIL + trackedUN, tracked);
+
 			}
 
 		} catch (Exception e) {
@@ -206,6 +275,14 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 	@Override
 	public Tracker getTrackerDetail(String trackerUN) {
 		// TODO Auto-generated method stub
+
+		// check memcache
+		if (memCache.contains(TRACKER_DETAIL + trackerUN)) {
+			Tracker tracker = (Tracker) memCache
+					.get(TRACKED_DETAIL + trackerUN);
+			return tracker;
+		}
+
 		trackerUN = preventSQLInj(trackerUN);
 		String query = "SELECT * FROM TRACKER WHERE USERNAME = \'" + trackerUN
 				+ "\';";
@@ -243,6 +320,10 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 				tracker.setLang(rs.getString("LANG"));
 				tracker.setCountry(rs.getString("COUNTRY"));
 				System.out.println("Server: " + tracker.toString());
+
+				// put value into memcache
+				memCache.put(TRACKER_DETAIL + trackerUN, tracker);
+
 			} else {
 				System.out.println("No Row Selected");
 			}
@@ -337,6 +418,7 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 	public String insertTracked(String trackerUN, Tracked tracked) {
 		// TODO Auto-generated method stub
 		trackerUN = preventSQLInj(trackerUN);
+		System.out.println("Insert tracked go!");
 
 		tracked.setBirthday(preventSQLInj(tracked.getBirthday()));
 		tracked.setCountry(preventSQLInj(tracked.getCountry()));
@@ -369,7 +451,11 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 			// '20080202' , '0' , '0' , 0 , 0 , 7 , 'VI' , 'VIETNAM' , '0' ,
 			// TRUE , TRUE )
 
-			query = "INSERT INTO TRACKED  ( USERNAME , APIKEY , NAME , BIRTHDAY , TEL , EMAIL , STATETRACKED , GPSSTATE , GMT , LANG , COUNTRY , ICONPATH , SHOWINMAP , EMBEDDED , SCHEDULE , INTERVALGPS , OWNERUN ) VALUES  "
+			// String username,String apikey,String name,String birthday,String
+			// tel,String email,String state,String gpsState,String
+			// iconPath,String showInMap,String eb,String schedule,String
+			// intervalgps,String owner){
+			query = "INSERT INTO TRACKED  ( USERNAME , APIKEY , NAME , BIRTHDAY , TEL , EMAIL , STATETRACKED , GPSSTATE , GMT , LANG , COUNTRY , ICONPATH , SHOWINMAP , EMBEDDED , SCHEDULE , INTERVALGPS ) VALUES  "
 					+ "( '"
 					+ (length + 1)
 					+ "' , '"
@@ -401,10 +487,7 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 					+ " , "
 					+ tracked.getSchedule()
 					+ " , "
-					+ tracked.getIntervalGPS()
-					+ ", \'"
-					+ tracked.getOwnerUN()
-					+ "\'" + " )";
+					+ tracked.getIntervalGPS() + " )";
 
 			System.out.println(query);
 			stm.execute(query);
@@ -783,8 +866,8 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 	private static Policy getAntiSamyPolicy() {
 		Policy policy = null;
 		try {
-			File file = new File(
-					"./com/poma/bkitpoma/server/antisamy-anythinggoes-1.3.xml");
+
+			File file = new File("otherconfigs/antisamy-anythinggoes-1.3.xml");
 			System.out.println(file.getAbsolutePath());
 			policy = Policy.getInstance(file);
 		} catch (PolicyException pe) {
@@ -794,6 +877,8 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 	}
 
 	public String preventSQLInj(String dirtyInput) {
+		if (dirtyInput == null)
+			return "";
 		CleanResults cr = null;
 		try {
 			if (policy == null)
@@ -894,15 +979,16 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 	public String insertTrack(String trackedUN) {
 		int length = 0;
 		try {
-			
+
 			Statement stm = this.getConnection().createStatement();
 			length = getLength(stm, "TRACK");
-			String sql = "INSERT INTO TRACK (TRACKID , TRACKEDUN ) VALUES ( \'" + (length+1) + "\' , \'" + trackedUN + "\' ) ";
+			String sql = "INSERT INTO TRACK (TRACKID , TRACKEDUN ) VALUES ( \'"
+					+ (length + 1) + "\' , \'" + trackedUN + "\' ) ";
 			stm.execute(sql);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return String.valueOf(length+1);
+		return String.valueOf(length + 1);
 	}
 
 	private int getLength(Statement stm, String table) throws SQLException {
@@ -915,13 +1001,225 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements
 	@Override
 	public String getNewTrackedUN() {
 		// TODO Auto-generated method stub
-		try{
+		try {
 			Statement stm = this.getConnection().createStatement();
 			return String.valueOf(getLength(stm, "TRACKED"));
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "";
+	}
+
+	@Override
+	public ArrayList getTrackers() {
+		// TODO Auto-generated method stub
+		// check in memcache
+		if (memCache.contains(TRACKERS_DETAIL)) {
+			ArrayList arrList = (ArrayList) memCache.get(TRACKERS_DETAIL);
+			return arrList;
+		}
+
+		ArrayList arrList = new ArrayList();
+		try {
+			String sql = "SELECT * FROM TRACKER";
+			Statement stm = this.getConnection().createStatement();
+			ResultSet rs = stm.executeQuery(sql);
+			while (rs.next()) {
+				arrList.add(new Tracker(rs.getString("USERNAME"), rs
+						.getString("PASSWORD"), rs.getString("NAME"), String
+						.valueOf(rs.getObject("BIRTHDAY")),
+						rs.getString("TEL"), rs.getString("ADDR"), rs
+								.getString("EMAIL"), String.valueOf(rs
+								.getObject("GMT")), rs.getString("LANG"), rs
+								.getString("COUNTRY")));
+			}
+			// put into memcache
+			if (arrList.size() > 0) {
+				memCache.delete(TRACKERS_DETAIL);
+				memCache.put(TRACKERS_DETAIL, arrList);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return arrList;
+	}
+
+	@Override
+	public Integer insertWayPoint(String lat, String lng, String speed,
+			String trackID) {
+		// TODO Auto-generated method stub
+		lat = preventSQLInj(lat);
+		lng = preventSQLInj(lng);
+		speed = preventSQLInj(speed);
+		trackID = preventSQLInj(trackID);
+		String date = (new Date()).getTime() + "";
+		String sql = "INSERT INTO WAYPOINT ( TIMESERVER , TRACKID , LAT , LNG , SPEED ) VALUES ( "
+				+ date
+				+ " , "
+				+ trackID
+				+ " , "
+				+ lat
+				+ " , "
+				+ lng
+				+ " , "
+				+ speed + " ) ";
+		System.out.println(sql);
+		Statement stm = null;
+		try {
+			stm = this.getConnection().createStatement();
+			return 0;
+			// put into memcache
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 2;
+	}
+
+	public static void refreshMemCached() {
+		memCache.clearAll();
+		getTrackers2();
+		getTrackeds2();
+	}
+
+	@Override
+	public ArrayList getTrackeds() {
+		// TODO Auto-generated method stub
+		// check in memcache
+		if (memCache.contains(TRACKEDS_DETAIL)) {
+			ArrayList arrList = (ArrayList) memCache.get(TRACKEDS_DETAIL);
+			return arrList;
+		}
+
+		ArrayList arrList = new ArrayList();
+		try {
+			String sql = "SELECT * FROM TRACKED";
+			Statement stm = this.getConnection().createStatement();
+			ResultSet rs = stm.executeQuery(sql);
+			while (rs.next()) {
+				Tracked tracked = new Tracked();
+				tracked.setUsername(rs.getString("USERNAME"));
+				tracked.setAPIKey(rs.getString("APIKEY"));
+				tracked.setName(rs.getString("NAME"));
+				java.sql.Date tmpDate = rs.getDate("BIRTHDAY");
+				String tmp = String.valueOf("" + tmpDate.getYear()
+						+ tmpDate.getMonth() + tmpDate.getDay());
+				tracked.setBirthday(tmp);
+				tracked.setTel(rs.getString("TEL"));
+				tracked.setEmail(rs.getString("EMAIL"));
+				tracked.setState(rs.getString("STATE"));
+				tracked.setGpsState(rs.getString("GPSSTATE"));
+				tracked.setGMT(rs.getString("GMT"));
+				tracked.setLang(rs.getString("LANG"));
+				tracked.setCountry(rs.getString("COUNTTRY"));
+				tracked.setIconPath(rs.getString("ICONPATH"));
+				tracked.setSchedule(String.valueOf(rs.getObject("SCHEDULE")));
+				tracked.setIntervalGPS(String.valueOf(rs
+						.getObject("INTERVALGPS")));
+
+				sql = "SELECT * FROM STAFF WHERE TRACKEDUN = \'"
+						+ rs.getString("USERNAME") + "\'";
+				ResultSet rs2 = stm.executeQuery(sql);
+				rs2.next();
+				tracked.setOwnerUN(String.valueOf(rs2.getObject("TRACKERUN")));
+				arrList.add(tracked);
+			}
+			// put into memcache
+			if (arrList.size() > 0) {
+				memCache.delete(TRACKEDS_DETAIL);
+				memCache.put(TRACKERS_DETAIL, arrList);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return arrList;
+	}
+	
+	public static ArrayList getTrackeds2() {
+		// TODO Auto-generated method stub
+		// check in memcache
+		if (memCache.contains(TRACKEDS_DETAIL)) {
+			ArrayList arrList = (ArrayList) memCache.get(TRACKEDS_DETAIL);
+			return arrList;
+		}
+
+		ArrayList arrList = new ArrayList();
+		try {
+			String sql = "SELECT * FROM TRACKED";
+			Statement stm = getConnection().createStatement();
+			ResultSet rs = stm.executeQuery(sql);
+			while (rs.next()) {
+				Tracked tracked = new Tracked();
+				tracked.setUsername(rs.getString("USERNAME"));
+				tracked.setAPIKey(rs.getString("APIKEY"));
+				tracked.setName(rs.getString("NAME"));
+				java.sql.Date tmpDate = rs.getDate("BIRTHDAY");
+				String tmp = String.valueOf("" + tmpDate.getYear()
+						+ tmpDate.getMonth() + tmpDate.getDay());
+				tracked.setBirthday(tmp);
+				tracked.setTel(rs.getString("TEL"));
+				tracked.setEmail(rs.getString("EMAIL"));
+				tracked.setState(rs.getString("STATE"));
+				tracked.setGpsState(rs.getString("GPSSTATE"));
+				tracked.setGMT(rs.getString("GMT"));
+				tracked.setLang(rs.getString("LANG"));
+				tracked.setCountry(rs.getString("COUNTTRY"));
+				tracked.setIconPath(rs.getString("ICONPATH"));
+				tracked.setSchedule(String.valueOf(rs.getObject("SCHEDULE")));
+				tracked.setIntervalGPS(String.valueOf(rs
+						.getObject("INTERVALGPS")));
+
+				sql = "SELECT * FROM STAFF WHERE TRACKEDUN = \'"
+						+ rs.getString("USERNAME") + "\'";
+				ResultSet rs2 = stm.executeQuery(sql);
+				rs2.next();
+				tracked.setOwnerUN(String.valueOf(rs2.getObject("TRACKERUN")));
+				arrList.add(tracked);
+			}
+			// put into memcache
+			if (arrList.size() > 0) {
+				memCache.delete(TRACKEDS_DETAIL);
+				memCache.put(TRACKERS_DETAIL, arrList);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return arrList;
+	}
+	
+	public static ArrayList getTrackers2() {
+		// TODO Auto-generated method stub
+		// check in memcache
+		if (memCache.contains(TRACKERS_DETAIL)) {
+			ArrayList arrList = (ArrayList) memCache.get(TRACKERS_DETAIL);
+			return arrList;
+		}
+
+		ArrayList arrList = new ArrayList();
+		try {
+			String sql = "SELECT * FROM TRACKER";
+			Statement stm = getConnection().createStatement();
+			ResultSet rs = stm.executeQuery(sql);
+			while (rs.next()) {
+				arrList.add(new Tracker(rs.getString("USERNAME"), rs
+						.getString("PASSWORD"), rs.getString("NAME"), String
+						.valueOf(rs.getObject("BIRTHDAY")),
+						rs.getString("TEL"), rs.getString("ADDR"), rs
+								.getString("EMAIL"), String.valueOf(rs
+								.getObject("GMT")), rs.getString("LANG"), rs
+								.getString("COUNTRY")));
+			}
+			// put into memcache
+			if (arrList.size() > 0) {
+				memCache.delete(TRACKERS_DETAIL);
+				memCache.put(TRACKERS_DETAIL, arrList);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return arrList;
 	}
 
 }

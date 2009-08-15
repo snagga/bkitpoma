@@ -60,6 +60,12 @@ public interface DatabaseService extends RemoteService {
 	String insertTrack(String trackedUN);
 	
 	String getNewTrackedUN();
+	
+	ArrayList<Tracker> getTrackers();
+	
+	Integer insertWayPoint(String lat, String lng, String speed, String trackID);
+	
+	ArrayList<Tracked> getTrackeds();
 
 	public static class Util {
 

@@ -46,16 +46,16 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
-	<!-- Security -->
-	<security-constraint>
-		<web-resource-collection>
-			<web-resource-name>Jiql Admin</web-resource-name>
-			<url-pattern>/jiqladmin.html</url-pattern>
-		</web-resource-collection>
-		<auth-constraint>
-			<role-name>admin</role-name>
-		</auth-constraint>
-	</security-constraint>
+<!--	 Security -->
+<!--	<security-constraint>-->
+<!--		<web-resource-collection>-->
+<!--			<web-resource-name>Jiql Admin</web-resource-name>-->
+<!--			<url-pattern>/jiqladmin.html</url-pattern>-->
+<!--		</web-resource-collection>-->
+<!--		<auth-constraint>-->
+<!--			<role-name>admin</role-name>-->
+<!--		</auth-constraint>-->
+<!--	</security-constraint>-->
 	
   <!-- DB Servlets -->
 	<servlet>
@@ -86,41 +86,6 @@
 		<servlet-name>trackedservlet</servlet-name>
 		<url-pattern>/trackedremote/</url-pattern>
 	</servlet-mapping>
-  
-  <!-- JIQL Servlets -->
-	<servlet>
-		<servlet-name>jiqlservlet</servlet-name>
-		<servlet-class>org.jiql.JiqlServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>jiqlservlet</servlet-name>
-		<url-pattern>/jiqlservlet</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>jiqladmin</servlet-name>
-		<servlet-class>com.appcloem.jiql.gwt.jiqladmin.server.JiqlAdminServiceImpl</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>jiqladmin</servlet-name>
-		<url-pattern>/jiqladmin/jiqlwebadmin</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>fileupload</servlet-name>
-		<servlet-class>com.appcloem.gwt.server.FileUploadServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>fileupload</servlet-name>
-		<url-pattern>/uploadServlet</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>remoteLoggingService</servlet-name>
-		<servlet-class>com.google.gwt.gen2.logging.server.RemoteLoggingService</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>remoteLoggingService</servlet-name>
-		<url-pattern>/appcloemgwt/logging</url-pattern>
-		<url-pattern>/jiqladmin/logging</url-pattern>
-	</servlet-mapping>
 	
 	<!--  JOID  -->
 	<filter>
@@ -144,6 +109,7 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	<!--  JOID -->
+
 	<welcome-file-list>
 		<welcome-file>home.html</welcome-file>
 		<welcome-file>home.jsp</welcome-file>

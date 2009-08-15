@@ -28,4 +28,10 @@ public interface LRegisterTrackedForm extends com.google.gwt.i18n.client.Constan
     String msgbox_alert_title();
     String msgbox_alert_invalid();
     String window_title();
+    String grid_title();
+    String window_schedule_title();
+    String first_column_lbl();
+    String tool_select_all();
+    String tool_clear();
+    String btnImgChooser_lbl();
 }

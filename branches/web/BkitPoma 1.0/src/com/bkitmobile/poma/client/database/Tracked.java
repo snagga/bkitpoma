@@ -36,7 +36,8 @@ public class Tracked implements IsSerializable {
 		trackedInfo.put("ownerun", "");
 	}
 	
-	public Tracked(String username,String apikey,String name,String birthday,String tel,String email,String state,String gpsState,String iconPath,String showInMap,String eb,String schedule,String intervalgps,String owner){
+	public Tracked(String username,String apikey,String name,String birthday,String tel,String email,String state,String gpsState,String gmt,String iconPath,String showInMap,String eb,String schedule,String intervalgps,String owner){
+		trackedInfo = new HashMap();
 		trackedInfo.put("username", username);
 		trackedInfo.put("apikey", apikey);
 		trackedInfo.put("name", name);
@@ -45,6 +46,7 @@ public class Tracked implements IsSerializable {
 		trackedInfo.put("email", email);
 		trackedInfo.put("state", state);
 		trackedInfo.put("gpsState",gpsState);
+		trackedInfo.put("gmt", gmt);
 		trackedInfo.put("iconPath", iconPath);
 		trackedInfo.put("showinmap",showInMap);
 		trackedInfo.put("embedded", eb);
@@ -132,7 +134,7 @@ public class Tracked implements IsSerializable {
 	}
 	
 	public String getIntervalGPS(){
-		return String.valueOf(trackedInfo.get("intervalGPS"));
+		return String.valueOf(trackedInfo.get("intervalgps"));
 	}
 	
 	public String getSchedule(){

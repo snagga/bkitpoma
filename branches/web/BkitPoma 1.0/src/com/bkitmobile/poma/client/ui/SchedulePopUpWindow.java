@@ -1,81 +1,52 @@
 package com.bkitmobile.poma.client.ui;
 
-/* 
- * GWT-Ext Widget Library 
- * Copyright 2007 - 2008, GWT-Ext LLC., and individual contributors as indicated 
- * by the @authors tag. See the copyright.txt in the distribution for a 
- * full listing of individual contributors. 
- * 
- * This is free software; you can redistribute it and/or modify it 
- * under the terms of the GNU Lesser General Public License as 
- * published by the Free Software Foundation; either version 3 of 
- * the License, or (at your option) any later version. 
- * 
- * This software is distributed in the hope that it will be useful, 
- * but WITHOUT ANY WARRANTY; without even the implied warranty of 
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
- * Lesser General Public License for more details. 
- * 
- * You should have received a copy of the GNU Lesser General Public 
- * License along with this software; if not, write to the Free 
- * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 
- * 02110-1301 USA, or see the FSF site: http://www.fsf.org. 
- */
-
-import com.google.gwt.core.client.EntryPoint;
+import com.bkitmobile.poma.client.localization.LRegisterTrackedForm;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.RootPanel;
 import com.gwtext.client.core.EventObject;
 import com.gwtext.client.core.Function;
-import com.gwtext.client.data.*;
-import com.gwtext.client.widgets.MessageBox;
-import com.gwtext.client.widgets.Panel;
+import com.gwtext.client.data.ArrayReader;
+import com.gwtext.client.data.FieldDef;
+import com.gwtext.client.data.MemoryProxy;
+import com.gwtext.client.data.RecordDef;
+import com.gwtext.client.data.Store;
+import com.gwtext.client.data.StringFieldDef;
 import com.gwtext.client.widgets.Tool;
 import com.gwtext.client.widgets.Window;
-import com.gwtext.client.widgets.grid.*;
+import com.gwtext.client.widgets.grid.BaseColumnConfig;
+import com.gwtext.client.widgets.grid.ColumnConfig;
+import com.gwtext.client.widgets.grid.ColumnModel;
+import com.gwtext.client.widgets.grid.GridPanel;
+import com.gwtext.client.widgets.grid.GridView;
 import com.gwtext.client.widgets.grid.event.GridCellListenerAdapter;
 import com.gwtext.client.widgets.layout.FitLayout;
 
 public class SchedulePopUpWindow extends Window {
-	private HTML[][] data = null;
+	private MyHTML[][] data = null;
 	private MemoryProxy proxy = null;
 	private Store store = null;
+	private GridPanel grid = null;
+	private LRegisterTrackedForm local = null;
 
-	public SchedulePopUpWindow() {
-		this.setTitle("Config Schedule for Tracked");
+	public SchedulePopUpWindow(LRegisterTrackedForm local) {
+		this.local = local;
+		this.setTitle(local.window_schedule_title());
 		this.setIconCls("paste-icon");
 		this.setPaddings(5, 5, 5, 0);
 		this.setSize(600, 400);
-//		this.setAutoWidth(true);
-//		this.setAutoHeight(true);
+		// this.setAutoWidth(true);
+		// this.setAutoHeight(true);
 		this.setAutoScroll(true);
 		this.setMaximizable(false);
 		this.setResizable(false);
 		this.setLayout(new FitLayout());
 		this.setModal(true);
 
-		this.addTool(new Tool(Tool.REFRESH, new Function() {
-			public void execute() {
-				//Clear Table here
-				selectScheduleDataAllWith(data, "o");
-				store.load();
-			}
-		}, "Clear"));
-		
-		this.addTool(new Tool(Tool.GEAR, new Function() {
-			public void execute() {
-				//Select all table here
-				selectScheduleDataAllWith(data, "x");
-				store.load();
-			}
-		}, "Select All"));
-
 		RecordDef recordDef = new RecordDef(new FieldDef[] {
 				new StringFieldDef("first"), new StringFieldDef("10015"),
 				new StringFieldDef("11530"), new StringFieldDef("13045"),
 				new StringFieldDef("14560"), new StringFieldDef("20015"),
 				new StringFieldDef("21530"), new StringFieldDef("23045"),
-				new StringFieldDef("24560"),
+				new StringFieldDef("24560"), new StringFieldDef("allrow")
 
 		});
 
@@ -86,7 +57,8 @@ public class SchedulePopUpWindow extends Window {
 		store = new Store(proxy, reader);
 		store.load();
 
-		ColumnConfig ccFirst = new ColumnConfig("Time", "first", 30);
+		ColumnConfig ccFirst = new ColumnConfig(local.first_column_lbl(),
+				"first", 30);
 		ccFirst.setSortable(false);
 		ccFirst.setResizable(false);
 
@@ -122,19 +94,21 @@ public class SchedulePopUpWindow extends Window {
 		cc24560.setSortable(false);
 		cc24560.setResizable(false);
 
-		BaseColumnConfig[] columns = new BaseColumnConfig[] {
-				// column ID is company which is later used in
-				// setAutoExpandColumn
-				ccFirst, cc10015, cc11530, cc13045, cc14560, cc20015, cc21530,
-				cc23045, cc24560 };
+		ColumnConfig ccAllRow = new ColumnConfig("", "allrow", 10);
+		cc24560.setSortable(false);
+		cc24560.setResizable(false);
+
+		BaseColumnConfig[] columns = new BaseColumnConfig[] { ccFirst, cc10015,
+				cc11530, cc13045, cc14560, cc20015, cc21530, cc23045, cc24560,
+				ccAllRow };
 
 		ColumnModel columnModel = new ColumnModel(columns);
 
-		GridPanel grid = new GridPanel();
+		grid = new GridPanel();
 		grid.setStore(store);
 		grid.setColumnModel(columnModel);
 
-		grid.setTitle("Grid with Numbered Rows and Force Fit");
+		grid.setTitle(local.grid_title());
 		grid.setHeight(300);
 		grid.setWidth(700);
 		grid.setHeader(true);
@@ -146,18 +120,43 @@ public class SchedulePopUpWindow extends Window {
 		grid.setEnableColumnMove(false);
 		grid.setEnableDragDrop(false);
 
+		grid.addTool(new Tool(Tool.REFRESH, new Function() {
+			public void execute() {
+				// Clear Table here
+				selectScheduleAllDataWith(false);
+				store.load();
+			}
+		}, local.tool_clear()));
+
+		grid.addTool(new Tool(Tool.GEAR, new Function() {
+			public void execute() {
+				// Select all table here
+				selectScheduleAllDataWith(true);
+				store.load();
+			}
+		}, local.tool_select_all()));
+
 		grid.addGridCellListener(new GridCellListenerAdapter() {
 
 			@Override
 			public void onCellClick(GridPanel grid, int rowIndex, int colindex,
 					EventObject e) {
-				// TODO Auto-generated method stub
 				super.onCellClick(grid, rowIndex, colindex, e);
-				// System.out.println("Click at: " + rowIndex + " " + colindex);
-				setChange(data, rowIndex, colindex);
-				// proxy = new MemoryProxy(data);
-				// store.setDataProxy(proxy);
-				store.load();
+				System.out.println(rowIndex + " " + colindex);
+				if (colindex != 0 && colindex != 9) {
+					data[rowIndex][colindex]
+							.setChecked(!data[rowIndex][colindex].getChecked());
+					// proxy = new MemoryProxy(data);
+					// store.setDataProxy(proxy);
+					store.load();
+				} else if (colindex == 9) {
+					boolean tmp = data[rowIndex][1].getChecked();
+					for (int i = 1; i < 9; i++) {
+						data[rowIndex][i].setChecked(!tmp);
+						store.load();
+					}
+				}
+
 			}
 
 		});
@@ -166,77 +165,112 @@ public class SchedulePopUpWindow extends Window {
 		grid.setView(view);
 
 		this.add(grid);
-	//	RootPanel.get().add(panel);
 	}
-	
-	public String getStringBinarySchedule(){
+
+	public String getStringBinarySchedule() {
 		String result = "";
-		for (int i=0;i<data.length;i++){
-			for (int j=0;j<data[i].length;j++){
-				if (data[i][j].getText().equals("o")){
-					result += "0";
-				}else{
+		for (int i = 0; i < data.length; i++) {
+			for (int j = 0; j < data[i].length-1; j++) {
+				if (data[i][j].getChecked()) {
 					result += "1";
+				} else {
+					result += "0";
 				}
 			}
 		}
 		return result;
 	}
 
-	private HTML[][] getCompanyData() {
-		return new HTML[][] {
-				// new Object[]{"3m Co", new Double(72), new Double(02),
-				// new Double(03), "9/1 12:00am", "MMM", "Manufacturing"},
-				new HTML[] { new HTML("00:00"), new HTML("o"), new HTML("o"),
-						new HTML("o"), new HTML("o"), new HTML("o"),
-						new HTML("o"), new HTML("o"), new HTML("o") },
-				new HTML[] { new HTML("02:00"), new HTML("o"), new HTML("o"),
-						new HTML("o"), new HTML("o"), new HTML("o"),
-						new HTML("o"), new HTML("o"), new HTML("o") },
-				new HTML[] { new HTML("04:00"), new HTML("o"), new HTML("o"),
-						new HTML("o"), new HTML("o"), new HTML("o"),
-						new HTML("o"), new HTML("o"), new HTML("o") },
-				new HTML[] { new HTML("06:00"), new HTML("o"), new HTML("o"),
-						new HTML("o"), new HTML("o"), new HTML("o"),
-						new HTML("o"), new HTML("o"), new HTML("o") },
-				new HTML[] { new HTML("08:00"), new HTML("o"), new HTML("o"),
-						new HTML("o"), new HTML("o"), new HTML("o"),
-						new HTML("o"), new HTML("o"), new HTML("o") },
-				new HTML[] { new HTML("10:00"), new HTML("o"), new HTML("o"),
-						new HTML("o"), new HTML("o"), new HTML("o"),
-						new HTML("o"), new HTML("o"), new HTML("o") },
-				new HTML[] { new HTML("12:00"), new HTML("o"), new HTML("o"),
-						new HTML("o"), new HTML("o"), new HTML("o"),
-						new HTML("o"), new HTML("o"), new HTML("o") },
-				new HTML[] { new HTML("14:00"), new HTML("o"), new HTML("o"),
-						new HTML("o"), new HTML("o"), new HTML("o"),
-						new HTML("o"), new HTML("o"), new HTML("o") },
-				new HTML[] { new HTML("16:00"), new HTML("o"), new HTML("o"),
-						new HTML("o"), new HTML("o"), new HTML("o"),
-						new HTML("o"), new HTML("o"), new HTML("o") },
-				new HTML[] { new HTML("18:00"), new HTML("o"), new HTML("o"),
-						new HTML("o"), new HTML("o"), new HTML("o"),
-						new HTML("o"), new HTML("o"), new HTML("o") },
-				new HTML[] { new HTML("20:00"), new HTML("o"), new HTML("o"),
-						new HTML("o"), new HTML("o"), new HTML("o"),
-						new HTML("o"), new HTML("o"), new HTML("o") },
-				new HTML[] { new HTML("22:00"), new HTML("o"), new HTML("o"),
-						new HTML("o"), new HTML("o"), new HTML("o"),
-						new HTML("o"), new HTML("o"), new HTML("o") } };
+	private class MyHTML extends HTML {
+		static final String CHOOSE = "X";
+		static final String UNCHOOSE = "O";
+		boolean checked = true;
+
+		public MyHTML() {
+			super(CHOOSE);
+		}
+
+		public MyHTML(String txt) {
+			super(txt);
+		}
+
+		public void setChecked(boolean b) {
+			checked = b;
+			if (b)
+				this.setText(CHOOSE);
+			else
+				this.setText(UNCHOOSE);
+		}
+
+		public boolean getChecked() {
+			return this.checked;
+		}
+
+		// @Override
+		// public String toString() {
+		// if (this.getText().equals(CHOOSE) || this.getText().equals(UNCHOOSE))
+		// return this.text;
+		// else
+		// return super.toString();
+		// }
 	}
-	
-	private static void selectScheduleDataAllWith(HTML[][] data,String text){
-		for (int i=0;i<data.length;i++){
-			for (int j=1;j<data[i].length;j++){
-				data[i][j].setHTML(text);
+
+	private MyHTML[][] getCompanyData() {
+		return new MyHTML[][] {
+				// new xbject[]{"3m Cx", new Dxuble(72), new Dxuble(02),
+				// new Dxuble(03), "9/1 12:00am", "MMM", "Manufacturing"},
+				new MyHTML[] { new MyHTML("00:00"), new MyHTML(), new MyHTML(),
+						new MyHTML(), new MyHTML(), new MyHTML(), new MyHTML(),
+						new MyHTML(), new MyHTML(), new MyHTML("V") },
+				new MyHTML[] { new MyHTML("02:00"), new MyHTML(), new MyHTML(),
+						new MyHTML(), new MyHTML(), new MyHTML(), new MyHTML(),
+						new MyHTML(), new MyHTML(), new MyHTML("V") },
+				new MyHTML[] { new MyHTML("04:00"), new MyHTML(), new MyHTML(),
+						new MyHTML(), new MyHTML(), new MyHTML(), new MyHTML(),
+						new MyHTML(), new MyHTML(), new MyHTML("V") },
+				new MyHTML[] { new MyHTML("06:00"), new MyHTML(), new MyHTML(),
+						new MyHTML(), new MyHTML(), new MyHTML(), new MyHTML(),
+						new MyHTML(), new MyHTML(), new MyHTML("V") },
+				new MyHTML[] { new MyHTML("08:00"), new MyHTML(), new MyHTML(),
+						new MyHTML(), new MyHTML(), new MyHTML(), new MyHTML(),
+						new MyHTML(), new MyHTML(), new MyHTML("V") },
+				new MyHTML[] { new MyHTML("10:00"), new MyHTML(), new MyHTML(),
+						new MyHTML(), new MyHTML(), new MyHTML(), new MyHTML(),
+						new MyHTML(), new MyHTML(), new MyHTML("V") },
+				new MyHTML[] { new MyHTML("12:00"), new MyHTML(), new MyHTML(),
+						new MyHTML(), new MyHTML(), new MyHTML(), new MyHTML(),
+						new MyHTML(), new MyHTML(), new MyHTML("V") },
+				new MyHTML[] { new MyHTML("14:00"), new MyHTML(), new MyHTML(),
+						new MyHTML(), new MyHTML(), new MyHTML(), new MyHTML(),
+						new MyHTML(), new MyHTML(), new MyHTML("V") },
+				new MyHTML[] { new MyHTML("16:00"), new MyHTML(), new MyHTML(),
+						new MyHTML(), new MyHTML(), new MyHTML(), new MyHTML(),
+						new MyHTML(), new MyHTML(), new MyHTML("V") },
+				new MyHTML[] { new MyHTML("18:00"), new MyHTML(), new MyHTML(),
+						new MyHTML(), new MyHTML(), new MyHTML(), new MyHTML(),
+						new MyHTML(), new MyHTML(), new MyHTML("V") },
+				new MyHTML[] { new MyHTML("20:00"), new MyHTML(), new MyHTML(),
+						new MyHTML(), new MyHTML(), new MyHTML(), new MyHTML(),
+						new MyHTML(), new MyHTML(), new MyHTML("V") },
+				new MyHTML[] { new MyHTML("22:00"), new MyHTML(), new MyHTML(),
+						new MyHTML(), new MyHTML(), new MyHTML(), new MyHTML(),
+						new MyHTML(), new MyHTML(), new MyHTML("V") } };
+	}
+
+	private void selectScheduleAllDataWith(boolean b) {
+		for (int i = 0; i < data.length; i++) {
+			for (int j = 1; j < data[i].length-1; j++) {
+				data[i][j].setChecked(b);
 			}
 		}
 	}
-	
-	private static void setChange(HTML[][] arrHTML, int rowIdx, int columnIdx) {
-		// arrHTML[rowIdx][columnIdx].setHTML(
-		// "<html><head><style type=\"text/css\">body{background: 00ff00}</style></head><body>Tam</body></html>"
-		// );
-		arrHTML[rowIdx][columnIdx].setHTML("Tam");
-	}
+
+	// private static void setChange(HTML[][] arrHTML, int rowIdx, int
+	// columnIdx) {
+	// // arrHTML[rowIdx][columnIdx].setHTML(
+	// //
+	// "<html><head><style type=\"text/css\">body{background: 00ff00}</style></head><body>Tam</body></html>"
+	// // );
+	// arrHTML[rowIdx][columnIdx].setHTML("x");
+	// }
 }

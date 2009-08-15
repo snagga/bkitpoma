@@ -17,6 +17,7 @@ import com.google.gwt.user.client.ui.DockPanel.DockLayoutConstant;
 import com.gwtext.client.core.EventObject;
 import com.gwtext.client.core.RegionPosition;
 import com.gwtext.client.widgets.Button;
+import com.gwtext.client.widgets.Component;
 import com.gwtext.client.widgets.DatePicker;
 import com.gwtext.client.widgets.MessageBox;
 import com.gwtext.client.widgets.Panel;
@@ -109,6 +110,7 @@ public class TrackedPanel extends Panel {
 		
 		// filter text field
 		filterField = new TextField();
+		filterField.setWidth(180);
 		filterField.addListener(new TextFieldListenerAdapter() {
 			
 			@Override
