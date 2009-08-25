@@ -1,0 +1,6 @@
+#summary Bkit POMA is a position manager for bus, taxi, or whatever... developed by BkitMobile.
+
+===Link===
+BkitMobile Group: [http://groups.google.com/group/bkitmobile]
+BkitPoma Project: [http://code.google.com/p/bkitpoma]
+Demo: [http://bkitpoma.appspot.com]
