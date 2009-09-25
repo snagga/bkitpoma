@@ -2,7 +2,7 @@ Title page
 
 ----
 
-<font size = "4">'''HƯỚNG DẪN SỬ DỤNG PHẦN MỀM POMA TEST'''</font>
+<font size = "4">HƯỚNG DẪN SỬ DỤNG PHẦN MỀM POMA TEST</font>
 
 ==Mục đích==
 * Dùng để giả lập quá trình gửi tín hiệu từ thiết bị lên server. Người dùng sử dụng dữ liệu mẫu có sẵn để kiểm tra hoạt động của thiết bị trên bản đồ. <font color="#0070C0">(Xem thêm phần hiển thị, theo dõi thiết bị trong bản đồ ở mục Hướng dẫn sử dụng).
@@ -11,9 +11,9 @@ Title page
 * Cần file POMATest.exe và POMAMobileApi.dll.
 * Giao diện của file POMATest.exe
 
-[[Image:Poma_Test_Guide_01.png|framed|none]]
+[http://dc109.4shared.com/img/135360883/493e9113/image002.jpg]
 
-<font color="#4F81BD">'''Hình 1: Giao diện chính của chương trình Test với các thành phần được chú thích bên cạnh'''</font>
+<font color="#4F81BD">Hình 1: Giao diện chính của chương trình Test với các thành phần được chú thích bên cạnh</font>
 
 * Người dùng nhập vào URL của service (ở localhost thì để là [http://localhost:8080/api/mobile http://localhost:8080/api/mobile]; ở trên web thì thay thế localhost&nbsp;:8080 bằng địa chỉ tương ứng của trang web). Sau đó nhập vào ID của thiết bị ở khung Username và nhập vào mật khẩu. Ấn nút Login, khung chứa thông báo của chương trình sẽ xuất ra đăng nhập thành công (nếu localhost đang chạy trên máy mình hoặc đang test trực tiếp trên trang web).
 * Dữ liệu test được nhập vào Khung nhập dữ liệu về đường đi của thiết bị, theo định dạng mỗi dòng gồm 2 số thập phân cách nhau bằng 1 dấu phẩy, số thứ nhất là vĩ độ, số thứ 2 là kinh độ của điểm mà thiết bị đi qua. (Có 1 số file dữ liệu mẫu cho người dùng test Track2 _ HVBC.txt, Track4 _ RMIT_CONIC.txt, Track1.txt).
@@ -23,16 +23,15 @@ Title page
 * Nút new track dùng để tạo ra ID mới cho đường đi của thiết bị.
 ==Hình ảnh minh họa==
 
-[[Image:Poma_Test_Guide_02.png|framed|none]]
+[http://dc109.4shared.com/img/135360880/d037c0a9/image004.jpg]
 
-<font color="#4F81BD">'''Hình 2: Dữ liệu lần lượt được thêm vào và cập nhật tương ứng trên bản đồ'''</font>
+<font color="#4F81BD">Hình 2: Dữ liệu lần lượt được thêm vào và cập nhật tương ứng trên bản đồ</font>
 
-[[Image:Poma_Test_Guide_03.png|framed|none]]
+[http://dc109.4shared.com/img/135360875/27c528e9/image006.jpg]
 
-<font color="#4F81BD">'''Hình 3: Dữ liệu mẫu, copy vào clipboard'''</font>
+<font color="#4F81BD">Hình 3: Dữ liệu mẫu, copy vào clipboard</font>
 
-[[Image:Poma_Test_Guide_04.png|framed|none]]
+[http://dc109.4shared.com/img/135360862/a0ba8c0b/image008.jpg]
 
-<font color="#4F81BD">'''Hình 4: Thêm dữ liệu vào chương trình Poma Test, bấm <nowiki>’</nowiki>Insert<nowiki>’</nowiki> để tiến hành test'''</font>
+<font color="#4F81BD">Hình 4: Thêm dữ liệu vào chương trình Poma Test, bấm ’Insert’ để tiến hành test</font>
 
-[[category:uncategorized]]
