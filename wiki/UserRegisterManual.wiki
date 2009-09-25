@@ -175,4 +175,35 @@ Sản phẩm POMA là một dịch vụ hướng địa điểm (Location-Based 
 
 * Sau khi nhập các nội dung, nhấp vào ’Gửi’, chương trình sẽ xuất hiện cửa sổ yêu cầu bạn nhập mã xác nhận. Sau khi xác nhận thành công, email sẽ được gửi để người điều hành website và bạn sẽ sớm nhận được email phản hồi từ tác giả. 
 
+==Hướng dẫn sử dụng bản đồ==
+===Theo dõi nhiều thiết bị cùng lúc===
+* Lúc mới đăng nhập vào web site thì chế độ theo dõi thiết bị mặc định là theo dõi nhiều thiết bị cùng lúc.
+
+[http://dc130.4shared.com/img/135343177/ae6f8ec4/mappanel01.png]
+* Nút Theo dõi dùng để bắt đầu theo dõi thiết bị, thông tin về thiết bị sẽ được cập nhật lên server khi khoảng thời gian đếm lùi trên đồng hồ bằng 0.
+* Nút Tạm dừng và Dừng tương ứng  để tạm ngưng và dừng hẳn quá trình tiếp nhận thông tin từ thiết bị lên server.
+* Người dùng có thể chỉ định khoảng thời gian thiết bị gửi thông tin lên server (tính bằng giây).
+
+[http://dc130.4shared.com/img/135343183/2e9a5612/mappanel02.png]
+* Chọn kiểu bản đồ
+
+[http://dc130.4shared.com/img/135343182/599d6684/mappanel03.png]
+* Nút Xem tất cả dùng để hiển thị một vùng chứa đủ tất cả các thiết bị lên trên bản đồ
+
+[http://dc130.4shared.com/img/135343179/49d7a3c3/mappanel04.png]
+===Theo dõi thiết bị ở chế độ một thiết bị một lúc===
+* Hiển thị khi người dùng ấn vào nút Chi tiết ở Menu quản lý thiết bị
+
+[http://dc130.4shared.com/img/135343176/d968be52/mappanel05.png]
+* Bản đồ sẽ có thêm nút Replay,  Follow và Tỷ lệ.
+* Nút Replay dùng để mô tả lại quá trình thiết bị di chuyển trên một đường đi cụ thể mà người dùng muốn xem.
+* Nút Follow có chức năng như phần Theo dõi ở phần menu quản lý thiết bị.
+* Nút Tỷ lệ dùng để điều chỉnh số lượng điểm của đường đi của thiết bị hiển thị trên bản đồ. Người dùng có thể chọn tỷ lệ tùy ý bằng nút Tùy chọn.
+
+[http://dc130.4shared.com/img/135343175/4061efe8/mappanel06.png]
+[http://dc130.4shared.com/img/135343173/a9024add/mappanel07.png]
+[[category:uncategorized]]
+
+
+
 [[category:uncategorized]]
