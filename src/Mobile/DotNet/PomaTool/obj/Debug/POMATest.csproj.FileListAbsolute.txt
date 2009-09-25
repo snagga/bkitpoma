@@ -1,0 +1,8 @@
+D:\OpenSource\OpenSource 2009\POMA\POMATest\bin\Debug\POMATest.exe
+D:\OpenSource\OpenSource 2009\POMA\POMATest\bin\Debug\POMATest.pdb
+D:\OpenSource\OpenSource 2009\POMA\POMATest\obj\Debug\ResolveAssemblyReference.cache
+D:\OpenSource\OpenSource 2009\POMA\POMATest\obj\Debug\POMATest.PomaTest.resources
+D:\OpenSource\OpenSource 2009\POMA\POMATest\obj\Debug\POMATest.Properties.Resources.resources
+D:\OpenSource\OpenSource 2009\POMA\POMATest\obj\Debug\POMATest.csproj.GenerateResource.Cache
+D:\OpenSource\OpenSource 2009\POMA\POMATest\obj\Debug\POMATest.exe
+D:\OpenSource\OpenSource 2009\POMA\POMATest\obj\Debug\POMATest.pdb

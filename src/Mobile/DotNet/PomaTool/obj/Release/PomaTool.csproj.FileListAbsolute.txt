@@ -1,0 +1,31 @@
+D:\OpenSource\OpenSource 2009\POMA\POMATest\bin\Release\PomaTool.exe
+D:\OpenSource\OpenSource 2009\POMA\POMATest\bin\Release\PomaTool.pdb
+D:\OpenSource\OpenSource 2009\POMA\POMATest\bin\Release\PomaMobileApi.dll
+D:\OpenSource\OpenSource 2009\POMA\POMATest\bin\Release\PomaMobileApi.pdb
+D:\OpenSource\OpenSource 2009\POMA\POMATest\obj\Release\ResolveAssemblyReference.cache
+D:\OpenSource\OpenSource 2009\POMA\POMATest\obj\Release\POMATest.PomaTest.resources
+D:\OpenSource\OpenSource 2009\POMA\POMATest\obj\Release\PomaTool.Properties.Resources.resources
+D:\OpenSource\OpenSource 2009\POMA\POMATest\obj\Release\PomaTool.csproj.GenerateResource.Cache
+D:\OpenSource\OpenSource 2009\POMA\POMATest\obj\Release\PomaTool.exe
+D:\OpenSource\OpenSource 2009\POMA\POMATest\obj\Release\PomaTool.pdb
+D:\OpenSource\OpenSource 2009\POMA\PomaTool\bin\Release\PomaTool.exe
+D:\OpenSource\OpenSource 2009\POMA\PomaTool\bin\Release\PomaTool.pdb
+D:\OpenSource\OpenSource 2009\POMA\PomaTool\bin\Release\PomaMobileApi.dll
+D:\OpenSource\OpenSource 2009\POMA\PomaTool\bin\Release\PomaMobileApi.pdb
+D:\OpenSource\OpenSource 2009\POMA\PomaTool\obj\Release\ResolveAssemblyReference.cache
+D:\OpenSource\OpenSource 2009\POMA\PomaTool\obj\Release\POMATest.PomaTest.resources
+D:\OpenSource\OpenSource 2009\POMA\PomaTool\obj\Release\PomaTool.Properties.Resources.resources
+D:\OpenSource\OpenSource 2009\POMA\PomaTool\obj\Release\PomaTool.csproj.GenerateResource.Cache
+D:\OpenSource\OpenSource 2009\POMA\PomaTool\obj\Release\PomaTool.exe
+D:\OpenSource\OpenSource 2009\POMA\PomaTool\obj\Release\PomaTool.pdb
+D:\OpenSource\OpenSource 2009\HUONG DAN SU DUNG\trunk\src\Mobile\DotNet\PomaTool\bin\Release\PomaTool.exe
+D:\OpenSource\OpenSource 2009\HUONG DAN SU DUNG\trunk\src\Mobile\DotNet\PomaTool\bin\Release\PomaTool.pdb
+D:\OpenSource\OpenSource 2009\HUONG DAN SU DUNG\trunk\src\Mobile\DotNet\PomaTool\bin\Release\PomaMobileApi.dll
+D:\OpenSource\OpenSource 2009\HUONG DAN SU DUNG\trunk\src\Mobile\DotNet\PomaTool\bin\Release\PomaMobileApi.pdb
+D:\OpenSource\OpenSource 2009\HUONG DAN SU DUNG\trunk\src\Mobile\DotNet\PomaTool\obj\Release\ResolveAssemblyReference.cache
+D:\OpenSource\OpenSource 2009\HUONG DAN SU DUNG\trunk\src\Mobile\DotNet\PomaTool\obj\Release\POMATest.PomaTest.resources
+D:\OpenSource\OpenSource 2009\HUONG DAN SU DUNG\trunk\src\Mobile\DotNet\PomaTool\obj\Release\PomaTool.Properties.Resources.resources
+D:\OpenSource\OpenSource 2009\HUONG DAN SU DUNG\trunk\src\Mobile\DotNet\PomaTool\obj\Release\PomaTool.csproj.GenerateResource.Cache
+D:\OpenSource\OpenSource 2009\HUONG DAN SU DUNG\trunk\src\Mobile\DotNet\PomaTool\obj\Release\PomaTool.exe
+D:\OpenSource\OpenSource 2009\HUONG DAN SU DUNG\trunk\src\Mobile\DotNet\PomaTool\obj\Release\PomaTool.pdb
+D:\OpenSource\OpenSource 2009\HUONG DAN SU DUNG\trunk\src\Mobile\DotNet\PomaTool\bin\Release\PomaMobileApi.xml

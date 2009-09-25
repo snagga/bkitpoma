@@ -1,0 +1,10 @@
+D:\OpenSource\OpenSource 2009\POMA\POMATest\bin\Release\Tool.exe
+D:\OpenSource\OpenSource 2009\POMA\POMATest\bin\Release\Tool.pdb
+D:\OpenSource\OpenSource 2009\POMA\POMATest\bin\Release\POMAMobileApi.dll
+D:\OpenSource\OpenSource 2009\POMA\POMATest\bin\Release\POMAMobileApi.pdb
+D:\OpenSource\OpenSource 2009\POMA\POMATest\obj\Release\ResolveAssemblyReference.cache
+D:\OpenSource\OpenSource 2009\POMA\POMATest\obj\Release\POMATest.PomaTest.resources
+D:\OpenSource\OpenSource 2009\POMA\POMATest\obj\Release\POMATest.Properties.Resources.resources
+D:\OpenSource\OpenSource 2009\POMA\POMATest\obj\Release\Tool.csproj.GenerateResource.Cache
+D:\OpenSource\OpenSource 2009\POMA\POMATest\obj\Release\Tool.exe
+D:\OpenSource\OpenSource 2009\POMA\POMATest\obj\Release\Tool.pdb

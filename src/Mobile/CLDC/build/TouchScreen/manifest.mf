@@ -1,0 +1,7 @@
+MIDlet-1: PomaMobile,/resource/favicon.png,com.bkitmobile.poma.mobile.ui.PomaMobile
+MIDlet-Permissions: javax.microedition.location.Location, javax.microedition.io.Connector.http
+MIDlet-Vendor: BkitMobile
+MIDlet-Name: PomaMobile
+MIDlet-Version: 1.0
+MicroEdition-Configuration: CLDC-1.1
+MicroEdition-Profile: MIDP-2.0

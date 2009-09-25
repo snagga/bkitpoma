@@ -1,0 +1,37 @@
+<waypoints>
+	<waypoint time="5028" latitude="10.7421627414774" longitude="106.645488739014" altitude="7" />
+	<waypoint time="2938" latitude="10.7442708986969" longitude="106.64402961731" altitude="2" />
+	<waypoint time="3008" latitude="10.7467163426318" longitude="106.642656326294" altitude="42" />
+	<waypoint time="2997" latitude="10.7496677141023" longitude="106.642398834229" altitude="8" />
+	<waypoint time="3007" latitude="10.7497520385774" longitude="106.645574569702" altitude="9" />
+	<waypoint time="3003" latitude="10.7497520385774" longitude="106.649866104126" altitude="17" />
+	<waypoint time="3009" latitude="10.7507639304408" longitude="106.654329299927" altitude="22" />
+	<waypoint time="2998" latitude="10.7509325787548" longitude="106.658363342285" altitude="37" />
+	<waypoint time="3005" latitude="10.7528720275909" longitude="106.658792495728" altitude="38" />
+	<waypoint time="2994" latitude="10.7548114639597" longitude="106.661281585693" altitude="10" />
+	<waypoint time="3009" latitude="10.756244952392" longitude="106.666603088379" altitude="2" />
+	<waypoint time="3004" latitude="10.7571725001" longitude="106.671152114868" altitude="14" />
+	<waypoint time="3002" latitude="10.7579314006483" longitude="106.674842834473" altitude="21" />
+	<waypoint time="3006" latitude="10.7623161219726" longitude="106.678533554077" altitude="26" />
+	<waypoint time="3004" latitude="10.7657732611254" longitude="106.681623458862" altitude="35" />
+	<waypoint time="3003" latitude="10.7688087652406" longitude="106.684799194336" altitude="43" />
+	<waypoint time="3006" latitude="10.7720128752901" longitude="106.687717437744" altitude="49" />
+	<waypoint time="3005" latitude="10.7749639991244" longitude="106.690464019775" altitude="9" />
+	<waypoint time="3002" latitude="10.7783366766566" longitude="106.693553924561" altitude="17" />
+	<waypoint time="3004" latitude="10.7813720541225" longitude="106.696729660034" altitude="23" />
+	<waypoint time="3010" latitude="10.7843230861908" longitude="106.699304580688" altitude="28" />
+	<waypoint time="3002" latitude="10.7865152627007" longitude="106.701622009277" altitude="42" />
+	<waypoint time="2999" latitude="10.789128990732" longitude="106.698875427246" altitude="0" />
+	<waypoint time="3005" latitude="10.7914897578115" longitude="106.695957183838" altitude="3" />
+	<waypoint time="3004" latitude="10.7917426960418" longitude="106.695914268494" altitude="12" />
+	<waypoint time="3002" latitude="10.7952416530563" longitude="106.696085929871" altitude="21" />
+	<waypoint time="3004" latitude="10.7987827246982" longitude="106.696257591248" altitude="27" />
+	<waypoint time="2996" latitude="10.8011434159366" longitude="106.696429252625" altitude="42" />
+	<waypoint time="3003" latitude="10.8024923740275" longitude="106.696600914001" altitude="42" />
+	<waypoint time="3001" latitude="10.8029982317493" longitude="106.69497013092" altitude="2" />
+	<waypoint time="2992" latitude="10.8051902720289" longitude="106.69497013092" altitude="22" />
+	<waypoint time="3981" latitude="10.8080989161511" longitude="106.69497013092" altitude="38" />
+	<waypoint time="4996" latitude="10.8112604538768" longitude="106.695356369019" altitude="30" />
+	<waypoint time="5000" latitude="10.8118084503619" longitude="106.69527053833" altitude="34" />
+	<waypoint time="4983" latitude="Infinity" longitude="Infinity" altitude="10" />
+</waypoints>

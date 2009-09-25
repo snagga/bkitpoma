@@ -1,0 +1,322 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PomaMobileApi</name>
+    </assembly>
+    <members>
+        <member name="T:Com.BkitMobile.Poma.Mobile.Api.Geometry.Waypoint">
+            <summary>
+            Contains location's information
+            </summary>
+        </member>
+        <member name="T:Com.BkitMobile.Poma.Mobile.Api.Operation.Operation`1">
+            <summary>
+            Represents a operation of device
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Com.BkitMobile.Poma.Mobile.Api.Operation.Operation`1.#ctor(Com.BkitMobile.Poma.Mobile.Api.Connection.HttpSessionConnection)">
+            <summary>
+            Create, do a operation and parse a result from message returned by server
+            </summary>
+            <param name="sessionID">Session ID of operation's connection</param>
+        </member>
+        <member name="M:Com.BkitMobile.Poma.Mobile.Api.Operation.Operation`1.Execute">
+            <summary>
+            Execute this operation
+            </summary>
+        </member>
+        <member name="M:Com.BkitMobile.Poma.Mobile.Api.Operation.Operation`1.parse(System.String)">
+            <summary>
+            Pre-parse raw message returned by server
+            </summary>
+        </member>
+        <member name="M:Com.BkitMobile.Poma.Mobile.Api.Operation.Operation`1.parseResult">
+            <summary>
+            Parse raw message returned by server
+            </summary>
+        </member>
+        <member name="P:Com.BkitMobile.Poma.Mobile.Api.Operation.Operation`1.Connection">
+            <summary>
+            Session Connection that this operation use to connect to server
+            </summary>
+        </member>
+        <member name="P:Com.BkitMobile.Poma.Mobile.Api.Operation.Operation`1.OK">
+            <summary>
+            Determines this result is successed or failed
+            </summary>
+        </member>
+        <member name="P:Com.BkitMobile.Poma.Mobile.Api.Operation.Operation`1.RawMessage">
+            <summary>
+            The raw message returned by server
+            </summary>
+        </member>
+        <member name="P:Com.BkitMobile.Poma.Mobile.Api.Operation.Operation`1.Message">
+            <summary>
+            The message returned, usually be the same with Input message
+            </summary>
+        </member>
+        <member name="P:Com.BkitMobile.Poma.Mobile.Api.Operation.Operation`1.Result">
+            <summary>
+            Object that tracked want to retrieve from server
+            </summary>
+        </member>
+        <member name="T:Com.BkitMobile.Poma.Mobile.Api.Operation.WaypointOperation">
+            <summary>
+            Waypoint operation
+            </summary>
+        </member>
+        <member name="P:Com.BkitMobile.Poma.Mobile.Api.Operation.WaypointOperation.Latitude">
+            <summary>
+            Latitude
+            </summary>
+        </member>
+        <member name="P:Com.BkitMobile.Poma.Mobile.Api.Operation.WaypointOperation.Longitude">
+            <summary>
+            Longitude
+            </summary>
+        </member>
+        <member name="P:Com.BkitMobile.Poma.Mobile.Api.Operation.WaypointOperation.Speed">
+            <summary>
+            Speed
+            </summary>
+        </member>
+        <member name="T:Com.BkitMobile.Poma.Mobile.Api.Operation.LogoutOperation">
+            <summary>
+            Logout operation
+            </summary>
+        </member>
+        <member name="T:Com.BkitMobile.Poma.Mobile.Api.Geometry.Geocode">
+            <summary>
+            Contains coordinate of locaton
+            </summary>
+        </member>
+        <member name="P:Com.BkitMobile.Poma.Mobile.Api.Geometry.Geocode.Latitude">
+            <summary>
+            Latitude
+            </summary>
+        </member>
+        <member name="P:Com.BkitMobile.Poma.Mobile.Api.Geometry.Geocode.Longitude">
+            <summary>
+            Longitude
+            </summary>
+        </member>
+        <member name="T:Com.BkitMobile.Poma.Mobile.Api.Operation.ChangePassOperation">
+            <summary>
+            ChangePass operation
+            </summary>
+        </member>
+        <member name="P:Com.BkitMobile.Poma.Mobile.Api.Operation.ChangePassOperation.NewPassword">
+            <summary>
+            New password of device
+            </summary>
+        </member>
+        <member name="T:Com.BkitMobile.Poma.Mobile.Api.Connection.HttpSessionConnection">
+            <summary>
+            Represents a session connection through HTTP Protocol
+            </summary>
+        </member>
+        <member name="M:Com.BkitMobile.Poma.Mobile.Api.Connection.HttpSessionConnection.HttpGet(System.String)">
+            <summary>
+            Do a HTTP GET
+            </summary>
+            <param name="uri"></param>
+            <returns>Result of <code>uri</code></returns>
+        </member>
+        <member name="M:Com.BkitMobile.Poma.Mobile.Api.Connection.HttpSessionConnection.HttpPost(System.String,System.String)">
+            <summary>
+            Do a HTTP POST
+            </summary>
+            <param name="uri"></param>
+            <returns>Result of <code>uri</code></returns>
+        </member>
+        <member name="P:Com.BkitMobile.Poma.Mobile.Api.Connection.HttpSessionConnection.WebProxy">
+            <summary>
+            Proxy of this connection
+            </summary>
+        </member>
+        <member name="P:Com.BkitMobile.Poma.Mobile.Api.Connection.HttpSessionConnection.SessionID">
+            <summary>
+            Session ID of this connection
+            </summary>
+        </member>
+        <member name="T:Com.BkitMobile.Poma.Mobile.Api.Connection.DeviceSession">
+            <summary>
+            Represents a working session of device.
+            </summary>
+        </member>
+        <member name="M:Com.BkitMobile.Poma.Mobile.Api.Connection.DeviceSession.#ctor(System.Int64,System.String)">
+            <summary>
+            Create a DeviceSession instance with specified device's ID and password
+            </summary>
+            <param name="ID">Device's ID</param>
+            <param name="password">Device's password</param>
+        </member>
+        <member name="M:Com.BkitMobile.Poma.Mobile.Api.Connection.DeviceSession.Login">
+            <summary>
+            Verify device session
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Com.BkitMobile.Poma.Mobile.Api.Connection.DeviceSession.Logout">
+            <summary>
+            Remove device verified information
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Com.BkitMobile.Poma.Mobile.Api.Connection.DeviceSession.ChangePass(System.String)">
+            <summary>
+            Change device's password
+            </summary>
+            <param name="newPassword"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Com.BkitMobile.Poma.Mobile.Api.Connection.DeviceSession.NewTrack">
+            <summary>
+            Create a new track
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Com.BkitMobile.Poma.Mobile.Api.Connection.DeviceSession.Waypoint(System.Double,System.Double)">
+            <summary>
+            Update device's location
+            </summary>
+            <param name="lat">Latitude</param>
+            <param name="lng">Longitude</param>
+            <returns></returns>
+        </member>
+        <member name="M:Com.BkitMobile.Poma.Mobile.Api.Connection.DeviceSession.Waypoint(System.Double,System.Double,System.Int64)">
+            <summary>
+            Update device's location
+            </summary>
+            <param name="lat">Latitude</param>
+            <param name="lng">Longitude</param>
+            <param name="speed">Speed</param>
+            <returns></returns>
+        </member>
+        <member name="M:Com.BkitMobile.Poma.Mobile.Api.Connection.DeviceSession.Waypoint(Com.BkitMobile.Poma.Mobile.Api.Geometry.Geocode)">
+            <summary>
+            Update device's location
+            </summary>
+            <param name="geocode">A geocode instance contains latitude, longitude of device</param>
+            <returns></returns>
+        </member>
+        <member name="M:Com.BkitMobile.Poma.Mobile.Api.Connection.DeviceSession.Waypoint(Com.BkitMobile.Poma.Mobile.Api.Geometry.Geocode,System.Int64)">
+            <summary>
+            Update device's location
+            </summary>
+            <param name="geocode">A geocode instance contains latitude, longitude of device</param>
+            <param name="speed">Speed</param>
+            <returns></returns>
+        </member>
+        <member name="M:Com.BkitMobile.Poma.Mobile.Api.Connection.DeviceSession.Waypoint(System.Int32,System.Int32)">
+            <summary>
+            Update device's location through cellular techique
+            </summary>
+            <param name="cellid">CellID of this device's mobile</param>
+            <param name="lac">Location Area Code (LAC) of this device's mobile</param>
+            <returns></returns>
+        </member>
+        <member name="M:Com.BkitMobile.Poma.Mobile.Api.Connection.DeviceSession.Config">
+            <summary>
+            Get device's configuration
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Com.BkitMobile.Poma.Mobile.Api.Connection.DeviceSession.DeviceID">
+            <summary>
+            Device's ID
+            </summary>
+        </member>
+        <member name="P:Com.BkitMobile.Poma.Mobile.Api.Connection.DeviceSession.Password">
+            <summary>
+            Unencoded Password of device
+            </summary>
+        </member>
+        <member name="P:Com.BkitMobile.Poma.Mobile.Api.Connection.DeviceSession.Interval">
+            <summary>
+            Device's Interval
+            </summary>
+        </member>
+        <member name="P:Com.BkitMobile.Poma.Mobile.Api.Connection.DeviceSession.Schedule">
+            <summary>
+            Device's Schedule
+            </summary>
+        </member>
+        <member name="P:Com.BkitMobile.Poma.Mobile.Api.Connection.DeviceSession.Connection">
+            <summary>
+            Session connection of device. Device use this connection to connect to POMA's server
+            </summary>
+        </member>
+        <member name="T:Com.BkitMobile.Poma.Mobile.Api.Operation.CellIDOperation">
+            <summary>
+            CellID operation
+            </summary>
+        </member>
+        <member name="P:Com.BkitMobile.Poma.Mobile.Api.Operation.CellIDOperation.CellID">
+            <summary>
+            Cell's ID
+            </summary>
+        </member>
+        <member name="P:Com.BkitMobile.Poma.Mobile.Api.Operation.CellIDOperation.LocationAreaCode">
+            <summary>
+            Location Area Code
+            </summary>
+        </member>
+        <member name="P:Com.BkitMobile.Poma.Mobile.Api.Operation.CellIDOperation.MobileNetworkCode">
+            <summary>
+            Mobile Network Code
+            </summary>
+        </member>
+        <member name="P:Com.BkitMobile.Poma.Mobile.Api.Operation.CellIDOperation.MobileCountryCode">
+            <summary>
+            Mobile Country Code
+            </summary>
+        </member>
+        <member name="T:Com.BkitMobile.Poma.Mobile.Api.Operation.NewTrackOperation">
+            <summary>
+            NewTrack operation
+            </summary>
+        </member>
+        <member name="T:Com.BkitMobile.Poma.Mobile.Api.Operation.ConfigOperation">
+            <summary>
+            Represents an operation used to get Config
+            </summary>
+        </member>
+        <member name="P:Com.BkitMobile.Poma.Mobile.Api.Operation.ConfigOperation.DEVICE_CONFIG">
+            <summary>
+            URL used to get Config
+            </summary>
+        </member>
+        <member name="P:Com.BkitMobile.Poma.Mobile.Api.Operation.ConfigOperation.Interval">
+            <summary>
+            Interval that device send location to POMA
+            </summary>
+        </member>
+        <member name="P:Com.BkitMobile.Poma.Mobile.Api.Operation.ConfigOperation.Schedule">
+            <summary>
+            Schedule that device send location to POMA
+            </summary>
+        </member>
+        <member name="T:Com.BkitMobile.Poma.Mobile.Api.Operation.ServiceNotFoundException">
+            <summary>
+            This exception will raised when have no internet connection or device session not yet certificated
+            </summary>
+        </member>
+        <member name="T:Com.BkitMobile.Poma.Mobile.Api.Operation.LoginOperation">
+            <summary>
+            Result of Login operation
+            </summary>
+        </member>
+        <member name="P:Com.BkitMobile.Poma.Mobile.Api.Operation.LoginOperation.TrackedID">
+            <summary>
+            Device's ID
+            </summary>
+        </member>
+        <member name="P:Com.BkitMobile.Poma.Mobile.Api.Operation.LoginOperation.Password">
+            <summary>
+            Device's Password
+            </summary>
+        </member>
+    </members>
+</doc>
