@@ -1,0 +1,11 @@
+D:\OpenSource\OpenSource 2009\POMA\Poma Mobile\bin\Release\Poma Mobile.exe
+D:\OpenSource\OpenSource 2009\POMA\Poma Mobile\bin\Release\Poma Mobile.pdb
+D:\OpenSource\OpenSource 2009\POMA\Poma Mobile\bin\Release\GPSUtils.dll
+D:\OpenSource\OpenSource 2009\POMA\Poma Mobile\bin\Release\POMAMobileApi.dll
+D:\OpenSource\OpenSource 2009\POMA\Poma Mobile\bin\Release\POMAMobileApi.pdb
+D:\OpenSource\OpenSource 2009\POMA\Poma Mobile\obj\Release\ResolveAssemblyReference.cache
+D:\OpenSource\OpenSource 2009\POMA\Poma Mobile\obj\Release\Poma_Mobile.PomaMobile.resources
+D:\OpenSource\OpenSource 2009\POMA\Poma Mobile\obj\Release\Poma_Mobile.Properties.Resources.resources
+D:\OpenSource\OpenSource 2009\POMA\Poma Mobile\obj\Release\PocketPC.csproj.GenerateResource.Cache
+D:\OpenSource\OpenSource 2009\POMA\Poma Mobile\obj\Release\Poma Mobile.exe
+D:\OpenSource\OpenSource 2009\POMA\Poma Mobile\obj\Release\Poma Mobile.pdb

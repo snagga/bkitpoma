@@ -1,0 +1,34 @@
+D:\OpenSource\OpenSource 2009\POMA\Poma Mobile\bin\Release\PomaMobile.exe
+D:\OpenSource\OpenSource 2009\POMA\Poma Mobile\bin\Release\PomaMobile.pdb
+D:\OpenSource\OpenSource 2009\POMA\Poma Mobile\bin\Release\GPSUtils.dll
+D:\OpenSource\OpenSource 2009\POMA\Poma Mobile\bin\Release\PomaMobileApi.dll
+D:\OpenSource\OpenSource 2009\POMA\Poma Mobile\bin\Release\PomaMobileApi.pdb
+D:\OpenSource\OpenSource 2009\POMA\Poma Mobile\obj\Release\ResolveAssemblyReference.cache
+D:\OpenSource\OpenSource 2009\POMA\Poma Mobile\obj\Release\PomaMobile.PomaMobile.resources
+D:\OpenSource\OpenSource 2009\POMA\Poma Mobile\obj\Release\PomaMobile.Properties.Resources.resources
+D:\OpenSource\OpenSource 2009\POMA\Poma Mobile\obj\Release\PomaMobile.csproj.GenerateResource.Cache
+D:\OpenSource\OpenSource 2009\POMA\Poma Mobile\obj\Release\PomaMobile.exe
+D:\OpenSource\OpenSource 2009\POMA\Poma Mobile\obj\Release\PomaMobile.pdb
+D:\OpenSource\OpenSource 2009\POMA\PomaMobile\bin\Release\PomaMobile.exe
+D:\OpenSource\OpenSource 2009\POMA\PomaMobile\bin\Release\PomaMobile.pdb
+D:\OpenSource\OpenSource 2009\POMA\PomaMobile\bin\Release\GPSUtils.dll
+D:\OpenSource\OpenSource 2009\POMA\PomaMobile\bin\Release\PomaMobileApi.dll
+D:\OpenSource\OpenSource 2009\POMA\PomaMobile\bin\Release\PomaMobileApi.pdb
+D:\OpenSource\OpenSource 2009\POMA\PomaMobile\obj\Release\ResolveAssemblyReference.cache
+D:\OpenSource\OpenSource 2009\POMA\PomaMobile\obj\Release\PomaMobile.PomaMobile.resources
+D:\OpenSource\OpenSource 2009\POMA\PomaMobile\obj\Release\PomaMobile.Properties.Resources.resources
+D:\OpenSource\OpenSource 2009\POMA\PomaMobile\obj\Release\PomaMobile.csproj.GenerateResource.Cache
+D:\OpenSource\OpenSource 2009\POMA\PomaMobile\obj\Release\PomaMobile.exe
+D:\OpenSource\OpenSource 2009\POMA\PomaMobile\obj\Release\PomaMobile.pdb
+D:\OpenSource\OpenSource 2009\HUONG DAN SU DUNG\trunk\src\Mobile\DotNet\PomaMobile\bin\Release\PomaMobile.exe
+D:\OpenSource\OpenSource 2009\HUONG DAN SU DUNG\trunk\src\Mobile\DotNet\PomaMobile\bin\Release\PomaMobile.pdb
+D:\OpenSource\OpenSource 2009\HUONG DAN SU DUNG\trunk\src\Mobile\DotNet\PomaMobile\bin\Release\GPSUtils.dll
+D:\OpenSource\OpenSource 2009\HUONG DAN SU DUNG\trunk\src\Mobile\DotNet\PomaMobile\bin\Release\PomaMobileApi.dll
+D:\OpenSource\OpenSource 2009\HUONG DAN SU DUNG\trunk\src\Mobile\DotNet\PomaMobile\bin\Release\PomaMobileApi.pdb
+D:\OpenSource\OpenSource 2009\HUONG DAN SU DUNG\trunk\src\Mobile\DotNet\PomaMobile\obj\Release\ResolveAssemblyReference.cache
+D:\OpenSource\OpenSource 2009\HUONG DAN SU DUNG\trunk\src\Mobile\DotNet\PomaMobile\obj\Release\PomaMobile.PomaMobile.resources
+D:\OpenSource\OpenSource 2009\HUONG DAN SU DUNG\trunk\src\Mobile\DotNet\PomaMobile\obj\Release\PomaMobile.Properties.Resources.resources
+D:\OpenSource\OpenSource 2009\HUONG DAN SU DUNG\trunk\src\Mobile\DotNet\PomaMobile\obj\Release\PomaMobile.csproj.GenerateResource.Cache
+D:\OpenSource\OpenSource 2009\HUONG DAN SU DUNG\trunk\src\Mobile\DotNet\PomaMobile\obj\Release\PomaMobile.exe
+D:\OpenSource\OpenSource 2009\HUONG DAN SU DUNG\trunk\src\Mobile\DotNet\PomaMobile\obj\Release\PomaMobile.pdb
+D:\OpenSource\OpenSource 2009\HUONG DAN SU DUNG\trunk\src\Mobile\DotNet\PomaMobile\bin\Release\PomaMobileApi.xml

@@ -1,0 +1,5 @@
+D:\OpenSource\OpenSource 2009\POMA\POMAMobileApi\bin\Release\POMAMobileApi.dll
+D:\OpenSource\OpenSource 2009\POMA\POMAMobileApi\bin\Release\POMAMobileApi.pdb
+D:\OpenSource\OpenSource 2009\POMA\POMAMobileApi\obj\Release\ResolveAssemblyReference.cache
+D:\OpenSource\OpenSource 2009\POMA\POMAMobileApi\obj\Release\POMAMobileApi.dll
+D:\OpenSource\OpenSource 2009\POMA\POMAMobileApi\obj\Release\POMAMobileApi.pdb
