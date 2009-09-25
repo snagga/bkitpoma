@@ -201,9 +201,6 @@ Sản phẩm POMA là một dịch vụ hướng địa điểm (Location-Based 
 * Nút Tỷ lệ dùng để điều chỉnh số lượng điểm của đường đi của thiết bị hiển thị trên bản đồ. Người dùng có thể chọn tỷ lệ tùy ý bằng nút Tùy chọn.
 
 [http://dc130.4shared.com/img/135343175/4061efe8/mappanel06.png]
+
 [http://dc130.4shared.com/img/135343173/a9024add/mappanel07.png]
-[[category:uncategorized]]
-
-
-
 [[category:uncategorized]]
