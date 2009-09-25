@@ -1,9 +1,0 @@
-POMA - Position Manager
-
-*******************************************************************************
-Eclipse project files are provided but some library paths are hard-coded.
-If you cannot build this project using Eclipse. Just create a new project using gwt,
-copy the sources and import them using Eclipse.
-
-Regards,
-BkitMobile
