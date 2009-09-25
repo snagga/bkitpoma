@@ -23,7 +23,7 @@ Sản phẩm POMA là một dịch vụ hướng địa điểm (Location-Based 
 ==HƯỚNG DẪN==
 ===Đăng kí:===
 
-* Bấm chuột vào <nowiki>’</nowiki>Đăng kí<nowiki>’</nowiki> tại góc phải của trình duyệt
+* Bấm chuột vào ’Đăng kí’ tại góc phải của trình duyệt
 
 [[Image:UserGuide_-_BkitPoma_01.png|framed|none]]
 
@@ -35,11 +35,11 @@ Sản phẩm POMA là một dịch vụ hướng địa điểm (Location-Based 
 
 '''Hình 2: Giao diện chương trình khi đăng kí tài khoản'''
 
-* Điền đầy đủ thông tin, sau đó nhấp vào <nowiki>’</nowiki>Gửi<nowiki>’</nowiki> để kết thúc quá trình đăng kí. Hoặc bạn có thể xóa tất các field để tiến hành điền lại từ đầu. Vì lý do an toàn, bạn sẽ được yêu cầu nhập mã xác nhận, nếu nhập thành công. Quá trình đăng kí kết thúc, sẽ có một thông báo yêu cầu kiểm tra email để hoàn tất đăng kí.
+* Điền đầy đủ thông tin, sau đó nhấp vào ’Gửi’ để kết thúc quá trình đăng kí. Hoặc bạn có thể xóa tất các field để tiến hành điền lại từ đầu. Vì lý do an toàn, bạn sẽ được yêu cầu nhập mã xác nhận, nếu nhập thành công. Quá trình đăng kí kết thúc, sẽ có một thông báo yêu cầu kiểm tra email để hoàn tất đăng kí.
 * Sau khi theo hướng dẫn trong mail đăng kí, nhấp vào link kích hoạt, từ bây giờ bạn đã có thể đăng nhập và sử dụng tài nguyên của BkitPoma.
 
 ===Đăng nhập===
-* Bấm chuột vào <nowiki>’</nowiki>Đăng nhập<nowiki>’</nowiki> tại góc phải trình duyệt để đăng nhập
+* Bấm chuột vào ’Đăng nhập’ tại góc phải trình duyệt để đăng nhập
 
 [[Image:UserGuide_-_BkitPoma_03.png|framed|none]]
 
@@ -68,7 +68,7 @@ Sản phẩm POMA là một dịch vụ hướng địa điểm (Location-Based 
 '''Hình 6: Giao diện sau khi đăng nhập thành công'''
 
 ===Xem và sửa thông tin của người dùng:===
-* Bấm chuột chọn <nowiki>’</nowiki>(Thông tin)<nowiki>’</nowiki> 
+* Bấm chuột chọn ’(Thông tin)’ 
 [[Image:UserGuide_-_BkitPoma_08.png|framed|none]]
 , chương trình sẽ hiển thị thông tin của người dùng:
 
@@ -76,10 +76,10 @@ Sản phẩm POMA là một dịch vụ hướng địa điểm (Location-Based 
 
 '''Hình 7: Xem thông tin của người dùng đang sử dụng'''
 
-* Bạn có thể thay đổi thông tin cá nhân sau đó chọn <nowiki>’</nowiki>Cập nhật<nowiki>’</nowiki> để dữ liệu được cập nhật. Trước khi tiến hành cập nhật chương trình sẽ yêu cầu bạn nhập mã xác nhận.
+* Bạn có thể thay đổi thông tin cá nhân sau đó chọn ’Cập nhật’ để dữ liệu được cập nhật. Trước khi tiến hành cập nhật chương trình sẽ yêu cầu bạn nhập mã xác nhận.
 
 ===Đăng kí thiết bị mới:===
-* Bấm chuột vào nút <nowiki>’</nowiki>Tạo mới<nowiki>’</nowiki> 
+* Bấm chuột vào nút ’Tạo mới’ 
 [[Image:UserGuide_-_BkitPoma_10.png|framed|none]]
 để đăng kí thiết bị mới. Sau đó chương trình sẽ chuyển để trang để đăng kí thiết bị mới như sau:
 
@@ -92,10 +92,10 @@ Sản phẩm POMA là một dịch vụ hướng địa điểm (Location-Based 
 * Thiết lập cho thiết bị: thiết lập thời gian thiết bị gửi tín hiệu lên server và hình đại diện để hình thị trên bản đồ
 * Thiết lập thời gian quản lý: Thiết lập thời gian theo dõi thiết bị
 * Thông tin bổ sung: Các thông tin bổ sung, người dùng có thể bỏ quan
-* Nhấn <nowiki>’</nowiki>Gửi<nowiki>’</nowiki> để hoàn tất đăng kí, người dùng được yêu cầu nhập mã xác nhận để hoàn tất.
+* Nhấn ’Gửi’ để hoàn tất đăng kí, người dùng được yêu cầu nhập mã xác nhận để hoàn tất.
 
 ===Xem và sửa thông tin thiết bị:===
-* Chuột 1 dòng trong danh sách các thiết bị sau đó chọn <nowiki>’</nowiki>Thông tin<nowiki>’</nowiki> 
+* Chuột 1 dòng trong danh sách các thiết bị sau đó chọn ’Thông tin’ 
 [[Image:UserGuide_-_BkitPoma_12.png|framed|none]]
 để xem thông tin của thiết bị:
 
@@ -105,15 +105,15 @@ Sản phẩm POMA là một dịch vụ hướng địa điểm (Location-Based 
 
 * Trong đó:
 * Các thông tin khi đăng kí thiết bị
-* Bên cạnh đó còn có mục <nowiki>’</nowiki>Chia sẻ quản lý<nowiki>’</nowiki> tại đây người dùng có thể chia sẻ quyền quản lý thiết bị này cho các người dùng khác. Khi bấm vào <nowiki>’</nowiki>Edit<nowiki>’</nowiki> sẽ hiển thị 1 cửa sổ chia sẻ quyền như sau:
+* Bên cạnh đó còn có mục ’Chia sẻ quản lý’ tại đây người dùng có thể chia sẻ quyền quản lý thiết bị này cho các người dùng khác. Khi bấm vào ’Edit’ sẽ hiển thị 1 cửa sổ chia sẻ quyền như sau:
 
 [[Image:UserGuide_-_BkitPoma_14.png|framed|none]]
 
 '''Hình 10: Chia sẻ quyền quản lý của thiết bị giữa các người dùng khác'''
 
-* Để thêm vào mục Người sở hữu/Người giám sát người dùng chỉ cần nhập tên người dùng khác sau đó chọn <nowiki>’</nowiki>Thêm<nowiki>’</nowiki> để thêm vào danh sách tương ứng. Ngoài ra người dùng còn được phép chuyển từ người sở hữu sang người giám sát bằng các mũi tên tương ứng sau khi chọn đối tượng.
+* Để thêm vào mục Người sở hữu/Người giám sát người dùng chỉ cần nhập tên người dùng khác sau đó chọn ’Thêm’ để thêm vào danh sách tương ứng. Ngoài ra người dùng còn được phép chuyển từ người sở hữu sang người giám sát bằng các mũi tên tương ứng sau khi chọn đối tượng.
 ===Xóa thiết bị:===
-* Chọn thiết bị trong danh sách sau đó bấm chọn <nowiki>’</nowiki>Xóa<nowiki>’</nowiki> 
+* Chọn thiết bị trong danh sách sau đó bấm chọn ’Xóa’ 
 [[Image:UserGuide_-_BkitPoma_15.png|framed|none]]
 , chương trình sẽ yêu cầu bạn nhập mã xác nhận.
 * Sau khi nhập và xác nhận thành công, chương trình sẽ xóa và cập nhật lên danh sách.
@@ -124,7 +124,7 @@ Sản phẩm POMA là một dịch vụ hướng địa điểm (Location-Based 
 '''Hình 11: Toolbar'''
 
 * Xem chi tiết thông tin của 1 thiết bị (hiển thị chi tiết đường đi, thời gian và các điểm trên bản đồ mà thiết bị di chuyển qua)
-* Ấn vào nút <nowiki>’</nowiki>Chi tiết<nowiki>’</nowiki> ở Toolbar
+* Ấn vào nút ’Chi tiết’ ở Toolbar
 
 [[Image:UserGuide_-_BkitPoma_17.png|framed|none]]
 
@@ -165,7 +165,7 @@ Sản phẩm POMA là một dịch vụ hướng địa điểm (Location-Based 
 * Thông tin về kinh độ, vĩ độ, vận tốc cũng được cập nhật liên tục. Người dùng có thể biết thiết bị đang di chuyển với vận tốc (tính tương đối chứ không chính xác) bao nhiêu hoặc đang đứng yên (cũng có thể là mất sóng không gửi tín hiệu lên server được).
 ===Các chức năng khác:===
 * Gửi phản hồi cho nhóm tác giả:
-* Chọn <nowiki>’</nowiki>Liên hệ<nowiki>’</nowiki> 
+* Chọn ’Liên hệ’ 
 [[Image:UserGuide_-_BkitPoma_24.png|framed|none]]
 , chương trình sẽ xuất hiện 1 cửa sổ như sau:
 
@@ -173,6 +173,6 @@ Sản phẩm POMA là một dịch vụ hướng địa điểm (Location-Based 
 
 '''Hình 16: Gửi feedback cho người quản lý'''
 
-* Sau khi nhập các nội dung, nhấp vào <nowiki>’</nowiki>Gửi<nowiki>’</nowiki>, chương trình sẽ xuất hiện cửa sổ yêu cầu bạn nhập mã xác nhận. Sau khi xác nhận thành công, email sẽ được gửi để người điều hành website và bạn sẽ sớm nhận được email phản hồi từ tác giả. 
+* Sau khi nhập các nội dung, nhấp vào ’Gửi’, chương trình sẽ xuất hiện cửa sổ yêu cầu bạn nhập mã xác nhận. Sau khi xác nhận thành công, email sẽ được gửi để người điều hành website và bạn sẽ sớm nhận được email phản hồi từ tác giả. 
 
 [[category:uncategorized]]
