@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright 2009 BkitMobile.
+ Licensed under the Apache License, Version 2.0:
+    http://www.apache.org/licenses/LICENSE-2.0
+-->
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:maps="com.google.maps.*" layout="absolute" width="100%" height="100%" creationComplete="initApp()">
+  <maps:Map
+    id="map"
+    key="ABQIAAAAXqEHQfJuF82t_ZEOQ94VCBTvAv_lJH_V34Cez6bXSeA2hcCZdBR6DaYNdiPCziM9SJDeewFX-FYa1A"
+    mapevent_mapready="onMapReady(event)"
+    width="100%" height="100%"/>
+  <mx:HTTPService id="trackeds" method="POST" useProxy="false" resultFormat="array" url="http://localhost:8080/api/flexmap/">
+  <mx:request xmlns="">
+  	<uid>{_uid}</uid>
+  	<api>{_api}</api>
+  </mx:request>
+  	<mx:fault>
+  		<![CDATA[
+  			Alert.show("Cannot connect to POMA server. Please visit http://bkitpoma.appspot.com for more info", "Error");
+  			cbTrace.selected = false;
+  		]]>
+  	</mx:fault>
+  	<mx:result>
+  		<![CDATA[
+  			var myList:ArrayCollection = null;
+  			try {
+  				myList = ArrayCollection(trackeds.lastResult.source[0].trackeds.tracked);
+  				var tracked:Object;
+  				for each(tracked in myList) {
+  					processTracked(tracked);
+  				}
+  			} catch (e) {
+  				//Alert.show("ERROR", "error");
+  				//cbTrace.selected = false;
+  			}  			
+  		]]>
+  	</mx:result>
+  </mx:HTTPService>
+  <mx:Script>
+    <![CDATA[
+    	import mx.utils.ObjectProxy;
+    	import com.google.maps.overlays.Polyline;
+    	import com.google.maps.styles.FillStyle;
+    	import com.google.maps.styles.StrokeStyle;
+    	import com.google.maps.LatLngBounds;
+    	import com.google.maps.overlays.MarkerOptions;
+    	import com.google.maps.MapMouseEvent;
+    	import com.google.maps.controls.MapTypeControl;
+    	import com.google.maps.controls.PositionControl;
+    	import com.google.maps.controls.ZoomControl;
+    	import flash.sampler.getSize;
+    	import com.google.maps.overlays.Marker;
+		import mx.collections.ArrayCollection;
+		import mx.controls.Alert;
+		import mx.rpc.events.ResultEvent;
+		import mx.rpc.events.FaultEvent;
+		import com.google.maps.Map;
+		import com.google.maps.LatLng;
+		import com.google.maps.MapEvent;
+		import com.google.maps.MapType;
+		import com.google.maps.InfoWindowOptions;
+		import mx.core.Application;
+
+		[Bindable]
+		public var _uid:String;
+		
+		[Bindable]
+		public var _api:String;
+		
+		private var myList:Array;
+		private var aTimer:Timer;
+		private var animateTimer:Timer;
+		private var bounds:LatLngBounds;
+		private var trackedList:Dictionary;
+      	
+      	function initApp():void {
+      		_uid = Application.application.parameters.uid;
+      		_api = Application.application.parameters.api;
+      		trace(_uid);
+      		trace(_api);
+      		for (var i:String in Application.application.parameters) {
+           trace(Application.application.parameters[i]);
+        }
+
+      	}
+      	
+      	private function onMapReady(event:Event):void {
+	        map.setCenter(new LatLng(10.77344628, 106.65964007), 11, MapType.NORMAL_MAP_TYPE);
+	        bounds = new LatLngBounds();
+	        map.enableScrollWheelZoom();
+	        map.addControl(new ZoomControl());
+			map.addControl(new PositionControl());
+			map.addControl(new MapTypeControl());
+			aTimer = new Timer(5000, 0);
+        	aTimer.addEventListener("timer", aTimerFunction);
+        	aTimer.start();
+        	trackedList = new Dictionary();
+      	}
+      	
+      	private function aTimerFunction(eventArgs:TimerEvent):void {
+      		if (!cbTrace.selected) return;
+      		trackeds.send();
+      	}
+      	
+      	private function processTracked(tracked:*):void {
+      		var obj:Marker = trackedList["marker"+tracked.id];
+      		if (obj != null) {
+      			var newLatLng:LatLng = new LatLng(tracked.latitude, tracked.longitude);
+      			if (!obj.getLatLng().equals(newLatLng)) {
+      				obj.setLatLng(new LatLng(tracked.latitude, tracked.longitude));
+      			}
+      			return;
+      		}
+      		
+      		var iconLoader:Loader = new Loader();
+      		var urlRequest:URLRequest = new URLRequest(tracked.icon);
+      		iconLoader.load(urlRequest);
+      		var marker:Marker = new Marker(new LatLng(tracked.latitude, tracked.longitude));
+      		trackedList["marker"+tracked.id] = marker;
+      		bounds.extend(marker.getLatLng());
+      		var markerOptions:MarkerOptions =  new MarkerOptions({
+//                  strokeStyle: new StrokeStyle({color: 0x987654}),
+//                  fillStyle: new FillStyle({color: 0x223344, alpha: 0.4}),
+//                  radius: 20,
+                  hasShadow: true,
+                  label: ""+tracked.id,
+                  title: ""+tracked.id,
+                  icon: iconLoader
+			})
+			
+			marker.setOptions(markerOptions);
+      		
+      		marker.addEventListener(MapMouseEvent.CLICK, function(e:MapMouseEvent):void
+			{
+            	marker.openInfoWindow(new InfoWindowOptions({
+            		title: tracked.name, 
+            		contentHTML: "Latitude: "+tracked.latitude+"<br />"
+            				+"Longitude: "+tracked.longitude+"<br />"
+            				+"Speed: "+tracked.speed+" m/s<br />"
+            				+"Time: "+tracked.time
+            	}));
+			});
+      		map.addOverlay(marker);
+      		//map.panTo(marker.getLatLng());
+      		map.panTo(bounds.getCenter());
+  		}
+    ]]>
+  </mx:Script>
+  <mx:CheckBox label="Trace" id="cbTrace" selected="true" enabled="true" top="10" right="298"/>
+</mx:Application>
