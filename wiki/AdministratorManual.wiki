@@ -1,0 +1,35 @@
+Title page
+
+----
+
+<font size = "5">'''HƯỚNG DẪN SỬ DỤNG TRANG QUẢN LÝ'''</font>
+
+==Quản lý thành viên:==
+
+[[Image:User_Guide_-_Admin_01.png|framed|none]]
+
+<font color="#4F81BD">'''Hình 1: Chức năng quản lý thành viên'''</font>
+
+Các thao tác, chương trình hỗ trợ người quản lý:
+
+* <u>'''''Thay đổi thông tin của thành viên:'''''</u>
+* Bảng bên trái (1) liệt kê danh sách tất cả các thành viên tham gia.
+* Bảng bên phải (2) liệt kê các thuộc tính mà người quản lý có thể thay đổi
+* Để thay đổi field nào người quản lý chỉ cần click vào field tương ứng
+
+[[Image:User_Guide_-_Admin_02.png|framed|none]]
+
+<font color="#4F81BD">'''Hình 2: Thay đổi các thuộc tính của thành viên'''</font>
+
+* Để cập nhật vào cơ sở dữ liệu, nhấp Apply. Để trở về trạng thái ban đầu, nhấp Reset
+* Ngoài ra nếu thành viên đó chưa được kích hoạt, người quản lý có thể gửi mail cho thành viên để kích hoạt
+
+* <u>'''''Thay đổi một số cấu hình của chương trình:'''''</u>
+
+[[Image:User_Guide_-_Admin_03.png|framed|none]]
+
+<font color="#4F81BD">'''Hình 3: Thiết lập các cấu hình cho chương trình'''</font>
+
+* Người quản thay đổi các thiết lập cấu hình cho chương trình sau đó nhấn <nowiki>’</nowiki>Submit<nowiki>’</nowiki> để hoàn thành. 
+
+[[category:uncategorized]]
