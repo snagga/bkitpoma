@@ -4,6 +4,23 @@ Title page
 
 <font size = "5">HƯỚNG DẪN SỬ DỤNG TRANG QUẢN LÝ</font>
 
+==Đăng nhập==
+* Giao diện khi đăng nhập
+
+[http://img156.imageshack.us/my.php?image=loginz.png]
+
+Hình 1: Cửa sổ đăng nhập vào trang quản lý
+
+* Người quản lý sử dụng tài khoản mặc định để đăng nhập như sau:
+* ''Username'': admin
+* ''Password'': 123456
+* Người quản lý có thể thay đổi mật khẩu mặc định bằng cách, bấm chọn <nowiki>’</nowiki>Change Password<nowiki>’</nowiki>
+
+[http://img97.imageshack.us/img97/4084/changepass.png]
+
+Hình 2: Cửa sổ thay đổi mật khẩu
+
+
 ==Quản lý thành viên:==
 
 [http://dc109.4shared.com/img/135361422/7570d70e/aimage002.jpg]
@@ -31,4 +48,3 @@ Các thao tác, chương trình hỗ trợ người quản lý:
 <font color="#4F81BD">Hình 3: Thiết lập các cấu hình cho chương trình</font>
 
 * Người quản thay đổi các thiết lập cấu hình cho chương trình sau đó nhấn ’Submit’ để hoàn thành. 
-
