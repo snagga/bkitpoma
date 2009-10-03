@@ -1,5 +1,7 @@
 <font size = "5">HƯỚNG DẪN SỬ DỤNG TRANG QUẢN LÝ</font>
-*Mục lục*
+*
+*
+* <font size = "3">*Mục lục*</font>
 <wiki:toc max_depth="2" />
 =Đăng nhập=
 * Giao diện khi đăng nhập
