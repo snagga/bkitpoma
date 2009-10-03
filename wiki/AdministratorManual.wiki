@@ -1,7 +1,6 @@
 <font size = "5">HƯỚNG DẪN SỬ DỤNG TRANG QUẢN LÝ</font>
 
 ==Đăng nhập==
-<wiki:toc max_depth="1" />
 * Giao diện khi đăng nhập
 
 [http://12a1nhc.com/duyhoai/RKH/Projects/Poma/Tutorials/Resources/Images/UserGuide%20-%20Admin/image002.jpg]
