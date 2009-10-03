@@ -1,13 +1,9 @@
-Title page
-
-----
-
 <font size = "5">HƯỚNG DẪN SỬ DỤNG TRANG QUẢN LÝ</font>
 
 ==Đăng nhập==
 * Giao diện khi đăng nhập
 
-[http://img156.imageshack.us/img156/4679/loginz.png]
+[http://12a1nhc.com/duyhoai/RKH/Projects/Poma/Tutorials/Resources/Images/UserGuide%20-%20Admin/image002.jpg]
 
 Hình 1: Cửa sổ đăng nhập vào trang quản lý
 
@@ -16,14 +12,14 @@ Hình 1: Cửa sổ đăng nhập vào trang quản lý
 * ''Password'': 123456
 * Người quản lý có thể thay đổi mật khẩu mặc định bằng cách, bấm chọn ’Change Password’
 
-[http://img97.imageshack.us/img97/4084/changepass.png]
+[http://12a1nhc.com/duyhoai/RKH/Projects/Poma/Tutorials/Resources/Images/UserGuide%20-%20Admin/image004.jpg]
 
 Hình 2: Cửa sổ thay đổi mật khẩu
 
 
 ==Quản lý thành viên:==
 
-[http://dc109.4shared.com/img/135361422/7570d70e/aimage002.jpg]
+[http://12a1nhc.com/duyhoai/RKH/Projects/Poma/Tutorials/Resources/Images/UserGuide%20-%20Admin/image006.jpg]
 
 <font color="#4F81BD">Hình 1: Chức năng quản lý thành viên</font>
 
@@ -34,7 +30,7 @@ Các thao tác, chương trình hỗ trợ người quản lý:
 * Bảng bên phải (2) liệt kê các thuộc tính mà người quản lý có thể thay đổi
 * Để thay đổi field nào người quản lý chỉ cần click vào field tương ứng
 
-[http://dc109.4shared.com/img/135361421/ec7986b4/aimage004.jpg]
+[http://12a1nhc.com/duyhoai/RKH/Projects/Poma/Tutorials/Resources/Images/UserGuide%20-%20Admin/image008.jpg]
 
 <font color="#4F81BD">Hình 2: Thay đổi các thuộc tính của thành viên</font>
 
@@ -43,7 +39,7 @@ Các thao tác, chương trình hỗ trợ người quản lý:
 
 * <u>''Thay đổi một số cấu hình của chương trình:''</u>
 
-[http://dc109.4shared.com/img/135361415/c039116e/aimage006.jpg]
+[http://12a1nhc.com/duyhoai/RKH/Projects/Poma/Tutorials/Resources/Images/UserGuide%20-%20Admin/image010.jpg]
 
 <font color="#4F81BD">Hình 3: Thiết lập các cấu hình cho chương trình</font>
 
