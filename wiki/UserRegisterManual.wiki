@@ -21,7 +21,7 @@ Sản phẩm POMA là một dịch vụ hướng địa điểm (Location-Based 
 
 [http://12a1nhc.com/duyhoai/RKH/Projects/Poma/Tutorials/Resources/Images/UserGuide%20-%20BkitPoma/image002.jpg]
 
-<font color="#4F81BD">Hình 1: Đăng kí tài khoản tại BkitPoma</font>
+<font color="#4F81BD">Hình 1: Đăng kí tài khoản tại<a href = "http://bkitpoma.appspot.com/" > BkitPoma</a></font>
 
 * Sau đó giao diện sẽ đổi sang màn hình để đăng kí như sau:
 
@@ -30,22 +30,22 @@ Sản phẩm POMA là một dịch vụ hướng địa điểm (Location-Based 
 <font color="#4F81BD">Hình 2: Giao diện chương trình khi đăng kí tài khoản</font>
 
 * Điền đầy đủ thông tin, sau đó nhấp vào ’Gửi’ để kết thúc quá trình đăng kí. Hoặc bạn có thể xóa tất các field để tiến hành điền lại từ đầu. Vì lý do an toàn, bạn sẽ được yêu cầu nhập mã xác nhận, nếu nhập thành công. Quá trình đăng kí kết thúc, sẽ có một thông báo yêu cầu kiểm tra email để hoàn tất đăng kí.
-* Sau khi theo hướng dẫn trong mail đăng kí, nhấp vào link kích hoạt, từ bây giờ bạn đã có thể đăng nhập và sử dụng tài nguyên của BkitPoma.
+* Sau khi theo hướng dẫn trong mail đăng kí, nhấp vào link kích hoạt, từ bây giờ bạn đã có thể đăng nhập và sử dụng tài nguyên của<a href = "http://bkitpoma.appspot.com/" > BkitPoma</a>.
 
 ==Đăng nhập==
 * Bấm chuột vào ’Đăng nhập’ tại góc phải trình duyệt để đăng nhập
 
 [http://12a1nhc.com/duyhoai/RKH/Projects/Poma/Tutorials/Resources/Images/UserGuide%20-%20BkitPoma/image006.jpg]
 
-<font color="#4F81BD">Hình 3: Đăng nhập vào BkitPoma</font>
+<font color="#4F81BD">Hình 3: Đăng nhập vào<a href = "http://bkitpoma.appspot.com/" > BkitPoma</a></font>
 
 * Sau đó form yêu cầu bạn nhập tài khoản:
 
 [http://12a1nhc.com/duyhoai/RKH/Projects/Poma/Tutorials/Resources/Images/UserGuide%20-%20BkitPoma/image008.jpg]
 
-<font color="#4F81BD">Hình 4: Cửa sổ đăng nhập bằng tài khoản đã đăng kí tại BkitPoma</font>
+<font color="#4F81BD">Hình 4: Cửa sổ đăng nhập bằng tài khoản đã đăng kí tại<a href = "http://bkitpoma.appspot.com/" > BkitPoma</a></font>
 
-* Bên cạnh đó bạn có thể sử dụng tài khoản OpenID để đăng nhập vào BkitPoma
+* Bên cạnh đó bạn có thể sử dụng tài khoản OpenID để đăng nhập vào<a href = "http://bkitpoma.appspot.com/" > BkitPoma</a>
 
 [http://12a1nhc.com/duyhoai/RKH/Projects/Poma/Tutorials/Resources/Images/UserGuide%20-%20BkitPoma/image010.jpg]
 
