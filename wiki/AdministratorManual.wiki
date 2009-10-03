@@ -1,6 +1,7 @@
 <font size = "5">HƯỚNG DẪN SỬ DỤNG TRANG QUẢN LÝ</font>
-
-==Đăng nhập==
+*Mục lục*
+<wiki:toc max_depth="2" />
+=Đăng nhập=
 * Giao diện khi đăng nhập
 
 [http://12a1nhc.com/duyhoai/RKH/Projects/Poma/Tutorials/Resources/Images/UserGuide%20-%20Admin/image002.jpg]
@@ -8,24 +9,26 @@
 Hình 1: Cửa sổ đăng nhập vào trang quản lý
 
 * Người quản lý sử dụng tài khoản mặc định để đăng nhập như sau:
-* ''Username'': admin
-* ''Password'': 123456
-* Người quản lý có thể thay đổi mật khẩu mặc định bằng cách, bấm chọn ’Change Password’
+* _Username_: admin
+* _Password_: 123456
+* Người quản lý có thể thay đổi mật khẩu mặc định bằng cách, bấm chọn ’_Change Password_’
 
 [http://12a1nhc.com/duyhoai/RKH/Projects/Poma/Tutorials/Resources/Images/UserGuide%20-%20Admin/image004.jpg]
 
 Hình 2: Cửa sổ thay đổi mật khẩu
 
 
-==Quản lý thành viên:==
+=Quản lý thành viên:=
 
 [http://12a1nhc.com/duyhoai/RKH/Projects/Poma/Tutorials/Resources/Images/UserGuide%20-%20Admin/image006.jpg]
 
 <font color="#4F81BD">Hình 1: Chức năng quản lý thành viên</font>
+* (1): Liệt kê danh sách tất cả các thành viên
+* (2): Liệt kê các thuộc tính mà người quản lý có thể thay đổi
 
 Các thao tác, chương trình hỗ trợ người quản lý:
 
-* <u>''Thay đổi thông tin của thành viên:''</u>
+==Thay đổi thông tin của thành viên:==
 * Bảng bên trái (1) liệt kê danh sách tất cả các thành viên tham gia.
 * Bảng bên phải (2) liệt kê các thuộc tính mà người quản lý có thể thay đổi
 * Để thay đổi field nào người quản lý chỉ cần click vào field tương ứng
@@ -37,7 +40,7 @@ Các thao tác, chương trình hỗ trợ người quản lý:
 * Để cập nhật vào cơ sở dữ liệu, nhấp Apply. Để trở về trạng thái ban đầu, nhấp Reset
 * Ngoài ra nếu thành viên đó chưa được kích hoạt, người quản lý có thể gửi mail cho thành viên để kích hoạt
 
-* <u>''Thay đổi một số cấu hình của chương trình:''</u>
+==Thay đổi một số cấu hình của chương trình:==
 
 [http://12a1nhc.com/duyhoai/RKH/Projects/Poma/Tutorials/Resources/Images/UserGuide%20-%20Admin/image010.jpg]
 
