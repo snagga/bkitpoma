@@ -1,8 +1,10 @@
 <font size = "7">HƯỚNG DẪN SỬ DỤNG</font>
-<wiki:toc max_depth="2" />
+
 <font size = "5">- BkitPOMA -</font>
 
 ----
+<wiki:toc max_depth="2" />
+
 <br />
 =GIỚI THIỆU=
 Sản phẩm POMA là một dịch vụ hướng địa điểm (Location-Based Services), là mô hình quản lý vị trí của những vật thể có tính chất di động như xe bus, taxi, hay thậm chí cả con người. POMA là giải pháp cho một lớp các bài toán về giám sát, theo dõi vị trí được ứng dụng những công nghệ hiện đại với chi phí thấp nhất có thể và khả năng ứng dụng ở nhiều lĩnh vực trong đời sống.
