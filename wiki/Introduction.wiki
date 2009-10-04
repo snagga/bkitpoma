@@ -31,8 +31,8 @@ Poma được xây dựng dựa trên một loạt các công nghệ mở, miễ
 =Tính hiệu quả:=
 POMA được xây dựng trên một loạt các công nghệ mở của Google, nhờ đó sản phẩm đạt được những nhất quán và tính hiệu quả rất cao. Các dịch vụ, công cụ mà POMA sử dụng hoàn toàn miễn phí nên khi đầu tư phát triển POMA, hầu như nhóm phát triển đã giảm thiểu được mọi rủi ro. Tất cả hoàn toàn miễn phí, ngoại trừ chi phí về con người, POMA mang lại rất nhiều lợi ích mà những ứng dụng chuyên biệt xây dựng từ nó mang lại. Hơn nữa, POMA được phát hành bản core được mở mã nguồn, sẽ nhanh chóng được cộng đồng developer đón nhận, phát triển và ngày càng hoàn thiện. Các doanh nghiệp cũng sẵn sàng thử nghiệm POMA vì tính hiệu quả về ứng dụng và kinh tế mà nó mang lại.
  =Hướng phát triển=
--  Người giám sát có thể vạch ra những phạm vi, vùng địa lý cho phép, hoặc không cho phép đối với tracked. Tracker còn có thể đặt ra những giới hạn khác về vận tốc, thời gian. Khi tracked vi phạm những giới hạn đó hệ thống sẽ đưa ra những cảnh báo, đồng thời thông báo cho người giám sát. <br />
--  Hệ thống tương tác giữa thiết bị và người giám sát: thích hợp với các doanh nghiệp vận tải như doanh nghiệp về taxi … (Trao đổi thông tin thoại hoặc lời nhắn) <br />
--  Thiết bị không chỉ dừng lại ở việc gửi dữ liệu lên server mà còn là thiết bị có thể tìm đường và có thể gửi địa điểm muốn chia sẻ cho mọi người (như khách sạn, quán ăn …) để làm phong phú cho cơ sở dữ liệu<br />
--  Cải tiến hệ thống để có thể ứng phó với những trường hợp số lượng thành viên lên rất nhiều. 
+-  Người giám sát có thể vạch ra những phạm vi, vùng địa lý cho phép, hoặc không cho phép đối với tracked. Tracker còn có thể đặt ra những giới hạn khác về vận tốc, thời gian. Khi tracked vi phạm những giới hạn đó hệ thống sẽ đưa ra những cảnh báo, đồng thời thông báo cho người giám sát. <br /><br />
+-  Hệ thống tương tác giữa thiết bị và người giám sát: thích hợp với các doanh nghiệp vận tải như doanh nghiệp về taxi … (Trao đổi thông tin thoại hoặc lời nhắn) <br /><br />
+-  Thiết bị không chỉ dừng lại ở việc gửi dữ liệu lên server mà còn là thiết bị có thể tìm đường và có thể gửi địa điểm muốn chia sẻ cho mọi người (như khách sạn, quán ăn …) để làm phong phú cho cơ sở dữ liệu<br /><br />
+-  Cải tiến hệ thống để có thể ứng phó với những trường hợp số lượng thành viên lên rất nhiều. <br /><br />
 
