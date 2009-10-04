@@ -1,4 +1,4 @@
-#summary Guide for developer to test Poma system instead of GPS device
+#summary Guide for developer to test Poma system without GPS device
 <font size = "5">HƯỚNG DẪN SỬ DỤNG PHẦN MỀM POMA TEST</font>
 ----
 
