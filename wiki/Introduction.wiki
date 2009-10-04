@@ -11,10 +11,10 @@ Như vậy, trong xuyên suốt quá trình phát triển và đưa sản phẩm
 =Giải pháp=
 Poma được xây dựng dựa trên một loạt các công nghệ mở, miễn phí theo đúng tiêu chí của cuộc thi đề ra.
 
-* Server của Poma được xây dựng trên nền công nghệ GWT - Google Web Toolkit và đặt trên App Engine của Google. Nhờ vậy Poma sẽ không phải tốn các chi phí để bảo trì hay thuê server. Các rủi ro khác về phía Server nhờ vậy sẽ được giảm đến mức tối thiểu (cân bằng tải, băng thông, sao lưu dữ liệu...).
-* Công cụ chính để phát triển Poma dành cho các lập trình viên là Eclipse và GWT plugin cũng là những sản phẩm nguồn mở được cung cấp miễn phí. Chỉ với một vài thao tác đơn giản, lập trình viên có thể triển khai (deploy) ứng dụng lên App Engine, giúp tiết kiệm công sức của lập trình viên.
-* Bên cạnh đó Poma được thiết kế theo những tiêu chuẩn nhằm giảm thiểu những rủi ro, hạn chế sự phụ thuộc vào các nhà cung cấp dịch vụ như Google để từ các nhà phát triển phần mềm sau này có thể linh động cho hoạt động của doanh nghiệp mình.
-* Không những thế, Poma đã được thiết kế để có thể dễ dàng tích hợp vào những môi trường khác như: Facebook (nhờ vào đặc điểm của các mạng xã hội để dễ dàng quảng báo website một cách đơn giản và hiệu quả) hoặc có thể tạo một bản đồ nhúng (embedded map) giúp dễ dàng nhúng vào website của công ty để tiện cho việc quản lý.
+-  Server của Poma được xây dựng trên nền công nghệ GWT - Google Web Toolkit và đặt trên App Engine của Google. Nhờ vậy Poma sẽ không phải tốn các chi phí để bảo trì hay thuê server. Các rủi ro khác về phía Server nhờ vậy sẽ được giảm đến mức tối thiểu (cân bằng tải, băng thông, sao lưu dữ liệu...).
+-  Công cụ chính để phát triển Poma dành cho các lập trình viên là Eclipse và GWT plugin cũng là những sản phẩm nguồn mở được cung cấp miễn phí. Chỉ với một vài thao tác đơn giản, lập trình viên có thể triển khai (deploy) ứng dụng lên App Engine, giúp tiết kiệm công sức của lập trình viên.
+-  Bên cạnh đó Poma được thiết kế theo những tiêu chuẩn nhằm giảm thiểu những rủi ro, hạn chế sự phụ thuộc vào các nhà cung cấp dịch vụ như Google để từ các nhà phát triển phần mềm sau này có thể linh động cho hoạt động của doanh nghiệp mình.
+-  Không những thế, Poma đã được thiết kế để có thể dễ dàng tích hợp vào những môi trường khác như: Facebook (nhờ vào đặc điểm của các mạng xã hội để dễ dàng quảng báo website một cách đơn giản và hiệu quả) hoặc có thể tạo một bản đồ nhúng (embedded map) giúp dễ dàng nhúng vào website của công ty để tiện cho việc quản lý.
 =Tính năng=
 1. Quản lý lộ trình, vị trí theo thời gian thực của thiết bị.
 
@@ -29,10 +29,10 @@ Poma được xây dựng dựa trên một loạt các công nghệ mở, miễ
 6. Tương tác với mạng xã hội Facebook, dựa vào sức mạnh của mạng xã hội sẽ dễ dàng cho việc quảng bá website.
 
 =Tính hiệu quả:=
-POMA được xây dựng trên một loạt các công nghệ mở của Google, nhờ đó sản phẩm đạt được những nhất quán và tính hiệu quả rất cao. Các dịch vụ, công cụ mà POMA sử dụng hoàn toàn miễn phí nên khi đầu tư phát triển POMA, hầu như nhóm phát triển đã giảm thiểu được mọi rủi ro. Tất cả hoàn toàn miễn phí, ngoại trừ chi phí về con người, POMA mang lại rất nhiều lợi ích mà những ứng dụng chuyên biệt xây dựng từ nó mang lại. Hơn nữa, POMA được phát hành bản core được mở mã nguồn, sẽ nhanh chóng được cộng đồng developer đón nhận, phát triển và ngày càng hoàn thiện. Các doanh nghiệp cũng sẵn sàng thử nghiệm POMA vì tính hiệu quả về ứng dụng và kinh tế mà nó mang lại.<br>
-=Hướng phát triển=
-* Người giám sát có thể vạch ra những phạm vi, vùng địa lý cho phép, hoặc không cho phép đối với tracked. Tracker còn có thể đặt ra những giới hạn khác về vận tốc, thời gian. Khi tracked vi phạm những giới hạn đó hệ thống sẽ đưa ra những cảnh báo, đồng thời thông báo cho tracker.
-* Hệ thống tương tác giữa thiết bị và người giám sát: thích hợp với các doanh nghiệp vận tải như doanh nghiệp về taxi … (Trao đổi thông tin thoại hoặc lời nhắn)
-* Thiết bị không chỉ dừng lại ở việc gửi dữ liệu lên server mà còn là thiết bị có thể tìm đường và có thể gửi địa điểm muốn chia sẻ cho mọi người (như khách sạn, quán ăn …) để làm phong phú cho cơ sở dữ liệu
-* Cải tiến hệ thống để có thể ứng phó với những trường hợp số lượng thành viên lên rất nhiều. 
+POMA được xây dựng trên một loạt các công nghệ mở của Google, nhờ đó sản phẩm đạt được những nhất quán và tính hiệu quả rất cao. Các dịch vụ, công cụ mà POMA sử dụng hoàn toàn miễn phí nên khi đầu tư phát triển POMA, hầu như nhóm phát triển đã giảm thiểu được mọi rủi ro. Tất cả hoàn toàn miễn phí, ngoại trừ chi phí về con người, POMA mang lại rất nhiều lợi ích mà những ứng dụng chuyên biệt xây dựng từ nó mang lại. Hơn nữa, POMA được phát hành bản core được mở mã nguồn, sẽ nhanh chóng được cộng đồng developer đón nhận, phát triển và ngày càng hoàn thiện. Các doanh nghiệp cũng sẵn sàng thử nghiệm POMA vì tính hiệu quả về ứng dụng và kinh tế mà nó mang lại.
+ =Hướng phát triển=
+-  Người giám sát có thể vạch ra những phạm vi, vùng địa lý cho phép, hoặc không cho phép đối với tracked. Tracker còn có thể đặt ra những giới hạn khác về vận tốc, thời gian. Khi tracked vi phạm những giới hạn đó hệ thống sẽ đưa ra những cảnh báo, đồng thời thông báo cho người giám sát. <br />
+-  Hệ thống tương tác giữa thiết bị và người giám sát: thích hợp với các doanh nghiệp vận tải như doanh nghiệp về taxi … (Trao đổi thông tin thoại hoặc lời nhắn) <br />
+-  Thiết bị không chỉ dừng lại ở việc gửi dữ liệu lên server mà còn là thiết bị có thể tìm đường và có thể gửi địa điểm muốn chia sẻ cho mọi người (như khách sạn, quán ăn …) để làm phong phú cho cơ sở dữ liệu<br />
+-  Cải tiến hệ thống để có thể ứng phó với những trường hợp số lượng thành viên lên rất nhiều. 
 
