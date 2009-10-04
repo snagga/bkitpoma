@@ -40,7 +40,7 @@ Click “OK”. The dialog closes, and the new location is added to the list of 
 
     3. Click the triangle next to the new install location, then click the triangle next to "Google" to display installation options. Check the boxes next to "Google Plugin for Eclipse 3.4" and "Google App Engine Java SDK". You can also select the "Google Web Toolkit SDK" if you’d like to use [http://code.google.com/webtoolkit/ Google Web Toolkit] with your apps. Click the “Install...” button. Follow the prompts to accept the terms of service and install the plugin.
 
-<u>Note</ u>: The plugin install process may take several minutes to complete as Eclipse updates dependencies. See the FAQ for more information.
+<u>Note</u>: The plugin install process may take several minutes to complete as Eclipse updates dependencies. See the FAQ for more information.
 
     4. When the installation is complete, Eclipse prompts you to restart. Click “Yes”. Eclipse restarts. The plugin is installed.
 
