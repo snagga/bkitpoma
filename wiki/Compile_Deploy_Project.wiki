@@ -54,7 +54,7 @@ See the Eclipse documentation for more information about Software Update.
 ==Update to get latest version (if any):==
 -  Start Eclipse.
 -  In Menu, choose Help – Software Updates
--  Click ’Add Site’, add http://dl.google.com/eclipse/plugin/3.4 http://dl.google.com/eclipse/plugin/3.4
+-  Click ’Add Site’, add http://dl.google.com/eclipse/plugin/3.4 
 -  Then add text to filter: "Google". Check into checkbox:
     1. Google Plugin for  Eclipse 3.4
 
@@ -70,12 +70,12 @@ See the Eclipse documentation for more information about Software Update.
 -  In Menu Toolbar, choose File – New – Other
 -  In SVN folder choose "Checkout Projects from SVN"<br />
 [http://12a1nhc.com/duyhoai/RKH/Projects/Poma/Tutorials/Resources/Images/Guide%20configuration%20to%20compile%20and%20deploy%20BkitPoma/image002.jpg]<br />
-<font color="#0070C0">Image 1 – Checkout Projects from SVN</ font>
+<font color="#0070C0">Image 1 – Checkout Projects from SVN</font>
 
 -  Click Next. Choose ’Create a new repository location’
 -  Input into Url text field with content: http://bkitpoma.googlecode.com/svn/trunk/ <br />
 [http://12a1nhc.com/duyhoai/RKH/Projects/Poma/Tutorials/Resources/Images/Guide%20configuration%20to%20compile%20and%20deploy%20BkitPoma/image004.jpg]<br />
-<font color="#0070C0">Image 2 – Insert Url to check out</ font>
+<font color="#0070C0">Image 2 – Insert Url to check out</font>
 
 -  Then click ’Next’ and after that click ’Finish’
 -  Wait to download source code from SVN.
@@ -86,43 +86,43 @@ See the Eclipse documentation for more information about Software Update.
 -  In General folder choose ’Existing Projects into workspace’, click Next
 <br />
 [http://12a1nhc.com/duyhoai/RKH/Projects/Poma/Tutorials/Resources/Images/Guide%20configuration%20to%20compile%20and%20deploy%20BkitPoma/image006.jpg]
-<font color="#0070C0">Image 3 – Insert from existing project</ font><br />
+<font color="#0070C0"><br />Image 3 – Insert from existing project</font><br />
 
 -  Browse to source code Folder (BkitPoma)
 -  After you import successfully, the screen as following:<br />
 [http://12a1nhc.com/duyhoai/RKH/Projects/Poma/Tutorials/Resources/Images/Guide%20configuration%20to%20compile%20and%20deploy%20BkitPoma/image008.jpg]
-<font color="#0070C0"><br />Image 4 – Import successfully</ font><br />
+<font color="#0070C0"><br />Image 4 – Import successfully</font><br />
 
 ===Configure for Build Path Project:===
 <u>Note:</u> Only do this step when have error like this:
 <br />
 [http://12a1nhc.com/duyhoai/RKH/Projects/Poma/Tutorials/Resources/Images/Guide%20configuration%20to%20compile%20and%20deploy%20BkitPoma/image010.jpg]
-<font color="#0070C0"><br />Image 5 – Error because build path incorrectly</ font><br />
+<font color="#0070C0"><br />Image 5 – Error because build path incorrectly</font><br />
 
 -  Right click in BkitPoma project, choose Build Path – Configure Build Path …<br />
 [http://12a1nhc.com/duyhoai/RKH/Projects/Poma/Tutorials/Resources/Images/Guide%20configuration%20to%20compile%20and%20deploy%20BkitPoma/image012.jpg]
-<font color="#0070C0"><br />Image 6 – Configure Build path</ font><br />
+<font color="#0070C0"><br />Image 6 – Configure Build path</font><br />
 
 -  Correct build path have error with default setup
 ===Compile===
 ====Compile in Web mode:====
 -  Click Run in Toolbar:<br />
 [http://12a1nhc.com/duyhoai/RKH/Projects/Poma/Tutorials/Resources/Images/Guide%20configuration%20to%20compile%20and%20deploy%20BkitPoma/image014.jpg]
-<font color="#0070C0"><br />Image 7 - Compile</ font><br />
+<font color="#0070C0"><br />Image 7 - Compile</font><br />
 
 -  Choose Run with mode Web Application and choose home.jsp as start point.
 -  If run successfully project in Hosted mode as follow:<br />
 [http://12a1nhc.com/duyhoai/RKH/Projects/Poma/Tutorials/Resources/Images/Guide%20configuration%20to%20compile%20and%20deploy%20BkitPoma/image016.jpg]
-<font color="#0070C0"><br />Image 8 – Project BkitPoma in Hosted Mode</ font><br />
+<font color="#0070C0"><br />Image 8 – Project BkitPoma in Hosted Mode</font><br />
 
 ====Run in Web mode====
 -  Click into Compile/Browse button in Hosted Browser<br />
 [http://12a1nhc.com/duyhoai/RKH/Projects/Poma/Tutorials/Resources/Images/Guide%20configuration%20to%20compile%20and%20deploy%20BkitPoma/image018.jpg]
-<font color="#0070C0"><br />Image 9 – Choose ’Compile/Browse’ to compile into Web mode</ font><br />
+<font color="#0070C0"><br />Image 9 – Choose ’Compile/Browse’ to compile into Web mode</font><br />
 
 -  Wait a minutes to compile, after that your default browser will start as follow:<br />
 [http://12a1nhc.com/duyhoai/RKH/Projects/Poma/Tutorials/Resources/Images/Guide%20configuration%20to%20compile%20and%20deploy%20BkitPoma/image020.jpg]
-<font color="#0070C0"><br />Image 10 – Project BkitPoma in Web mode</ font><br />
+<font color="#0070C0"><br />Image 10 – Project BkitPoma in Web mode</font><br />
 
 =Deploy project in Google App Engine:=
 For more detail, see: <br />[http://code.google.com/appengine/articles/domains.html http://code.google.com/appengine/articles/domains.html] <br />
