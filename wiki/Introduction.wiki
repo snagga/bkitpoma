@@ -1,6 +1,8 @@
 #summary Introduction to BkitPoma system
 <font size = "5">GIỚI THIỆU</font>
 ----
+<wiki toc max_depth = "3">
+
 =Tổng quan=
 Từ nhu cầu thực tế đó là các doanh nghiệp vận tải đặc biệt là xe buýt cần một lực lượng lớn nhân lực và chi phí để quản lý các vấn đề như: dừng đúng trạm, chạy không vượt quá tốc độ cho phép, chở đúng số người quy định, chạy đúng tuyến và đúng làn đường quy định, quản lý nhiên liệu hiệu quả nhằm giảm chi phí cho doanh nghiệp. Từ đó giải pháp Poma như một phương pháp hỗ trợ doanh nghiệp làm những việc tương tự.
 
