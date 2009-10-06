@@ -1,3 +1,4 @@
+#summary Guild to help developer to develop for Poma Mobile version
 <font size = "5">HOW TO DEVELOP POMA (MOBILE VERSION)</font>
 ----
 <wiki:toc max_depth = "3" />
@@ -60,6 +61,4 @@ Password: pass
 [http://12a1nhc.com/duyhoai/RKH/Projects/Poma/Tutorials/Resources/Images/Develop%20Poma%20Mobile%20ver/image018.jpg] <br />
 
 <font color="#4F81BD">Image 8 – Login successfully</font>
-
-
 
