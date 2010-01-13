@@ -1,0 +1,276 @@
+.gwt-Image {
+	float: left;
+	padding: 4px;
+}
+
+.openid {
+	float: left;
+	padding: 4px;
+}
+
+.openid-hover {
+	background-color: #FF6
+}
+
+.openid-select {
+	background-color: #FD6
+}
+
+#loading {
+	position: absolute;
+	left: 45%;
+	top: 40%;
+	padding: 2px;
+	z-index: 20001;
+	height: auto;
+	border: 1px solid #ccc;
+}
+
+#loading a {
+	color: #225588;
+}
+
+#loading .loading-indicator {
+	background: white;
+	color: #444;
+	font: bold 13px tahoma, arial, helvetica;
+	padding: 10px;
+	margin: 0;
+	height: auto;
+}
+
+#loading-msg {
+	font: normal 10px arial, tahoma, sans-serif;
+}
+
+/* Chooser*/
+.details .x-panel-body {
+	padding: 10px;
+	text-align: center;
+}
+
+.details img {
+	padding: 10px;
+	height: 90px;
+	width: 64px;
+}
+
+.details-info {
+	border-top: 1px solid #cccccc;
+	font: 11px Arial, Helvetica, sans-serif;
+	margin-top: 5px;
+	padding-top: 5px;
+	text-align: left;
+}
+
+.details-info b {
+	color: #555555;
+	display: block;
+	margin-bottom: 4px;
+}
+
+.details-info span {
+	display: block;
+	margin-bottom: 5px;
+	margin-left: 5px;
+}
+
+.ychooser-dlg select {
+	font-size: 12px;
+}
+
+#images-view .x-panel-body {
+	background: white;
+	font: 11px Arial, Helvetica, sans-serif;
+}
+
+#images-view .thumb {
+	background: #dddddd;
+	padding: 3px;
+}
+
+#images-view .thumb img {
+	height: 30px;
+	width: 30px;
+}
+
+#images-view .thumb-wrap {
+	float: left;
+	margin: 4px;
+	margin-right: 0;
+	padding: 5px;
+}
+
+#images-view .thumb-wrap span {
+	display: block;
+	overflow: hidden;
+	text-align: center;
+}
+
+#images-view .x-view-over {
+	border: 1px solid #dddddd;
+	background: #efefef
+		url( '/js/ext/resources/images/default/grid/row-over.gif' ) repeat-x
+		left top;
+	padding: 4px;
+}
+
+#images-view .x-view-selected {
+	background: #eff5fb url( '/images/view/selected.gif' ) no-repeat right
+		bottom;
+	border: 1px solid #99bbe8;
+	padding: 4px;
+}
+
+#images-view .x-view-selected .thumb {
+	background: transparent;
+}
+
+#images-view .loading-indicator {
+	font-size: 11px;
+	background-image:
+		url( '/js/ext/resources/images/default/grid/loading.gif' );
+	background-repeat: no-repeat;
+	background-position: left;
+	padding-left: 20px;
+	margin: 10px;
+}
+
+.image-icon {
+	background-image: url( '/images/silk/image.gif' ) !important;
+}
+
+#ychooser-view .x-panel-body {
+	background: white none repeat scroll 0%;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-size-adjust: none;
+	font-stretch: normal;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	line-height: normal;
+}
+
+#ychooser-view .thumb {
+	padding: 3px;
+}
+
+#ychooser-view .thumb img {
+	height: 30px;
+	width: 30px;
+}
+
+#ychooser-view .thumb-wrap {
+	float: left;
+	margin: 4px;
+	margin-right: 0;
+	padding: 5px;
+}
+
+#ychooser-view .thumb-wrap span {
+	display: block;
+	overflow: hidden;
+	text-align: center;
+}
+
+#ychooser-view .x-view-selected {
+	background: #c3daf9;
+	border: 2px solid #6593cf;
+	padding: 3px;
+}
+
+#ychooser-view .x-view-selected .thumb {
+	background: transparent;
+}
+
+#ychooser-view .loading-indicator {
+	font-size: 11px;
+	background-image:
+		url( '/js/ext/resources/images/default/grid/loading.gif' );
+	background-repeat: no-repeat;
+	background-position: left;
+	padding-left: 20px;
+	margin: 10px;
+}
+
+#ychooser-view .x-view-over {
+	border: 1px solid #dddddd;
+	background: #efefef
+		url( '/js/ext/resources/images/default/grid/row-over.gif' ) repeat-x
+		left top;
+	padding: 4px;
+}
+
+.search-icon {
+	background-image: url( '/images/silk/page_find.gif' ) !important;
+}
+
+.progressbar-text {
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.progressbar-remaining {
+	font-size: 12px;
+	font-style: italic;
+}
+
+.progressbar-outer {
+	border: 1px solid black;
+}
+
+.progressbar-inner {
+	border: 1px solid black;
+	margin: 1px;
+}
+
+.progressbar-bar {
+	width: 5px;
+	height: 15px;
+	margin: 1px;
+}
+
+.progressbar-fullbar {
+	background: red;
+}
+
+.progressbar-blankbar {
+	background: #eee;
+}
+
+.Silver {
+	background-color: #C0C0C0;
+}
+
+.Green {
+	background-color: #00FE08;
+}
+
+.Gray {
+	background-color: #8C8C8C;
+}
+
+.x-grid3-col x-grid3-cell x-grid3-td-choice silver {
+	background-color: #C0C0C0;
+}
+
+.x-grid3-col x-grid3-cell x-grid3-td-choice green {
+	background-color: #00FE08;
+}
+
+.x-grid3-col x-grid3-cell x-grid3-td-choice gray {
+	background-color: #8C8C8C;
+}
+
+.gwt-Label {
+	font-size: 12px;
+}
+
+.button-newTracked-hover {
+	margin : auto;
+	border-color: green;
+	border-width: 3;
+	border-style: double;
+	cursor: pointer;
+}

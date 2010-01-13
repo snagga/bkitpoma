@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 3.2//EN"
+        "http://tuckey.org/res/dtds/urlrewrite3.2.dtd">
+	<!--
+		Configuration file for UrlRewriteFilter http://tuckey.org/urlrewrite/
+	-->
+<urlrewrite>
+	<rule>
+		<condition type="session-attribute" name="device_id"
+			operator="instanceof">java.lang.Long</condition>
+		<from>^/api/mobile/waypoint/latlng/([+-]?\d*[0-9](|.\d*[0-9])?)/([+-]?\d*[0-9](|.\d*[0-9])?)$</from>
+		<to>/api/mobile/?op=latlng&amp;lat=$1&amp;lng=$3</to>
+    </rule>
+    	<rule>
+		<condition type="session-attribute" name="device_id" operator="instanceof">java.lang.Long</condition>
+		<from>^/api/mobile/waypoint/latlng/([+-]?\d*[0-9](|.\d*[0-9])?)/([+-]?\d*[0-9](|.\d*[0-9])?)/([0-9]+)$</from>
+		<to>/api/mobile/?op=latlng&amp;lat=$1&amp;lng=$3&amp;spd=$5</to>
+    </rule>
+    	<rule>
+		<condition type="session-attribute" name="device_id" operator="instanceof">java.lang.Long</condition>
+		<from>^/api/mobile/waypoint/latlng/([+-]?\d*[0-9](|.\d*[0-9])?)/([+-]?\d*[0-9](|.\d*[0-9])?)/-1$</from>
+		<to>/api/mobile/?op=latlng&amp;lat=$1&amp;lng=$3&amp;spd=-1</to>
+    </rule>
+	<rule>
+		<condition type="session-attribute" name="device_id" operator="instanceof">java.lang.Long</condition>
+		<from>^/api/mobile/waypoint/cellid/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)$</from>
+		<to>/api/mobile/?op=cellid&amp;cellid=$1&amp;lac=$2&amp;mnc=$3&amp;mcc=$4</to>
+    </rule>
+    <rule>
+		<condition type="session-attribute" name="device_id" operator="instanceof">java.lang.Long</condition>
+        <from>^/api/mobile/device/logout$</from>
+        <to>/api/mobile/?op=logout</to>
+    </rule>
+    <rule>
+        <condition type="session-attribute" name="device_id" operator="instanceof">java.lang.Long</condition>
+        <from>^/api/mobile/device/config$</from>
+        <to>/api/mobile/?op=config</to>
+    </rule>
+    <rule>
+        <from>^/api/mobile/device/amilogin$</from>
+        <to>/api/mobile/?op=amilogin</to>
+    </rule>
+    <rule>
+        <condition type="session-attribute" name="device_id" operator="instanceof">java.lang.Long</condition>
+        <from>^/api/mobile/track/newtrack$</from>
+        <to>/api/mobile/?op=newtrack</to>
+    </rule>
+    <rule>
+    	<condition type="session-attribute" name="device_id" operator="instanceof">java.lang.Long</condition>
+        <from>^/api/mobile/device/changepass/(.*)$</from>
+        <to>/api/mobile/?op=changepass&amp;newpass=$1</to>
+    </rule>
+    <rule>
+        <from>^/en(/|)$</from>
+        <to>/?locale=en</to>
+    </rule>
+    <rule>
+        <from>^/vn(/|)$</from>
+        <to>/?locale=vi</to>
+    </rule>
+</urlrewrite>
+
